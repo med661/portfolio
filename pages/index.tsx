@@ -7,6 +7,7 @@ import Projects from "@/components/projects";
 import TechSection from "@/components/skills";
 import Internships from "@/components/internship";
 import Accomplishments from "@/components/accomplishment";
+import Interests from "@/components/interests";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <ProofOfAchievement />
       <TechSection />
       <Accomplishments />
+      <Interests />
     </ >
   );
 }

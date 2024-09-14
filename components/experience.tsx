@@ -17,7 +17,7 @@ const Experience: React.FC = () => {
                     <div className="flex items-start justify-between">
                         <div className="flex-1">
                             <h3 className="text-xl font-semibold text-white mb-2">Backend Developer</h3>
-                            <a href="https://www.darblockchain.com" className="text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">Dar Blockchain</a>
+                            <a href="https://www.darblockchain.io/" className="text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">Dar Blockchain</a>
                             <time className="text-gray-400 ml-2">| Nov 2022 – Present</time>
                             <ul className="mt-4 space-y-2 text-gray-300 text-sm">
                                 <li><FaCheckCircle className="inline-block text-indigo-600 mr-2" />Developed scalable APIs using Node.js & NestJS</li>

@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
                         <h3 className="text-2xl font-semibold text-white mb-2">ECOSYSTEM DAO </h3>
                         <h6 className="text-lg font-semibold text-indigo-300 mb-4">Dar Blockchain</h6>
 
-                        <p className="text-gray-300 mb-1">Backend systems development for supporting entrepreneurs.</p>
+                        <p className="text-gray-300 mb-1">Developed the backend systems to support entrepreneurs.</p>
                         <p className="text-gray-300 mb-1">Provides opportunities for meeting experts, joining support programs, and participating in hackathons.</p>
                         <p className="text-gray-500 mb-4">Technologies :React.js, Redux Toolkit, Node.js, Express.js, MongoDB, Mongoose, Socket.io, Git, OAuth 2.0, Docker</p>
                         <a href="https://di.darblockchain.io/#/auth/landing" className="block text-indigo-400 hover:underline">View Link</a>

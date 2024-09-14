@@ -48,6 +48,7 @@ const Header: React.FC = () => {
                     <a href="#skills" className="text-sm font-semibold text-white hover:text-gray-200 transition duration-300">SKILLS</a>
 
                     <a href="#achievements" className="text-sm font-semibold text-white hover:text-gray-200 transition duration-300">ACHIEVEMENTS</a>
+                    <a href="#interests" className="text-sm font-semibold text-white hover:text-gray-200 transition duration-300">INTERESTS</a>
 
                 </div>
             </div>
@@ -61,9 +62,11 @@ const Header: React.FC = () => {
                     <a href="#projects" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">PROJECTS</a>
                     <a href="#internship" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">INTERNSHIP</a>
                     <a href="#proof-of-achievement" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">CERTIFICATION</a>
-                    <a href="#skills" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">SkILLS</a>
+                    <a href="#skills" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">SKILLS</a>
 
-                    <a href="#achievements" className="block text-sm font-semibold text-white hover:text-gray-200">ACHIEVEMENTS</a>
+                    <a href="#achievements" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">ACHIEVEMENTS</a>
+                    <a href="#interests" className="block text-sm font-semibold text-white hover:text-gray-200 mb-4">INTERESTS</a>
+
                 </div>
             )}
         </header>
