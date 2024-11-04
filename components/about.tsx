@@ -33,7 +33,7 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="flex items-center bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 contactCard slideInUp">
                         <FaEnvelope className="text-indigo-400 text-2xl mr-4" />
-                        <a href="mailto:mohamedsalah.sfarchaabane@polytechnicien.tn" className="text-indigo-400 hover:underline"> Salah Sfar</a>
+                        <a href="mailto:salahsfar.pro@gmail.com" className="text-indigo-400 hover:underline"> salahsfar.pro@gmail.com                        </a>
                     </div>
                     <div className="flex items-center bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 contactCard slideInUp">
                         <FaPhoneAlt className="text-indigo-400 text-2xl mr-4" />
