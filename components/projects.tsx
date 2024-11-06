@@ -14,6 +14,19 @@ const Projects: React.FC = () => {
 
                 {/* Project List */}
                 <div className="flex flex-wrap justify-center gap-8">
+
+
+
+                    <div className="bg-gray-800 p-8 rounded-lg shadow-lg relative hover:shadow-xl transform hover:scale-105 transition-transform duration-300 max-w-md mx-4 fadeIn animate-slideInUp">
+                        <Image src="/images/91funds.png" alt="Recut" width={500} height={300} layout="responsive" objectFit="cover" />
+                        <h3 className="text-2xl font-semibold text-white mb-2">91 funds</h3>
+                        <h6 className="text-lg font-semibold text-indigo-300 mb-4">Dar Blockchain</h6>
+
+                        <p className="text-gray-300 mb-1">Developed a decentralized finance platform,</p>
+                        <p className="text-gray-300 mb-1">building systems for fund management, NFT issuance, and secure authentication with 2FA .</p>
+                        <p className="text-gray-500 mb-4">Technologies : NestJS , Mongoose , TypeScript , Node.js , Redis </p>
+                        <a href="" className="block text-indigo-400 hover:underline">View Link</a>
+                    </div>
                     {/* Project 1 - Recut */}
                     <div className="bg-gray-800 p-8 rounded-lg shadow-lg relative hover:shadow-xl transform hover:scale-105 transition-transform duration-300 max-w-md mx-4 fadeIn animate-slideInUp">
                         <Image src="/images/p1.png" alt="Recut" width={500} height={300} layout="responsive" objectFit="cover" />
@@ -57,6 +70,10 @@ const Projects: React.FC = () => {
                     </div>
 
                     {/* Project 5 - 91Fund */}
+
+                    {/* Project 4 - Real-Time Chat App */}
+
+
 
                     {/* Coming Soon */}
                     <div className="bg-gray-800 p-8 rounded-lg shadow-lg relative animate-pulse max-w-md mx-4 fadeIn">
