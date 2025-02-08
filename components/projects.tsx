@@ -1,10 +1,8 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { motion } from 'framer-motion'; // You'll need to install framer-motion
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
     const projects = [
         {
             title: "Discord Clone",
@@ -41,8 +39,6 @@ const Projects: React.FC = () => {
                         <motion.div
                             key={index}
                             whileHover={{ y: -10 }}
-                            onHoverStart={() => setHoveredIndex(index)}
-                            onHoverEnd={() => setHoveredIndex(null)}
                             className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-700"
                         >
                             <div className="relative group">

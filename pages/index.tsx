@@ -11,11 +11,7 @@ import Internships from "@/components/internship";
 import Accomplishments from "@/components/accomplishment";
 import Interests from "@/components/interests";
 
-import { useTranslation } from 'next-i18next';
-// ...existing imports...
-
 export default function Home() {
-  const { t } = useTranslation('common');
   
   return (
     <>

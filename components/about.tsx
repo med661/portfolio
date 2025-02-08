@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FaEnvelope, FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useTranslationContext } from '../contexts/translationContext';
@@ -6,10 +6,14 @@ import { useTranslationContext } from '../contexts/translationContext';
 
 const About = () => {
   const { t, changeLanguage } = useTranslationContext();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    changeLanguage("en");
-  }, []);  // Remove i18n.language dependency as it's not needed
+    if (isFirstRender.current) {
+      changeLanguage("en");
+      isFirstRender.current = false;
+    }
+  }, [changeLanguage])
 
     return (
         <section id="about" className="py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-16 md:mt-20">

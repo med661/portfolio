@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaCheckCircle, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,10 +10,16 @@ const Experience = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const { t, changeLanguage } = useTranslationContext();
 
-    useEffect(() => {
-        changeLanguage("en");
-    }, []);  // Remove i18n.language dependency as it's not needed
 
+
+        const isFirstRender = useRef(true);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            changeLanguage("en");
+            isFirstRender.current = false;
+        }
+    }, [])
 
     const meetupImages = [
         { src: "/eximages/dar.jpg", alt: "Meetup 1" },
