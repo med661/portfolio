@@ -1,67 +1,108 @@
 import React from 'react';
-import { FaDocker, FaJs, FaDatabase, FaPhp } from 'react-icons/fa'; // Import additional icons here
+import { FaDocker, FaJs, FaDatabase, FaPhp, FaLinux, FaTools } from 'react-icons/fa';
 
 const ProofOfAchievement: React.FC = () => {
     return (
         <section id="proof-of-achievement" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 z-0" />
+            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
             <div className="container mx-auto px-4 md:px-8 z-10">
-                {/* Heading */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12 text-white text-center relative animate-fadeIn">
-                    <span className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text">
+                {/* Heading with enhanced animation */}
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative animate-fadeIn">
+                    <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                         Proof of Achievement
                     </span>
                 </h2>
 
-                {/* Achievement List */}
-                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                    {/* Achievement 1 */}
-                    <a href="https://learn.kodekloud.com/certificate/2D0F952D05CE-2D0F8F287ED2-2D0D712B90A6" target="_blank" rel="noopener noreferrer">
-                        <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg transform hover:shadow-xl hover:scale-105 hover:rotate-1 transition-transform duration-300 relative max-w-xs w-full animate-fadeIn">
-                            <div className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full transform -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 flex items-center justify-center z-[-1]">
-                                <FaDocker className="text-white text-lg md:text-2xl" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-semibold text-white mb-2">Docker Training Course for the Absolute Beginners</h3>
-                            <p className="text-gray-400 mb-1">Kodekloud</p>
-                        </div>
-                    </a>
+                {/* Achievement Grid with improved layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
+                    {/* Previous achievements with enhanced styling */}
+                    <Achievement 
+                        icon={<FaDocker />}
+                        title="Docker Training Course for the Absolute Beginners"
+                        platform="Kodekloud"
+                        link="https://learn.kodekloud.com/certificate/2D0F952D05CE-2D0F8F287ED2-2D0D712B90A6"
+                        bgColor="from-blue-600 to-blue-400"
+                    />
+                    
+                    <Achievement 
+                        icon={<FaJs />}
+                        title="JavaScript Algorithms and Data Structures"
+                        platform="FreeCodeCamp"
+                        link="https://www.freecodecamp.org/certification/fccea7be283-656f-47eb-bd0a-f90e51e05434/javascript-algorithms-and-data-structures"
+                        bgColor="from-yellow-500 to-yellow-300"
+                    />
 
-                    {/* Achievement 2 */}
-                    <a href="https://www.freecodecamp.org/certification/fccea7be283-656f-47eb-bd0a-f90e51e05434/javascript-algorithms-and-data-structures" target="_blank" rel="noopener noreferrer">
-                        <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg transform hover:shadow-xl hover:scale-105 hover:rotate-1 transition-transform duration-300 relative max-w-xs w-full animate-fadeIn">
-                            <div className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full transform -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 flex items-center justify-center z-[-1]">
-                                <FaJs className="text-white text-lg md:text-2xl" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-semibold text-white mb-2">JavaScript Algorithms and Data Structures</h3>
-                            <p className="text-gray-400 mb-1">FreeCodeCamp</p>
-                        </div>
-                    </a>
+                    <Achievement 
+                        icon={<FaDatabase />}
+                        title="MongoDB CRUD Operations in Node.js"
+                        platform="MongoDB"
+                        link="https://learn.mongodb.com/c/rYt0ydWWRROdkJDcO7YGHQ"
+                        bgColor="from-green-600 to-green-400"
+                    />
 
-                    {/* Achievement 3 */}
-                    <a href="https://learn.mongodb.com/c/rYt0ydWWRROdkJDcO7YGHQ" target="_blank" rel="noopener noreferrer">
-                        <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg transform hover:shadow-xl hover:scale-105 hover:rotate-1 transition-transform duration-300 relative max-w-xs w-full animate-fadeIn">
-                            <div className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full transform -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 flex items-center justify-center z-[-1]">
-                                <FaDatabase className="text-white text-lg md:text-2xl" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-semibold text-white mb-2">MongoDB CRUD Operations in Node.js</h3>
-                            <p className="text-gray-400 mb-1">MongoDB</p>
-                        </div>
-                    </a>
+                    <Achievement 
+                        icon={<FaPhp />}
+                        title="PHP and MySQL Certificate"
+                        platform="Udemy"
+                        link="https://www.udemy.com/certificate/UC-e89f178c-5d42-4557-8030-677d735a16ef/"
+                        bgColor="from-purple-600 to-purple-400"
+                    />
 
-                    {/* Achievement 4 */}
-                    <a href="https://www.udemy.com/certificate/UC-e89f178c-5d42-4557-8030-677d735a16ef/?utm_campaign=email&utm_source=sendgrid.com&utm_medium=email" target="_blank" rel="noopener noreferrer">
-                        <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg transform hover:shadow-xl hover:scale-105 hover:rotate-1 transition-transform duration-300 relative max-w-xs w-full animate-fadeIn">
-                            <div className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full transform -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 flex items-center justify-center z-[-1]">
-                                <FaPhp className="text-white text-lg md:text-2xl" />
-                            </div>
-                            <h3 className="text-lg md:text-xl font-semibold text-white mb-2">PHP and MySQL Certificate</h3>
-                            <p className="text-gray-400 mb-1">Udemy</p>
-                        </div>
-                    </a>
+                    {/* New achievements */}
+                    <Achievement 
+                        icon={<FaTools />}
+                        title="DevOps Pre-Requisite Course"
+                        platform="Kodekloud"
+                        link="https://kodekloud.com/courses/devops-pre-requisite-course/"
+                        bgColor="from-red-600 to-red-400"
+                    />
+
+                    <Achievement 
+                        icon={<FaLinux />}
+                        title="Learning Linux Basics Course & Labs"
+                        platform="Kodekloud"
+                        link="https://kodekloud.com/courses/linux-basics/"
+                        bgColor="from-orange-600 to-orange-400"
+                    />
                 </div>
             </div>
         </section>
     );
 };
+
+// New Achievement component for better reusability
+const Achievement: React.FC<{
+    icon: React.ReactNode;
+    title: string;
+    platform: string;
+    link: string;
+    bgColor: string;
+}> = ({ icon, title, platform, link, bgColor }) => (
+    <a href={link} target="_blank" rel="noopener noreferrer" 
+       className="group block">
+        <div className="bg-gray-800/80 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-lg 
+                    transform hover:shadow-2xl hover:scale-105 hover:-rotate-1 
+                    transition-all duration-300 relative 
+                    border border-gray-700/50 hover:border-gray-600">
+            <div className={`absolute top-0 left-0 w-14 h-14 md:w-16 md:h-16 
+                         bg-gradient-to-br ${bgColor} rounded-full 
+                         transform -translate-x-4 -translate-y-4 md:-translate-x-6 md:-translate-y-6 
+                         flex items-center justify-center z-10 
+                         group-hover:scale-110 transition-transform duration-300`}>
+                <div className="text-white text-xl md:text-2xl">
+                    {icon}
+                </div>
+            </div>
+            <h3 className="text-lg md:text-xl font-semibold text-white mb-3 
+                       group-hover:text-indigo-400 transition-colors duration-300">
+                {title}
+            </h3>
+            <p className="text-gray-400 text-sm md:text-base 
+                      group-hover:text-gray-300 transition-colors duration-300">
+                {platform}
+            </p>
+        </div>
+    </a>
+);
 
 export default ProofOfAchievement;

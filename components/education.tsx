@@ -1,71 +1,181 @@
 import Image from 'next/image';
-import React from 'react';
-import { FaGraduationCap, FaSchool, FaUniversity } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaGraduationCap, FaSchool, FaUniversity, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface EducationItem {
+    icon: JSX.Element;
+    title: string;
+    institution: string;
+    period: string;
+    description: string;
+    logoSrc?: string;
+    images?: string[];
+}
 
 const Education: React.FC = () => {
+    const [expandedItem, setExpandedItem] = useState<number | null>(null);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    const educationData: EducationItem[] = [
+        {
+            icon: <FaUniversity className="text-white text-3xl" />,
+            title: "Engineering Degree in Computer Science",
+            institution: "Ecole Polytechnique Sousse",
+            period: "September 2019 – June 2022",
+            description: "Specialized in software engineering with focus on web development and distributed systems.",
+            logoSrc: "/images/polytech.png",
+            images: ["/edu/me.jpg"]
+        },
+        {
+            icon: <FaSchool className="text-white text-3xl" />,
+            title: "Integrated Preparatory Cycle",
+            institution: "Ecole Polytechnique Sousse",
+            period: "September 2017 – June 2019",
+            description: "Foundation studies in mathematics, physics, and computer science.",
+            logoSrc: "/images/polytech.png",
+            images: ["/edu/eps.jpg"]
+        },
+        {
+            icon: <FaGraduationCap className="text-white text-3xl" />,
+            title: "Baccalaureate",
+            institution: "Lycée Taher Sfar",
+            period: "June 2017",
+            description: "Mathematics specialization with honors.",
+            images: ["/edu/bac.jpg"]
+        }
+    ];
+
     return (
-        <section id="education" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 z-0" />
-            <div className="container mx-auto px-6 md:px-8 lg:px-12 text-center z-10">
-                {/* Heading */}
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+        <section id="education" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen">
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="container mx-auto px-6 md:px-8 lg:px-12 text-center z-10"
+            >
+                <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
                     <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                        Education
+                        Educational Journey
                     </span>
                 </h2>
-                {/* Education Items */}
-                <div className="space-y-12">
-                    {/* Degree 1 */}
-                    <div className="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 relative mx-4 md:mx-6 lg:mx-8 fadeIn flex items-center justify-between">
-                        <div className="flex items-center">
-                            <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center">
-                                <FaUniversity className="text-white text-3xl" />
-                            </div>
-                            <div className="ml-4 text-left">
-                                <h3 className="text-2xl font-semibold text-white mb-2 flex items-center">
-                                    Engineering Degree in Computer Science
-                                </h3>
-                                <p className="text-gray-400 mb-1">Ecole Polytechnique Sousse</p>
-                                <p className="text-gray-300">September 2019 – June 2022</p>
-                            </div>
-                        </div>
-                        <Image src="/images/polytech.png" alt="University Logo" className="w-16 h-16" width={40} height={40} />
-                    </div>
 
-                    {/* Degree 2 */}
-                    <div className="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 relative mx-4 md:mx-6 lg:mx-8 fadeIn flex items-center justify-between">
-                        <div className="flex items-center">
-                            <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center">
-                                <FaSchool className="text-white text-3xl" />
+                <div className="space-y-6">
+                    {educationData.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                            className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                            onClick={() => setExpandedItem(expandedItem === index ? null : index)}
+                        >
+                            <div className="flex items-center justify-between cursor-pointer">
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                                        {item.icon}
+                                    </div>
+                                    <div className="text-left">
+                                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-indigo-400">{item.institution}</p>
+                                        <p className="text-gray-400">{item.period}</p>
+                                    </div>
+                                </div>
+                                {item.logoSrc && (
+                                    <div className="flex items-center space-x-4">
+                                        <Image 
+                                            src={item.logoSrc} 
+                                            alt={`${item.institution} Logo`} 
+                                            width={60} 
+                                            height={60}
+                                            className="rounded-lg"
+                                        />
+                                        <FaChevronRight
+                                            className={`text-gray-400 transition-transform duration-300 ${
+                                                expandedItem === index ? 'rotate-90' : ''
+                                            }`}
+                                        />
+                                    </div>
+                                )}
                             </div>
-                            <div className="ml-4 text-left">
-                                <h3 className="text-2xl font-semibold text-white mb-2 flex items-center">
-                                    Integrated Preparatory Cycle
-                                </h3>
-                                <p className="text-gray-400 mb-1">Ecole Polytechnique Sousse</p>
-                                <p className="text-gray-300">September 2017 – June 2019</p>
-                            </div>
-                        </div>
-                        <Image src="/images/polytech.png" alt="University Logo" className="w-16 h-16" width={100} height={100} />
-                    </div>
-
-                    {/* Baccalaureate */}
-                    <div className="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 relative mx-4 md:mx-6 lg:mx-8 fadeIn flex items-center justify-between">
-                        <div className="flex items-center">
-                            <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center">
-                                <FaGraduationCap className="text-white text-3xl" />
-                            </div>
-                            <div className="ml-4 text-left">
-                                <h3 className="text-2xl font-semibold text-white mb-2 flex items-center">
-                                    Baccalaureate
-                                </h3>
-                                <p className="text-gray-400 mb-1">Lycée Taher Sfar</p>
-                                <p className="text-gray-300">June 2017</p>
-                            </div>
-                        </div>
-                    </div>
+                            
+                            {expandedItem === index && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    className="mt-4 text-center"
+                                >
+                                    <p className="text-gray-300 mb-4">{item.description}</p>
+                                    
+                                    {/* Centered Image Gallery */}
+                                    {item.images && item.images.length > 0 && (
+                                        <div className="flex justify-center items-center mt-6 space-x-4">
+                                            {item.images.map((img, imgIndex) => (
+                                                <motion.div
+                                                    key={imgIndex}
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    transition={{ delay: imgIndex * 0.2, duration: 0.5, ease: "easeInOut" }}
+                                                    className="relative h-48 w-48 overflow-hidden rounded-lg group cursor-pointer"
+                                                    onClick={() => setSelectedImage(img)}
+                                                >
+                                                    <Image
+                                                        src={img}
+                                                        alt={`${item.title} image ${imgIndex + 1}`}
+                                                        layout="fill"
+                                                        objectFit="cover"
+                                                        className="transition-transform duration-500 group-hover:scale-110"
+                                                    />
+                                                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-500" />
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    ))}
                 </div>
-            </div>
+            </motion.div>
+
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-8"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.8 }}
+                            className="relative bg-gray-800 p-8 rounded-lg max-w-4xl max-h-full"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setSelectedImage(null)}
+                                className="absolute -top-6 -right-6 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors duration-300"
+                            >
+                                <FaTimes />
+                            </button>
+                            <Image
+                                src={selectedImage}
+                                alt="Selected Image"
+                                width={800}
+                                height={600}
+                                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
+                                className="rounded-lg"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
