@@ -1,0 +1,32 @@
+{
+    "about": "ABOUT",
+    "experience": "EXPERIENCE",
+    "education": "EDUCATION",
+    "projects": "PROJECTS",
+    "internship": "INTERNSHIP",
+    "proof-of-achievement": "CERTIFICATION",
+    "skills": "SKILLS",
+    "achievements": "ACHIEVEMENTS",
+    "interests": "INTERESTS",
+    "aboutme": {
+        "title": "About Me",
+        "greeting": "Hi, I'm Salah Sfar!",
+        "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm passionate about developing innovative solutions and continuously improving my skills.",
+        "profile": {
+            "alt": "Salah Sfar"
+        },
+        "cv": {
+            "title": "Download My CV",
+            "english": "English CV",
+            "french": "French CV"
+        }
+    },
+    "experiences": {
+        "title": "Professional Experience",
+        "job1": {
+            "title": "Backend Developer",
+            "company": " Name",
+            "date": "Jan 2020 - Present"
+        }
+    }
+}
