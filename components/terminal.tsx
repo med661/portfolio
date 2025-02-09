@@ -13,28 +13,22 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
     const [input, setInput] = useState('');
     const terminalRef = useRef<HTMLDivElement>(null);
 
-    const handleCommand = (input: string) => {
-        const cmd = input.trim().toLowerCase();
-        
-        // Special handling for clear command
+    const handleCommand = (cmd: string) => {
+        if (!cmd.trim()) return null;
+
         if (cmd === 'clear') {
-            // Clear output immediately
             setOutput([]);
-            // Return null to prevent adding new output
             return null;
         }
-        
-        // Handle cat bio as a single command
-        if (cmd === 'cat bio') {
-            return t('aboutme.bio');
-        }
-        
-        const [command] = cmd.split(' ');
+
+        // Split command and arguments
+        const [command, ...args] = cmd.trim().split(' ');
         const found = commands.find(c => c.command === command);
-        
+
         if (found) {
-            return found.action('', setOutput, t);
+            return found.action(args.join(' '), setOutput, t);
         }
+
         return `Command not found: ${command}. Type 'help' for available commands.`;
     };
 

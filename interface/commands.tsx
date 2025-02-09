@@ -188,6 +188,49 @@ DESCRIPTION
         command: 'experience',
         description: 'View my projects',
         action: () =>  "I have worked on several projects, including a social media platform, a chat application, and a personal portfolio. I have experience with both frontend and backend technologies, and I am always looking to learn new things."
+    },
+    {
+        command: 'rps',
+        description: 'Play Rock Paper Scissors',
+        action: (args?: string) => {
+            const playerChoice = args?.trim().toLowerCase();
+            const choices = ['rock', 'paper', 'scissors'];
+
+            if (!playerChoice || !choices.includes(playerChoice)) {
+                return `Welcome to Rock Paper Scissors!
+Usage: rps <rock|paper|scissors>
+Example: rps rock`;
+            }
+
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            
+            // Game logic
+            const getResult = (player: string, computer: string) => {
+                if (player === computer) return '🤝 Draw!';
+                if (
+                    (player === 'rock' && computer === 'scissors') ||
+                    (player === 'paper' && computer === 'rock') ||
+                    (player === 'scissors' && computer === 'paper')
+                ) {
+                    return '🎉 You win!';
+                }
+                return '💻 Computer wins!';
+            };
+
+            // Format choices with emojis
+            const formatChoice = (choice: string) => {
+                const emojis = {
+                    rock: '🪨',
+                    paper: '📄',
+                    scissors: '✂️'
+                };
+                return `${choice.toUpperCase()} ${emojis[choice as keyof typeof emojis]}`;
+            };
+
+            return `Your choice: ${formatChoice(playerChoice)}
+Computer's choice: ${formatChoice(computerChoice)}
+Result: ${getResult(playerChoice, computerChoice)}`;
+        }
     }
 ];
 
