@@ -1,26 +1,104 @@
 import { Command } from "./commandInterface";
+// Add this before commands array
+const gameManager = {
+    currentGame: {
+        word: '',
+        guessed: new Set<string>(),
+        attempts: 6,
+        isActive: false
+    },
+    
+    startNewGame() {
+        const words = [
+            'typescript', 'javascript', 'react', 'nodejs', 'express',
+            'mongodb', 'docker', 'github', 'frontend', 'backend'
+        ];
+        this.currentGame = {
+            word: words[Math.floor(Math.random() * words.length)],
+            guessed: new Set<string>(),
+            attempts: 6,
+            isActive: true
+        };
+        return this.getGameStatus();
+    },
+
+    makeGuess(letter: string) {
+        if (!this.currentGame.isActive) {
+            return 'No active game. Type "hangman start" to begin!';
+        }
+
+        if (this.currentGame.guessed.has(letter)) {
+            return `You already guessed '${letter}'! Try another letter.\n${this.getGameStatus()}`;
+        }
+
+        this.currentGame.guessed.add(letter);
+
+        if (!this.currentGame.word.includes(letter)) {
+            this.currentGame.attempts--;
+            
+            if (this.currentGame.attempts === 0) {
+                this.currentGame.isActive = false;
+                return `💀 Game Over! The word was: ${this.currentGame.word}\nType 'hangman start' to play again!`;
+            }
+
+            return `❌ Wrong guess!\n${this.getGameStatus()}`;
+        }
+
+        if (this.isWin()) {
+            this.currentGame.isActive = false;
+            return `🎉 Congratulations! You guessed the word: ${this.currentGame.word}\nType 'hangman start' to play again!`;
+        }
+
+        return `✅ Good guess!\n${this.getGameStatus()}`;
+    },
+
+    getGameStatus() {
+        const displayWord = this.currentGame.word
+            .split('')
+            .map(letter => this.currentGame.guessed.has(letter) ? letter : '_')
+            .join(' ');
+
+        return `\nWord: ${displayWord}
+Attempts left: ${'❤️'.repeat(this.currentGame.attempts)}
+Guessed letters: ${Array.from(this.currentGame.guessed).join(', ') || 'none'}`;
+    },
+
+    isWin() {
+        return this.currentGame.word
+            .split('')
+            .every(letter => this.currentGame.guessed.has(letter));
+    }
+};
 
 export const commands: Command[] = [
     {
         command: 'help',
         description: 'Show available commands',
-        action: () =>
-            `Available Commands:
-                    help: Shows this help message
-                    cat bio: View my professional biography
-                    skills: Display my technical skillset
-                    grep: Search through command output
-                    contact: Show my contact information
-                    clear: Clear the terminal screen
-                    man: Show manual for a command
-
-                    Type any command to continue...`
+     action: () => 
+            `*********************** 🚀 Available Commands: ***********************
+             ************************  ℹ️  help: Shows this help message  ***********
+             ************************  📝  cat bio: View my professional biography *
+             ************************  🛠️  skills: Display my technical skillset  **
+                ************************   🔍  grep: Search through command output  ******
+                ************************   📧  contact: Show my contact information  
+                ************************   🧹  clear: Clear the terminal screen  
+                ************************   📖  man: Show manual for a command  
+                ***********  🔎  grepskills: Search through skills ex: grepskills express | skills  
+                *********************** 👤  whoami: Show the current user  ***********
+                📂  projectex: List professional projects ex: projectex -a  
+                ********************** 🎮  Games & Fun: **************************
+                ************** ✊🖐✌  rps: Play Rock Paper Scissors: rps start   
+                ************** 🔤  hangman: Play Word Guessing game: hangman start    
+                .......................... ⌨️  Type any command to continue...`
     },
+
+
+
     {
         command: 'skills',
         description: 'List technical skills',
         action: () =>
-            `My Technical Skills:
+            `My Technical Skills           :         
                 Languages: • JavaScript • TypeScript
                 Backend: • Node.js • NestJS • Express
                 Frontend: • React • Next.js • Redux
@@ -117,7 +195,6 @@ projectex -h     Show this help message`
                         Frontend: ['React', 'Next.js', 'Redux'],
                         Database: ['MongoDB', 'PostgreSQL', 'Redis'],
                         DevOps: ['Docker', 'Git', 'AWS', 'CI/CD'],
-                        Testing: ['Jest', 'Cypress', 'RTL']
                     };
                     let results = '';
                     for (const [category, skillList] of Object.entries(skills)) {
@@ -313,6 +390,44 @@ Example: projects -a`;
         }
 
         return `Invalid option: ${args}\nUse 'projects -h' for help`;
+    }
+},
+{
+    command: 'hangman',
+    description: 'Play Word Guessing game',
+    action: (args?: string) => {
+        if (!args) {
+            return `🎮 Word Guessing Game!
+Commands:
+- hangman start : Start new game
+- hangman <letter> : Guess a letter
+- hangman help : Show commands
+
+Type 'hangman start' to begin!`;
+        }
+
+        const command = args.toLowerCase().trim();
+
+        if (command === 'help') {
+            return `🎮 Word Guessing Commands:
+start     : Start new game
+<letter>  : Guess a letter
+help      : Show this help message
+
+Example: 
+hangman start   - Start new game
+hangman a       - Guess letter 'a'`;
+        }
+
+        if (command === 'start') {
+            return gameManager.startNewGame();
+        }
+
+        if (command.length !== 1) {
+            return 'Please guess one letter at a time!';
+        }
+
+        return gameManager.makeGuess(command);
     }
 }
 ];

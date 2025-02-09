@@ -11,6 +11,8 @@ interface TerminalProps {
 export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
     const [output, setOutput] = useState<string[]>([]);
     const [input, setInput] = useState('');
+    const [commandHistory, setCommandHistory] = useState<string[]>([]);
+    const [historyIndex, setHistoryIndex] = useState(-1);
     const terminalRef = useRef<HTMLDivElement>(null);
 
     const handleCommand = (cmd: string) => {
@@ -33,13 +35,20 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
         return `Command not found: ${command}. Type 'help' for available commands.`;
     };
 
+    // Add this function to handle arrow key navigation
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            const result = handleCommand(input);
-            // Only update output if result is not null
-            if (result !== null) {
-                const newOutput = [...output, `$ ${input}`, result];
-                setOutput(newOutput);
+            const trimmedInput = input.trim();
+            if (trimmedInput) {
+                // Add command to history
+                setCommandHistory(prev => [...prev, trimmedInput]);
+                setHistoryIndex(-1);
+                
+                const result = handleCommand(trimmedInput);
+                if (result !== null) {
+                    const newOutput = [...output, `$ ${trimmedInput}`, result];
+                    setOutput(newOutput);
+                }
             }
             setInput('');
             
@@ -48,6 +57,25 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                 setTimeout(() => {
                     terminalRef.current!.scrollTop = terminalRef.current!.scrollHeight;
                 }, 0);
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (commandHistory.length > 0) {
+                const newIndex = historyIndex + 1;
+                if (newIndex < commandHistory.length) {
+                    setHistoryIndex(newIndex);
+                    setInput(commandHistory[commandHistory.length - 1 - newIndex]);
+                }
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                const newIndex = historyIndex - 1;
+                setHistoryIndex(newIndex);
+                setInput(commandHistory[commandHistory.length - 1 - newIndex]);
+            } else if (historyIndex === 0) {
+                setHistoryIndex(-1);
+                setInput('');
             }
         }
     };
