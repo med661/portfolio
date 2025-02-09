@@ -21,7 +21,7 @@ export const CVDownloadSection: React.FC<CVDownloadSectionProps> = ({ t }) => {
             </motion.h3>
             <div className="flex justify-center space-x-4">
                 <motion.a
-                    href="/cv/fr.pdf"
+                    href="/cv/en.pdf"
                     download
                     className="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
@@ -30,7 +30,7 @@ export const CVDownloadSection: React.FC<CVDownloadSectionProps> = ({ t }) => {
                     {t('aboutme.cv.english')}
                 </motion.a>
                 <motion.a
-                    href="/cv/salah_sfar_cv_fr.pdf"
+                    href="/cv/fr.pdf"
                     download
                     className="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
