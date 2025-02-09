@@ -20,6 +20,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
             setOutput([]);
             return null;
         }
+        
 
         // Split command and arguments
         const [command, ...args] = cmd.trim().split(' ');

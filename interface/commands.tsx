@@ -6,27 +6,27 @@ export const commands: Command[] = [
         description: 'Show available commands',
         action: () =>
             `Available Commands:
-help: Shows this help message
-cat bio: View my professional biography
-skills: Display my technical skillset
-grep: Search through command output
-contact: Show my contact information
-clear: Clear the terminal screen
-man: Show manual for a command
+                    help: Shows this help message
+                    cat bio: View my professional biography
+                    skills: Display my technical skillset
+                    grep: Search through command output
+                    contact: Show my contact information
+                    clear: Clear the terminal screen
+                    man: Show manual for a command
 
-Type any command to continue...`
+                    Type any command to continue...`
     },
     {
         command: 'skills',
         description: 'List technical skills',
         action: () =>
             `My Technical Skills:
-Languages: • JavaScript • TypeScript
-Backend: • Node.js • NestJS • Express
-Frontend: • React • Next.js • Redux
-Database: • MongoDB • PostgreSQL • Redis
-DevOps: • Docker • Git • AWS • CI/CD
-Testing: • Jest • Cypress • RTL`
+                Languages: • JavaScript • TypeScript
+                Backend: • Node.js • NestJS • Express
+                Frontend: • React • Next.js • Redux
+                Database: • MongoDB • PostgreSQL • Redis
+                DevOps: • Docker • Git • AWS • CI/CD
+                Testing: • Jest • Cypress • RTL`
     },
     {
         command: 'contact',
@@ -76,7 +76,25 @@ SYNOPSIS
 
 DESCRIPTION
     Displays all contact information.
-    Can be filtered using grep command.`
+    Can be filtered using grep command.`,
+    // Add to the man command's manPages object
+    projectex: `NAME
+projectex - List professional projects
+
+SYNOPSIS
+projectex [option]
+
+DESCRIPTION
+Display professional experience projects with details.
+Shows project title, description, and technologies used.
+
+OPTIONS
+-a, --all    List all projects
+-h, --help   Show this help message
+
+EXAMPLES
+projectex -a     Show all projects
+projectex -h     Show this help message`
             };
             return manPages[args.toLowerCase()] || `No manual entry for ${args}`;
         }
@@ -178,16 +196,27 @@ DESCRIPTION
         }
     },
     {
-        command: 'cat bio',
-        description: 'View my biography',
+        command: 'cat',
+        description: 'View file contents',
         action: (args?: string, setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
             if (!t) return "Translation function not available";
-            return t('aboutme.bio');
+
+            if (!args) return "Usage: cat <filename>\nExample: cat bio";
+
+            const files: { [key: string]: string } = {
+                'bio': t('aboutme.bio'),
+                'skills': t('skills'),
+                'contact': t('contact')
+            };
+
+            const requestedFile = args.toLowerCase().trim();
+
+            if (!(requestedFile in files)) {
+                return `Error: File '${requestedFile}' not found.\nAvailable files: ${Object.keys(files).join(', ')}`;
+            }
+
+            return files[requestedFile];
         }
-    },{
-        command: 'experience',
-        description: 'View my projects',
-        action: () =>  "I have worked on several projects, including a social media platform, a chat application, and a personal portfolio. I have experience with both frontend and backend technologies, and I am always looking to learn new things."
     },
     {
         command: 'rps',
@@ -203,7 +232,7 @@ Example: rps rock`;
             }
 
             const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-            
+
             // Game logic
             const getResult = (player: string, computer: string) => {
                 if (player === computer) return '🤝 Draw!';
@@ -231,6 +260,60 @@ Example: rps rock`;
 Computer's choice: ${formatChoice(computerChoice)}
 Result: ${getResult(playerChoice, computerChoice)}`;
         }
+    },
+    {
+        command: 'whoami',
+        description: 'the current user laptop',
+        action: () => {
+            return `Salah sfar`
+        }
+    },
+    // Add this to your commands array
+{
+    command: 'projectex',
+    description: 'List professional projects',
+    action: (args?: string, setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
+        if (!t) return "Translation function not available";
+
+        // Show help if no arguments
+        if (!args) {
+            return `Usage: projects [option]
+Options:
+  -a, --all    List all projects
+  -h, --help   Show this help message
+Example: projects -a`;
+        }
+
+        const arg = args.trim().toLowerCase();
+
+        if (arg === '-h' || arg === '--help') {
+            return `projects - List professional projects
+
+Usage: projects [option]
+Options:
+  -a, --all    List all projects
+  -h, --help   Show this help message
+
+Example: projects -a`;
+        }
+
+        if (arg === '-a' || arg === '--all') {
+            const projectKeys = ['project1', 'project2', 'project3'];
+            let output = `=== ${t('experiences.title')} ===\n`;
+            output += `${t('experiences.job1.company')} | ${t('experiences.job1.title')}\n`;
+            output += `${t('experiences.job1.date')}\n\n`;
+
+            projectKeys.forEach((projectKey) => {
+                output += `🚀 ${t(`experiences.job1.projects.${projectKey}.title`)}\n`;
+                output += `📝 ${t(`experiences.job1.projects.${projectKey}.description`)}\n`;
+                output += `🛠️  ${t(`experiences.job1.projects.${projectKey}.technologies`)}\n\n`;
+            });
+
+            return output;
+        }
+
+        return `Invalid option: ${args}\nUse 'projects -h' for help`;
     }
+}
 ];
 
