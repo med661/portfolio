@@ -2,49 +2,30 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaGraduationCap, FaSchool, FaUniversity, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface EducationItem {
-    icon: JSX.Element;
-    title: string;
-    institution: string;
-    period: string;
-    description: string;
-    logoSrc?: string;
-    images?: string[];
-}
+import { useTranslationContext } from '@/contexts/translationContext';
 
 const Education: React.FC = () => {
     const [expandedItem, setExpandedItem] = useState<number | null>(null);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const { t } = useTranslationContext();
 
-    const educationData: EducationItem[] = [
-        {
-            icon: <FaUniversity className="text-white text-3xl" />,
-            title: "Engineering Degree in Computer Science",
-            institution: "Ecole Polytechnique Sousse",
-            period: "September 2019 – June 2022",
-            description: "Specialized in software engineering with focus on web development and distributed systems.",
-            logoSrc: "/images/polytech.png",
-            images: ["/edu/me.jpg"]
-        },
-        {
-            icon: <FaSchool className="text-white text-3xl" />,
-            title: "Integrated Preparatory Cycle",
-            institution: "Ecole Polytechnique Sousse",
-            period: "September 2017 – June 2019",
-            description: "Foundation studies in mathematics, physics, and computer science.",
-            logoSrc: "/images/polytech.png",
-            images: ["/edu/eps.jpg"]
-        },
-        {
-            icon: <FaGraduationCap className="text-white text-3xl" />,
-            title: "Baccalaureate",
-            institution: "Lycée Taher Sfar",
-            period: "June 2017",
-            description: "Mathematics specialization with honors.",
-            images: ["/edu/bac.jpg"]
-        }
-    ];
+    const degreeKeys = ['degree1', 'degree2', 'degree3'];
+    const icons = {
+        degree1: <FaUniversity className="text-white text-3xl" />,
+        degree2: <FaSchool className="text-white text-3xl" />,
+        degree3: <FaGraduationCap className="text-white text-3xl" />
+    };
+
+    const logoMap = {
+        degree1: "/images/polytech.png",
+        degree2: "/images/polytech.png"
+    };
+
+    const imagesMap = {
+        degree1: ["/edu/me.jpg"],
+        degree2: ["/edu/eps.jpg"],
+        degree3: ["/edu/bac.jpg"]
+    };
 
     return (
         <section id="education" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen">
@@ -56,14 +37,14 @@ const Education: React.FC = () => {
             >
                 <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
                     <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                        Educational Journey
+                        {t('educations.title')}
                     </span>
                 </h2>
 
                 <div className="space-y-6">
-                    {educationData.map((item, index) => (
+                    {degreeKeys.map((degreeKey, index) => (
                         <motion.div
-                            key={index}
+                            key={degreeKey}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -73,21 +54,21 @@ const Education: React.FC = () => {
                             <div className="flex items-center justify-between cursor-pointer">
                                 <div className="flex items-center space-x-4">
                                     <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                                        {item.icon}
+                                        {icons[degreeKey as keyof typeof icons]}
                                     </div>
                                     <div className="text-left">
                                         <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300">
-                                            {item.title}
+                                            {t(`educations.${degreeKey}.title`)}
                                         </h3>
-                                        <p className="text-indigo-400">{item.institution}</p>
-                                        <p className="text-gray-400">{item.period}</p>
+                                        <p className="text-indigo-400">{t(`educations.${degreeKey}.school`)}</p>
+                                        <p className="text-gray-400">{t(`educations.${degreeKey}.date`)}</p>
                                     </div>
                                 </div>
-                                {item.logoSrc && (
+                                {logoMap[degreeKey as keyof typeof logoMap] && (
                                     <div className="flex items-center space-x-4">
                                         <Image 
-                                            src={item.logoSrc} 
-                                            alt={`${item.institution} Logo`} 
+                                            src={logoMap[degreeKey as keyof typeof logoMap]} 
+                                            alt={t(`educations.${degreeKey}.school`)}
                                             width={60} 
                                             height={60}
                                             className="rounded-lg"
@@ -100,7 +81,7 @@ const Education: React.FC = () => {
                                     </div>
                                 )}
                             </div>
-                            
+
                             {expandedItem === index && (
                                 <motion.div
                                     initial={{ opacity: 0, height: 0 }}
@@ -109,12 +90,13 @@ const Education: React.FC = () => {
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
                                     className="mt-4 text-center"
                                 >
-                                    <p className="text-gray-300 mb-4">{item.description}</p>
+                                    <p className="text-gray-300 mb-4">
+                                        {t(`educations.${degreeKey}.description`)}
+                                    </p>
                                     
-                                    {/* Centered Image Gallery */}
-                                    {item.images && item.images.length > 0 && (
+                                    {imagesMap[degreeKey as keyof typeof imagesMap]?.length > 0 && (
                                         <div className="flex justify-center items-center mt-6 space-x-4">
-                                            {item.images.map((img, imgIndex) => (
+                                            {imagesMap[degreeKey as keyof typeof imagesMap].map((img, imgIndex) => (
                                                 <motion.div
                                                     key={imgIndex}
                                                     initial={{ opacity: 0, scale: 0.8 }}
@@ -125,7 +107,7 @@ const Education: React.FC = () => {
                                                 >
                                                     <Image
                                                         src={img}
-                                                        alt={`${item.title} image ${imgIndex + 1}`}
+                                                        alt={`${t(`educations.${degreeKey}.title`)} image ${imgIndex + 1}`}
                                                         layout="fill"
                                                         objectFit="cover"
                                                         className="transition-transform duration-500 group-hover:scale-110"

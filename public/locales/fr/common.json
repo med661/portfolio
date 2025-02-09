@@ -22,6 +22,52 @@
         }
     },
     "experiences": {
-        "title": "Expérience Professionnelle"
+        "title": "Expérience Professionnelle",
+        "job1": {
+            "title": "Développeur Backend",
+            "company": "Dar Blockchain",
+            "date": "Nov 2022 - Janv 2025",
+            "projects": {
+                "project1": {
+                    "title": "Plateforme DeFi 91Funds",
+                    "description": "Une plateforme écosystémique dynamique qui connecte divers acteurs engagés dans des activités entrepreneuriales.",
+                    "image": "/images/91funds.png",
+                    "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
+                },
+                "project2": {
+                    "title": "Plateforme de Création Vidéo",
+                    "description": "Développement d'une plateforme de contenu vidéo offrant un accès légal aux clips de films et séries TV dans des formats adaptés aux réseaux sociaux, implémentant un découpage vidéo précis avec une réduction de 90% du temps de traitement, et des systèmes robustes de conformité des droits d'auteur.",
+                    "image": "/images/p1.png",
+                    "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
+                },
+                "project3": {
+                    "title": "Plateforme de Support aux Entrepreneurs",
+                    "description": "Une plateforme écosystémique dynamique qui connecte divers acteurs engagés dans des activités entrepreneuriales",
+                    "image": "/images/dao2.png",
+                    "technologies": "Node.js,Express.js,PostgreSQL"
+                }
+            }
+        }
+    },
+    "educations": { 
+        "title": "Éducation",
+        "degree1": {
+            "title": "Diplôme d'Ingénieur en Informatique",
+            "school": "École Polytechnique de Sousse",
+            "date": "2019 - 2022",
+            "description": "Septembre 2019 – Juin 2022"
+        },
+        "degree2": {
+            "title": "Cycle Préparatoire Intégré",
+            "school": "École Polytechnique de Sousse",
+            "date": "2016 - 2019",
+            "description": "Septembre 2016 – Juin 2019"
+        },
+        "degree3": {
+            "title": "Baccalauréat",
+            "school": "Lycée Taher Sfar",
+            "date": "2017",
+            "description": "Juin 2017"
+        }
     }
 }

@@ -33,32 +33,25 @@ const Experience = () => {
     const prevImage = () => {
         setSelectedImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : meetupImages.length - 1));
     };
-    const projects = [
-        {
-            title: "Plateforme DeFi",
-            image: "/images/91funds.png",
-            tasks: [
-                " A dynamic ecosystem platform that connects various stakeholders engaged in entrepreneurial activities.",
+    const projectKeys = ['project1', 'project2', 'project3'];
 
-            ],
-            tech: ["NestJS", "Mongoose", "TypeScript", "Node.js", "Redis"]
-        },
-        {
-            title: "Plateforme de Création Vidéo",
-            image: "/images/p1.png",
-            tasks: [
-                "Developed a video content platform offering legal access to movie and TV show clips in social media-friendly formats, implementing precise video trimming with 90% processing time reduction, and robust copyright compliance systems for content management.",],
-            tech: ["Node.js", "Express", "Mongoose", "FFmpeg", "Stripe"]
-        },
-        {
-            title: "Plateforme de Soutien aux Entrepreneurs",
-            image: "/images/dao2.png",
-            tasks: [
-                " A dynamic ecosystem platform that connects various stakeholders engaged in entrepreneurial activities",
-            ],
-            tech: ["Node.js", "Express.js", "PostgreSQL"]
+    // Helper function to validate image path
+    const getImagePath = (key: string): string => {
+        const path = t(`experiences.job1.projects.${key}.image`);
+        if (!path || !path.startsWith('/')) {
+            return '/images/placeholder.png'; // Fallback image
         }
-    ];
+        return path;
+    };
+
+    const getTechnologies = (projectKey: string): string[] => {
+        const techs = t(`experiences.job1.projects.${projectKey}.technologies`);
+        // Handle both array and string formats
+        if (typeof techs === 'string') {
+            return techs.split(',');
+        }
+        return [];
+    };
 
     return (
         <section id="experience" className="py-16 bg-gray-900 min-h-screen flex items-center">
@@ -81,7 +74,7 @@ const Experience = () => {
 
                     <div className="flex items-center justify-between mb-8">
                         <div className="text-xl md:text-2xl font-semibold text-white">
-                            Développeur Back-End | Darblochain
+                            {t("experiences.job1.title")} | {t("experiences.job1.company")}
                             <time className="block text-gray-400">Nov 2022 – Jan 2025</time>
                         </div>
                         <Image
@@ -94,9 +87,9 @@ const Experience = () => {
                     </div>
 
                     <div className="space-y-12">
-                        {projects.map((project, index) => (
+                        {projectKeys.map((projectKey, index) => (
                             <motion.div
-                                key={index}
+                                key={projectKey}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.2 }}
@@ -104,25 +97,24 @@ const Experience = () => {
                             >
                                 <div className="flex flex-col md:flex-row justify-between gap-6">
                                     <div className="flex-1">
-                                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{project.title}</h3>
+                                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                                            {t(`experiences.job1.projects.${projectKey}.title`)}
+                                        </h3>
 
                                         <ul className="space-y-2 text-gray-300 text-sm md:text-base">
-                                            {project.tasks.map((task, taskIndex) => (
-                                                <motion.li
-                                                    key={taskIndex}
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: (index * 0.2) + (taskIndex * 0.1) }}
-                                                >
-                                                    <FaCheckCircle className="inline-block text-indigo-600 mr-2" />
-                                                    {task}
-                                                </motion.li>
-                                            ))}
+                                            <motion.li
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: index * 0.2 }}
+                                            >
+                                                <FaCheckCircle className="inline-block text-indigo-600 mr-2" />
+                                                {t(`experiences.job1.projects.${projectKey}.description`)}
+                                            </motion.li>
                                         </ul>
 
                                         <div className="mt-4">
                                             <div className="flex flex-wrap gap-2">
-                                                {project.tech.map((tech, techIndex) => (
+                                                {getTechnologies(projectKey).map((tech: string, techIndex: number) => (
                                                     <motion.span
                                                         key={techIndex}
                                                         initial={{ opacity: 0, scale: 0.8 }}
@@ -140,12 +132,12 @@ const Experience = () => {
                                     <div className="flex-shrink-0 flex items-center">
                                         <div
                                             className="relative cursor-pointer group"
-                                            onClick={() => setSelectedImage(project.image)}
+                                            onClick={() => setSelectedImage(t(`experiences.job1.projects.${projectKey}.image`))}
                                         >
                                             <div className="bg-gray-700/50 p-4 rounded-lg transition-transform duration-300 group-hover:scale-105">
                                                 <Image
-                                                    src={project.image}
-                                                    alt={`${project.title} Logo`}
+                                                    src={getImagePath(projectKey)}
+                                                    alt={t(`experiences.job1.projects.${projectKey}.title`)}
                                                     width={150}
                                                     height={150}
                                                     style={{ objectFit: 'contain' }}
@@ -156,9 +148,7 @@ const Experience = () => {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </motion.div>
                         ))}

@@ -14,14 +14,27 @@
   }
 }
 
+html, body {
+  @apply overflow-x-hidden;
+  min-height: 100dvh; /* dynamic viewport height */
+  width: 100%;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-
-
 }
 
+#__next {
+  @apply flex flex-col min-h-screen;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
 
 @layer utilities {
   .text-balance {

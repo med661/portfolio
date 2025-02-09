@@ -184,6 +184,10 @@ DESCRIPTION
             if (!t) return "Translation function not available";
             return t('aboutme.bio');
         }
+    },{
+        command: 'experience',
+        description: 'View my projects',
+        action: () =>  "I have worked on several projects, including a social media platform, a chat application, and a personal portfolio. I have experience with both frontend and backend technologies, and I am always looking to learn new things."
     }
 ];
 
