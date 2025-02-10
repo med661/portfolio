@@ -1,20 +1,23 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslationContext } from '../contexts/translationContext';
 
 const Projects: React.FC = () => {
+    const { t } = useTranslationContext();
+
     const projects = [
         {
-            title: "Discord Clone",
+            title: t("myprojects.discordClone.title"),
             image: "/images/discord.png",
-            description: "An application allowing users to communicate via messages and create group video conferencing rooms.",
+            description: t("myprojects.discordClone.description"),
             technologies: ["React", "Node.js", "Socket.IO", "MongoDB"],
             link: "https://www.linkedin.com/feed/update/urn:li:activity:6993499902005686273/"
         },
         {
-            title: "Real-Time Chat App",
+            title: t("myprojects.realtimeChat.title"),
             image: "/images/chat.png",
-            description: "An application that allows users to create accounts and communicate via real-time messaging.",
+            description: t("myprojects.realtimeChat.description"),
             technologies: ["NestJS", "TypeScript", "GraphQL", "React.js", "Redux Thunk"],
             link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/"
         }
@@ -30,7 +33,7 @@ const Projects: React.FC = () => {
             >
                 <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
                     <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                        My Projects
+                        {t('myprojects.title')}
                     </span>
                 </h2>
 
@@ -56,7 +59,7 @@ const Projects: React.FC = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        View Project
+                                        {t('myprojects.viewProject')}
                                     </a>
                                 </div>
                             </div>
@@ -88,8 +91,8 @@ const Projects: React.FC = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-2">Coming Soon</h3>
-                        <p className="text-gray-400">More exciting projects in development</p>
+                        <h3 className="text-2xl font-bold text-white mb-2">{t('myprojects.comingSoon.title')}</h3>
+                        <p className="text-gray-400">{t('myprojects.comingSoon.description')}</p>
                     </motion.div>
                 </div>
             </motion.div>

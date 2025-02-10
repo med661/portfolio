@@ -1,10 +1,32 @@
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion'; // Add framer-motion for animations
+import { motion } from 'framer-motion';
+import { useTranslationContext } from '../contexts/translationContext';
 import GproConsultingLogo from '@/public/images/gpro.jpeg';
 import SatoripopLogo from '@/public/images/satoripop.jpeg';
 
 const Internships: React.FC = () => {
+    const { t } = useTranslationContext();
+
+    const internshipData = [
+        {
+            logo: GproConsultingLogo,
+            company: "Gpro Consulting",
+            project: "SkillsyncEduct",
+            period: "Feb 2023 - June 2023",
+            description: t("internship.gpro.description"),
+            tech: "React Js, Node JS, Express JS, Redux-Toolkit, Mongoose, Git, OAuth 2.0, Cloudinary"
+        },
+        {
+            logo: SatoripopLogo,
+            company: "Satoripop",
+            project: "Premier League App",
+            period: "July 2021 - Sept 2021",
+            description: t("internship.satoripop.description"),
+            tech: "React Native, Firebase, Express JS, Node JS"
+        }
+    ];
+
     return (
         <section id="internship" className="py-16 md:py-20 bg-gradient-to-b from-gray-900 to-black min-h-screen flex items-center">
             <div className="container mx-auto px-4">
@@ -15,30 +37,12 @@ const Internships: React.FC = () => {
                     className="text-4xl md:text-5xl font-bold text-center text-white mb-16"
                 >
                     <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-           Internship
+                        {t('internships')}
                     </span>
                 </motion.h2>
 
                 <div className="flex flex-wrap justify-center gap-12">
-                    {/* Internship Cards */}
-                    {[
-                        {
-                            logo: GproConsultingLogo,
-                            company: "Gpro Consulting",
-                            project: "SkillsyncEduct",
-                            period: "Feb 2023 - June 2023",
-                            description: "Designed and developed a digital platform consolidating information necessary for building a great career by selecting a professional course.",
-                            tech: "React Js, Node JS, Express JS, Redux-Toolkit, Mongoose, Git, OAuth 2.0, Cloudinary"
-                        },
-                        {
-                            logo: SatoripopLogo,
-                            company: "Satoripop",
-                            project: "Premier League App",
-                            period: "July 2021 - Sept 2021",
-                            description: "Developed a mobile application to offer users an immersive experience to follow match scores, events, and news of the Premier League.",
-                            tech: "React Native, Firebase, Express JS, Node JS"
-                        }
-                    ].map((internship, index) => (
+                    {internshipData.map((internship, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
@@ -72,7 +76,9 @@ const Internships: React.FC = () => {
                                 </p>
                                 
                                 <div className="pt-4 border-t border-gray-700">
-                                    <h4 className="text-sm font-semibold text-gray-400 mb-2">Technologies:</h4>
+                                    <h4 className="text-sm font-semibold text-gray-400 mb-2">
+                                        {t('internship.technologies')}
+                                    </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {internship.tech.split(', ').map((tech, i) => (
                                             <span

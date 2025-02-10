@@ -1,7 +1,10 @@
+import { useTranslationContext } from '../contexts/translationContext';
 import React from 'react';
 import { FaDocker, FaJs, FaDatabase, FaPhp, FaLinux, FaTools } from 'react-icons/fa';
 
 const ProofOfAchievement: React.FC = () => {
+        const { t } = useTranslationContext();
+    
     return (
         <section id="proof-of-achievement" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
             <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
@@ -9,7 +12,7 @@ const ProofOfAchievement: React.FC = () => {
                 {/* Heading with enhanced animation */}
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative animate-fadeIn">
                     <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
-                        Proof of Achievement
+                        {t('proofofcompletion.title')}
                     </span>
                 </h2>
 
@@ -53,7 +56,7 @@ const ProofOfAchievement: React.FC = () => {
                         icon={<FaTools />}
                         title="DevOps Pre-Requisite Course"
                         platform="Kodekloud"
-                        link="https://kodekloud.com/courses/devops-pre-requisite-course/"
+                        link="https://learn.kodekloud.com/user/certificate/815cbbac-29c8-4bd6-8725-c5c18194adfc"
                         bgColor="from-red-600 to-red-400"
                     />
 

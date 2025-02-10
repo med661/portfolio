@@ -30,21 +30,21 @@
             "projects": {
                 "project1": {
                     "title": "Plateforme DeFi 91Funds",
-                    "description": "Une plateforme écosystémique dynamique qui connecte divers acteurs engagés dans des activités entrepreneuriales.",
+                    "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle.",
                     "image": "/images/91funds.png",
                     "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
                 },
                 "project2": {
-                    "title": "Plateforme de Création Vidéo",
-                    "description": "Développement d'une plateforme de contenu vidéo offrant un accès légal aux clips de films et séries TV dans des formats adaptés aux réseaux sociaux, implémentant un découpage vidéo précis avec une réduction de 90% du temps de traitement, et des systèmes robustes de conformité des droits d'auteur.",
+                    "title": "ReCut",
+                    "description": "Développé un système back-end pour une plateforme de contenu vidéo offrant un accès légal à des extraits de films et de séries TV au format adapté aux réseaux sociaux, avec une fonction de découpage vidéo précise réduisant le temps de traitement de 90 %, ainsi que des systèmes robustes de conformité aux droits d'auteur pour une gestion sécurisée du contenu.",
                     "image": "/images/p1.png",
                     "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
                 },
                 "project3": {
-                    "title": "Plateforme de Support aux Entrepreneurs",
-                    "description": "Une plateforme écosystémique dynamique qui connecte divers acteurs engagés dans des activités entrepreneuriales",
+                    "title": "EcoSystem Dao",
+                    "description": "Développé un système back-end pour soutenir les entrepreneurs en leur offrant des opportunités de rencontrer des experts, de participer à des programmes d'accompagnement et de prendre part à des hackathons.",
                     "image": "/images/dao2.png",
-                    "technologies": "Node.js,Express.js,PostgreSQL"
+                    "technologies": "Node.js,Express.js,Mongoose,TypeScript"
                 }
             }
         }
@@ -69,5 +69,32 @@
             "date": "2017",
             "description": "Juin 2017"
         }
+    },
+"myprojects": {
+    "title": "Mes Projets",
+    "viewProject": "Voir le Projet",
+    "discordClone": {
+      "title": "Clone de Discord",
+      "description": "Une application permettant aux utilisateurs de communiquer via des messages et de créer des salles de visioconférence de groupe."
+    },
+    "realtimeChat": {
+      "title": "Application de Chat en Temps Réel",
+      "description": "Une application qui permet aux utilisateurs de créer des comptes et de communiquer via des messages en temps réel."
+    },
+    "comingSoon": {
+      "title": "Bientôt Disponible",
+      "description": "D'autres projets passionnants en développement."
     }
+  },
+  "internships": "STAGES",
+  "internship.technologies": "Technologies :",
+  "internship.gpro": {
+    "description": "Conçu et développé une plateforme numérique consolidant les informations nécessaires pour bâtir une carrière réussie en choisissant un parcours professionnel approprié."
+  },
+  "internship.satoripop": {
+    "description": "Développé une application mobile offrant aux utilisateurs une expérience immersive pour suivre les scores, événements et actualités de la Premier League."
+  },
+  "proofofcompletion": {
+    "title": "Preuve de Completion"
+}
 }

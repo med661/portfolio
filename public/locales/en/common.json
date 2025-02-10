@@ -16,10 +16,10 @@
             "alt": "Salah Sfar"
         },
         "cv": {
-            "title": "Download My CV",
-            "english": "English CV",
-            "french": "French CV"
-        }
+            "title": "Download My Resume",
+            "english": "English Resume",
+            "french": "French Resume"
+     }
     },
     "experiences": {
         "title": "Professional Experience",
@@ -30,21 +30,21 @@
             "projects": {
                 "project1": {
                     "title": "91Funds DeFi Platform",
-                    "description": "A dynamic ecosystem platform that connects various stakeholders engaged in entrepreneurial activities.",
+                    "description":"Developed the backend for security features, including two-factor authentication (2FA), and a statistics dashboard for 91, a crypto investment platform that enables users to access expert-managed cryptocurrency trading portfolios through NFTs as a gateway.",
                     "image": "/images/91funds.png",
                     "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
                 },
                 "project2": {
-                    "title": "Video Creation Platform",
-                    "description": "Developed a video content platform offering legal access to movie and TV show clips in social media-friendly formats, implementing precise video trimming with 90% processing time reduction, and robust copyright compliance systems for content management.",
+                    "title": "ReCut",
+                    "description": "Developed a backend system for a video content platform offering legal access to movie and TV show clips in social media-friendly formats, featuring precise video trimming with a 90% reduction in processing time, and robust copyright compliance systems for secure content management.",
                     "image": "/images/p1.png",
                     "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
                 },
                 "project3": {
-                    "title": "Entrepreneur Support Platform",
-                    "description": "A dynamic ecosystem platform that connects various stakeholders engaged in entrepreneurial activities",
+                    "title": "EcoSystem Dao",
+                    "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons.",
                     "image": "/images/dao2.png",
-                    "technologies": "Node.js,Express.js,PostgreSQL"
+                    "technologies": "Node.js,Express.js,Mongoose,TypeScript"
                 }
             }
         }
@@ -69,6 +69,34 @@
         "date": "2017",
         "description": "June 2017"
     }
-}
+},
+"myprojects": {
+    "title": "My Projects",
+    "viewProject": "View Project",
+    "discordClone": {
+      "title": "Discord Clone",
+      "description": "An application allowing users to communicate via messages and create group video conferencing rooms."
+    },
+    "realtimeChat": {
+      "title": "Real-Time Chat App",
+      "description": "An application that allows users to create accounts and communicate via real-time messaging."
+    },
+    "comingSoon": {
+      "title": "Coming Soon",
+      "description": "More exciting projects in development"
+    }
+  },
+  "internships": "INTERNSHIPS",
+  "internship.technologies": "Technologies:",
+  "internship.gpro": {
+    "description": "Designed and developed a digital platform consolidating information necessary for building a great career by selecting a professional course."
+  },
+  "internship.satoripop": {
+    "description": "Developed a mobile application to offer users an immersive experience to follow match scores, events, and news of the Premier League."
+  },
+    "proofofcompletion": {
+        "title": "Proof of Achievement"
+    }
+      
 
 }
