@@ -2,8 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion'; // You'll need to install framer-motion
+import { useTranslationContext } from '@/contexts/translationContext';
 
 const Accomplishments: React.FC = () => {
+            const { t } = useTranslationContext();
+    
     return (
         <section id="achievements" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 w-full">
             <div className="container mx-auto px-4">
@@ -14,7 +17,7 @@ const Accomplishments: React.FC = () => {
                     className="text-4xl md:text-5xl font-bold text-center text-white mb-16"
                 >
                     <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
-                        Accomplishments
+                        {t('accomplissementSection.title')}
                     </span>
                 </motion.h2>
 
@@ -27,7 +30,8 @@ const Accomplishments: React.FC = () => {
                                  shadow-lg hover:shadow-xl rounded-xl py-8 px-8"
                     >
                         <div className="text-white text-xl font-medium">
-                            🏆 2nd place in the &apos;ActionAid&apos; Social Entrepreneurship competition
+                            {/* 🏆 2nd place in the &apos;ActionAid&apos; Social Entrepreneurship competition */}
+                            {t('accomplissementSection.actionAid')}
                         </div>
                     </motion.div>
 
@@ -41,7 +45,8 @@ const Accomplishments: React.FC = () => {
                         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                             <div className="text-left space-y-6">
                                 <p className="text-white text-xl font-medium">
-                                    Created online educational content under the brand &apos;Formationnet&apos; on Instagram
+                                    {/* Created online educational content under the brand &apos;Formationnet&apos; on Instagram */}
+                                    {t('accomplissementSection.formationnet')}
                                 </p>
                                 <div className="flex space-x-6">
                                     <motion.a 

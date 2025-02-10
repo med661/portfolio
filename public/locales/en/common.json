@@ -96,7 +96,40 @@
   },
     "proofofcompletion": {
         "title": "Proof of Achievement"
+    },
+    "skillsTitle":"Technologies I Work With",
+    "accomplissementSection":{
+    "title": "Accomplishments",
+    "actionAid":" 🏆 2nd place in the 'ActionAid' Social Entrepreneurship competition",
+    "formationnet": "Created online educational content under the brand 'Formationnet' on Instagram"
+},
+"interestsection": {
+    "title": "What Interests Me",
+    "aiTools": {
+      "name": "AI Tools",
+      "description": "Exploring the latest in artificial intelligence"
+    },
+    "webDevelopment": {
+      "name": "Web Development",
+      "description": "Creating modern web applications"
+    },
+    "devOps": {
+      "name": "DevOps",
+      "description": "Streamlining development operations"
+    },
+    "chess": {
+      "name": "Chess",
+      "description": "Strategic thinking and planning"
+    },
+    "traveling": {
+      "name": "Traveling",
+      "description": "Exploring new cultures and places"
+    },
+    "music": {
+      "name": "Music",
+      "description": "Appreciating various genres"
     }
+  }
       
 
 }

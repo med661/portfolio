@@ -52,7 +52,7 @@ const Header: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
-                        {['about', 'experience', 'education', 'projects', 'internship','proof-of-achievement', 'skills','achievements'].map((item) => (
+                        {['about', 'experience', 'education', 'projects', 'internship','proof-of-achievement', 'skills','achievements','interests'].map((item) => (
                             <Link
                                 key={item}
                                 href={`/?section=${item}`}
@@ -138,7 +138,7 @@ const Header: React.FC = () => {
                 }`}
             >
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                    {['about', 'experience', 'education', 'projects', 'internship','proof-of-achievement', 'skills','achievements'].map((item) => (
+                    {['about', 'experience', 'education', 'projects', 'internship','proof-of-achievement', 'skills','achievements','interests'].map((item) => (
                         <a
                             key={item}
                             href={`#${item}`}

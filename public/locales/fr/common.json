@@ -96,5 +96,40 @@
   },
   "proofofcompletion": {
     "title": "Preuve de Completion"
-}
+},
+"skillsTitle":"Technologies avec lesquelles je travaille",
+"accomplissementSection":{
+    "title": "Accomplissement",
+    "actionAid": "🏆 2e place dans la compétition d'entrepreneuriat social 'ActionAid'",  
+    "formationnet": "Création de contenus éducatifs en ligne sous la marque 'Formationnet' sur Instagram"  
+},
+
+    "interestsection": {
+      "title": "Ce qui m'intéresse",
+      "aiTools": {
+        "name": "Outils IA",
+        "description": "Exploration des dernières nouveautés en intelligence artificielle"
+      },
+      "webDevelopment": {
+        "name": "Développement Web",
+        "description": "Création d'applications web modernes"
+      },
+      "devOps": {
+        "name": "DevOps",
+        "description": "Optimisation des opérations de développement"
+      },
+      "chess": {
+        "name": "Échecs",
+        "description": "Stratégie et réflexion à travers le jeu d'échecs"
+      },
+      "traveling": {
+        "name": "Voyager",
+        "description": "Découvrir de nouvelles cultures et lieux"
+      },
+      "music": {
+        "name": "Musique",
+        "description": "Apprécier divers genres musicaux"
+      }
+    }
+  
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { useTranslationContext } from '@/contexts/translationContext';
 
 const technologies = [
     { name: 'JavaScript', logo: '/images/js.png' },
@@ -17,12 +18,14 @@ const technologies = [
 ];
 
 const TechSection: React.FC = () => {
+            const { t } = useTranslationContext();
+    
     return (
         <section id='skills' className="bg-gradient-to-b from-gray-900 to-gray-800 py-16">
             <div className="container mx-auto px-6">
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
                     <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text animate-gradient">
-                        Technologies I Work With
+                        {t('skillsTitle')}
                     </span>
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
