@@ -1,6 +1,7 @@
 import { useTranslationContext } from '../contexts/translationContext';
 import React from 'react';
 import { FaDocker, FaJs, FaDatabase, FaPhp, FaLinux, FaTools } from 'react-icons/fa';
+import { SiTerraform } from 'react-icons/si';
 
 const ProofOfAchievement: React.FC = () => {
         const { t } = useTranslationContext();
@@ -64,8 +65,16 @@ const ProofOfAchievement: React.FC = () => {
                         icon={<FaLinux />}
                         title="Learning Linux Basics Course & Labs"
                         platform="Kodekloud"
-                        link="https://kodekloud.com/courses/linux-basics/"
+                        link="https://learn.kodekloud.com/certificate/7565608a-3b0b-4aef-8011-03dd1e73baff"
                         bgColor="from-orange-600 to-orange-400"
+                    />
+                    
+                    <Achievement 
+                        icon={<SiTerraform />}
+                        title="Terraform Basics Training Course"
+                        platform="Kodekloud"
+                        link="https://certificates.kodekloud.com/71da4f66-efa9-4e0b-b9ca-a26fbd15d29f/205d96ca-2463-4b3b-a27f-3d46b86cabe4/7565608a-3b0b-4aef-8011-03dd1e73baff.pdf" // You'll need to add the actual certificate link
+                        bgColor="from-teal-600 to-teal-400"
                     />
                 </div>
             </div>
