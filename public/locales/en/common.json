@@ -81,6 +81,10 @@
       "title": "Real-Time Chat App",
       "description": "An application that allows users to create accounts and communicate via real-time messaging."
     },
+    "learnHub": {
+      "title": "LearnHub",
+      "description": "A digital platform that helps people find the right training opportunity based on their specific needs and objectives."
+    },
     "comingSoon": {
       "title": "Coming Soon",
       "description": "More exciting projects in development"

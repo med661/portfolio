@@ -81,6 +81,10 @@
       "title": "Application de Chat en Temps Réel",
       "description": "Une application qui permet aux utilisateurs de créer des comptes et de communiquer via des messages en temps réel."
     },
+    "learnHub": {
+      "title": "LearnHub",
+      "description": "Une plateforme numérique qui aide les personnes à trouver la formation idéale en fonction de leurs besoins et objectifs spécifiques."
+    },
     "comingSoon": {
       "title": "Bientôt Disponible",
       "description": "D'autres projets passionnants en développement."
