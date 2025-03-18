@@ -85,6 +85,10 @@
       "title": "LearnHub",
       "description": "A digital platform that helps people find the right training opportunity based on their specific needs and objectives."
     },
+    "stressTest": {
+      "title": "Stress Test",
+      "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design."
+    },
     "comingSoon": {
       "title": "Coming Soon",
       "description": "More exciting projects in development"

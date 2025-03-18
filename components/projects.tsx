@@ -22,6 +22,14 @@ const Projects: React.FC = () => {
             description: t("myprojects.realtimeChat.description"),
             technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
             link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/"
+        },
+
+        {
+            title: t("myprojects.stressTest.title"),
+            image: "/images/stress.png",
+            description: t("myprojects.stressTest.description"),
+            technologies: ["Next.js ","Axios", "TypeScript","React.js","Tailwind CSS"],
+            link: "https://stress-test-frontend.vercel.app/"
         }
     ];
 
