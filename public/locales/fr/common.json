@@ -1,78 +1,80 @@
 {
-    "about": "À PROPOS",
-    "experience": "EXPÉRIENCE",
-    "education": "FORMATION",
-    "projects": "PROJETS",
-    "internship": "STAGE",
-    "proof-of-achievement": "CERTIFICATION",
-    "skills": "COMPÉTENCES",
-    "achievements": "RÉALISATIONS",
-    "interests": "INTÉRÊTS",
-    "aboutme": {
-        "title": "À Propos de Moi",
-        "greeting": "Bonjour, je suis Salah Sfar!",
-        "bio": "Un développeur Backend spécialisé en Node.js, axé sur la création de solutions backend évolutives et efficaces. J'ai de l'expérience avec des technologies comme MERN stack, Nest.js et Express.js. Je suis passionné par le développement de solutions innovantes et l'amélioration continue de mes compétences.",
-        "profile": {
-            "alt": "Salah Sfar"
-        },
-        "cv": {
-            "title": "Télécharger Mon CV",
-            "english": "Anglais",
-            "french": "Français"
-        }
+  "about": "À PROPOS",
+  "experience": "EXPÉRIENCE",
+  "education": "FORMATION",
+  "projects": "PROJETS",
+  "internship": "STAGE",
+  "proof-of-achievement": "CERTIFICATION",
+  "skills": "COMPÉTENCES",
+  "achievements": "RÉALISATIONS",
+  "interests": "INTÉRÊTS",
+  "aboutme": {
+    "title": "À Propos de Moi",
+    "greeting": "Bonjour, je suis Salah Sfar!",
+    "bio": "Un développeur Backend spécialisé en Node.js, axé sur la création de solutions backend évolutives et efficaces. J'ai de l'expérience avec des technologies comme MERN stack, Nest.js et Express.js. Je suis passionné par le développement de solutions innovantes et l'amélioration continue de mes compétences.",
+    "profile": {
+      "alt": "Salah Sfar"
     },
-    "experiences": {
-        "title": "Expérience Professionnelle",
-        "job1": {
-            "title": "Développeur Backend",
-            "company": "Dar Blockchain",
-            "date": "Nov 2022 - Janv 2025",
-            "projects": {
-                "project1": {
-                    "title": "Plateforme DeFi 91Funds",
-                    "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle.",
-                    "image": "/images/91funds.png",
-                    "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
-                },
-                "project2": {
-                    "title": "ReCut",
-                    "description": "Développé un système back-end pour une plateforme de contenu vidéo offrant un accès légal à des extraits de films et de séries TV au format adapté aux réseaux sociaux, avec une fonction de découpage vidéo précise réduisant le temps de traitement de 90 %, ainsi que des systèmes robustes de conformité aux droits d'auteur pour une gestion sécurisée du contenu.",
-                    "image": "/images/p1.png",
-                    "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
-                },
-                "project3": {
-                    "title": "EcoSystem Dao",
-                    "description": "Développé un système back-end pour soutenir les entrepreneurs en leur offrant des opportunités de rencontrer des experts, de participer à des programmes d'accompagnement et de prendre part à des hackathons.",
-                    "image": "/images/dao2.png",
-                    "technologies": "Node.js,Express.js,Mongoose,TypeScript"
-                }
-            }
-        }
-    },
-    "educations": { 
-        "title": "Éducation",
-        "degree1": {
-            "title": "Diplôme d'Ingénieur en Informatique",
-            "school": "École Polytechnique de Sousse",
-            "date": "2019 - 2022",
-            "description": "Septembre 2019 – Juin 2022"
+    "cv": {
+      "title": "Télécharger Mon CV",
+      "english": "Anglais",
+      "french": "Français"
+    }
+  },
+  "experiences": {
+    "title": "Expérience Professionnelle",
+    "job1": {
+      "title": "Développeur Backend",
+      "company": "Dar Blockchain",
+      "date": "Nov 2022 - Janv 2025",
+      "projects": {
+        "project1": {
+          "title": "Plateforme DeFi 91Funds",
+          "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle.",
+          "image": "/images/91funds.png",
+          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
         },
-        "degree2": {
-            "title": "Cycle Préparatoire Intégré",
-            "school": "École Polytechnique de Sousse",
-            "date": "2016 - 2019",
-            "description": "Septembre 2016 – Juin 2019"
+        "project2": {
+          "title": "ReCut",
+          "description": "Développé un système back-end pour une plateforme de contenu vidéo offrant un accès légal à des extraits de films et de séries TV au format adapté aux réseaux sociaux, avec une fonction de découpage vidéo précise réduisant le temps de traitement de 90 %, ainsi que des systèmes robustes de conformité aux droits d'auteur pour une gestion sécurisée du contenu.",
+          "image": "/images/p1.png",
+          "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
         },
-        "degree3": {
-            "title": "Baccalauréat",
-            "school": "Lycée Taher Sfar",
-            "date": "2017",
-            "description": "Juin 2017"
+        "project3": {
+          "title": "EcoSystem Dao",
+          "description": "Développé un système back-end pour soutenir les entrepreneurs en leur offrant des opportunités de rencontrer des experts, de participer à des programmes d'accompagnement et de prendre part à des hackathons.",
+          "image": "/images/dao2.png",
+          "technologies": "Node.js,Express.js,Mongoose,TypeScript"
         }
+      }
+    }
+  },
+  "educations": {
+    "title": "Éducation",
+    "degree1": {
+      "title": "Diplôme d'Ingénieur en Informatique",
+      "school": "École Polytechnique de Sousse",
+      "date": "2019 - 2022",
+      "description": "Septembre 2019 – Juin 2022"
     },
-"myprojects": {
+    "degree2": {
+      "title": "Cycle Préparatoire Intégré",
+      "school": "École Polytechnique de Sousse",
+      "date": "2016 - 2019",
+      "description": "Septembre 2016 – Juin 2019"
+    },
+    "degree3": {
+      "title": "Baccalauréat",
+      "school": "Lycée Taher Sfar",
+      "date": "2017",
+      "description": "Juin 2017"
+    }
+  },
+  "myprojects": {
     "title": "Mes Projets",
-    "viewProject": "Voir le Projet",
+    "visitProject": "Voir le Projet",
+    "viewDetails": "Voir les Détails",
+    "technologies": "Technologies",
     "discordClone": {
       "title": "Clone de Discord",
       "description": "Une application permettant aux utilisateurs de communiquer via des messages et de créer des salles de visioconférence de groupe."
@@ -96,6 +98,7 @@
   },
   "internships": "STAGES",
   "internship.technologies": "Technologies :",
+  "internship.projectDetails": "Détails du Projet",
   "internship.gpro": {
     "description": "Conçu et développé une plateforme numérique consolidant les informations nécessaires pour bâtir une carrière réussie en choisissant un parcours professionnel approprié."
   },
@@ -104,40 +107,50 @@
   },
   "proofofcompletion": {
     "title": "Preuve de Completion"
-},
-"skillsTitle":"Technologies avec lesquelles je travaille",
-"accomplissementSection":{
+  },
+  "skillsTitle": "Technologies avec lesquelles je travaille",
+  "accomplissementSection": {
     "title": "Accomplissement",
-    "actionAid": "🏆 2e place dans la compétition d'entrepreneuriat social 'ActionAid'",  
-    "formationnet": "Création de contenus éducatifs en ligne sous la marque 'Formationnet' sur Instagram"  
-},
-
-    "interestsection": {
-      "title": "Ce qui m'intéresse",
-      "aiTools": {
-        "name": "Outils IA",
-        "description": "Exploration des dernières nouveautés en intelligence artificielle"
-      },
-      "webDevelopment": {
-        "name": "Développement Web",
-        "description": "Création d'applications web modernes"
-      },
-      "devOps": {
-        "name": "DevOps",
-        "description": "Optimisation des opérations de développement"
-      },
-      "chess": {
-        "name": "Échecs",
-        "description": "Stratégie et réflexion à travers le jeu d'échecs"
-      },
-      "traveling": {
-        "name": "Voyager",
-        "description": "Découvrir de nouvelles cultures et lieux"
-      },
-      "music": {
-        "name": "Musique",
-        "description": "Apprécier divers genres musicaux"
-      }
+    "actionAid": "🏆 2e place dans la compétition d'entrepreneuriat social 'ActionAid'",
+    "formationnet": "Création de contenus éducatifs en ligne sous la marque 'Formationnet' sur Instagram"
+  },
+  "interestsection": {
+    "title": "Ce qui m'intéresse",
+    "aiTools": {
+      "name": "Outils IA",
+      "description": "Exploration des dernières nouveautés en intelligence artificielle"
+    },
+    "webDevelopment": {
+      "name": "Développement Web",
+      "description": "Création d'applications web modernes"
+    },
+    "devOps": {
+      "name": "DevOps",
+      "description": "Optimisation des opérations de développement"
+    },
+    "chess": {
+      "name": "Échecs",
+      "description": "Stratégie et réflexion à travers le jeu d'échecs"
+    },
+    "traveling": {
+      "name": "Voyager",
+      "description": "Découvrir de nouvelles cultures et lieux"
+    },
+    "music": {
+      "name": "Musique",
+      "description": "Apprécier divers genres musicaux"
     }
-  
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "more": "Plus",
+    "achievements": "Réalisations",
+    "education": "Éducation",
+    "interests": "Intérêts",
+    "contact": "Contact",
+    "description": "Développeur full-stack spécialisé dans la création d'expériences numériques exceptionnelles avec des technologies web modernes.",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Fait avec",
+    "using": "utilisant"
+  }
 }

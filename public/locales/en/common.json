@@ -1,78 +1,81 @@
 {
-    "about": "ABOUT",
-    "experience": "EXPERIENCE",
-    "education": "EDUCATION",
-    "projects": "PROJECTS",
-    "internship": "INTERNSHIP",
-    "proof-of-achievement": "CERTIFICATION",
-    "skills": "SKILLS",
-    "achievements": "ACHIEVEMENTS",
-    "interests": "INTERESTS",
-    "aboutme": {
-        "title": "About Me",
-        "greeting": "Hi, I'm Salah Sfar!",
-        "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm passionate about developing innovative solutions and continuously improving my skills.",
-        "profile": {
-            "alt": "Salah Sfar"
+  "about": "ABOUT",
+  "experience": "EXPERIENCE",
+  "education": "EDUCATION",
+  "projects": "PROJECTS",
+  "internship": "INTERNSHIP",
+  "proof-of-achievement": "CERTIFICATION",
+  "skills": "SKILLS",
+  "achievements": "ACHIEVEMENTS",
+  "interests": "INTERESTS",
+  "aboutme": {
+    "title": "About Me",
+    "greeting": "Hi, I'm Salah Sfar!",
+    "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm passionate about developing innovative solutions and continuously improving my skills.",
+    "profile": {
+      "alt": "Salah Sfar"
+    },
+    "cv": {
+      "title": "Download My Resume",
+      "english": "English Resume",
+      "french": "French Resume"
+    }
+  },
+  "experiences": {
+    "title": "Professional Experience",
+    "job1": {
+      "title": "Backend Developer",
+      "company": "Dar Blockchain",
+      "date": "Nov 2022 - Jan 2025",
+      "projects": {
+        "project1": {
+          "title": "91Funds DeFi Platform",
+          "description": "Developed the backend for security features, including two-factor authentication (2FA), and a statistics dashboard for 91, a crypto investment platform that enables users to access expert-managed cryptocurrency trading portfolios through NFTs as a gateway.",
+          "image": "/images/91funds.png",
+          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
         },
-        "cv": {
-            "title": "Download My Resume",
-            "english": "English Resume",
-            "french": "French Resume"
-     }
-    },
-    "experiences": {
-        "title": "Professional Experience",
-        "job1": {
-            "title": "Backend Developer",
-            "company": "Dar Blockchain",
-            "date": "Nov 2022 - Jan 2025",
-            "projects": {
-                "project1": {
-                    "title": "91Funds DeFi Platform",
-                    "description":"Developed the backend for security features, including two-factor authentication (2FA), and a statistics dashboard for 91, a crypto investment platform that enables users to access expert-managed cryptocurrency trading portfolios through NFTs as a gateway.",
-                    "image": "/images/91funds.png",
-                    "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
-                },
-                "project2": {
-                    "title": "ReCut",
-                    "description": "Developed a backend system for a video content platform offering legal access to movie and TV show clips in social media-friendly formats, featuring precise video trimming with a 90% reduction in processing time, and robust copyright compliance systems for secure content management.",
-                    "image": "/images/p1.png",
-                    "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
-                },
-                "project3": {
-                    "title": "EcoSystem Dao",
-                    "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons.",
-                    "image": "/images/dao2.png",
-                    "technologies": "Node.js,Express.js,Mongoose,TypeScript"
-                }
-            }
+        "project2": {
+          "title": "ReCut",
+          "description": "Developed a backend system for a video content platform offering legal access to movie and TV show clips in social media-friendly formats, featuring precise video trimming with a 90% reduction in processing time, and robust copyright compliance systems for secure content management.",
+          "image": "/images/p1.png",
+          "technologies": "Node.js,Express,Mongoose,FFmpeg,Stripe"
+        },
+        "project3": {
+          "title": "EcoSystem Dao",
+          "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons.",
+          "image": "/images/dao2.png",
+          "technologies": "Node.js,Express.js,Mongoose,TypeScript"
         }
-    },
-    "educations": { 
+      }
+    }
+  },
+  "educations": {
     "title": "Education",
     "degree1": {
-        "title": "Engineering Degree in Computer Science",
-        "school": "Polytechnic School of Sousse",
-        "date": "2019 - 2022",
-        "description": "September 2019 – June 2022"
+      "title": "Engineering Degree in Computer Science",
+      "school": "Polytechnic School of Sousse",
+      "date": "2019 - 2022",
+      "description": "September 2019 – June 2022"
     },
     "degree2": {
-        "title": "Integrated Preparatory Cycle",
-        "school": "Polytechnic School of Sousse",
-        "date": "2016 - 2019",
-        "description": "September 2016 – June 2019"
+      "title": "Integrated Preparatory Cycle",
+      "school": "Polytechnic School of Sousse",
+      "date": "2016 - 2019",
+      "description": "September 2016 – June 2019"
     },
     "degree3": {
-        "title": "Baccalaureate",
-        "school": "Taher Sfar High School",
-        "date": "2017",
-        "description": "June 2017"
+      "title": "Baccalaureate",
+      "school": "Taher Sfar High School",
+      "date": "2017",
+      "description": "June 2017"
     }
-},
-"myprojects": {
+  },
+  "myprojects": {
+   
     "title": "My Projects",
-    "viewProject": "View Project",
+    "visitProject": "View Project",
+    "viewDetails": "View Details",
+    "technologies": "Technologies",
     "discordClone": {
       "title": "Discord Clone",
       "description": "An application allowing users to communicate via messages and create group video conferencing rooms."
@@ -96,22 +99,25 @@
   },
   "internships": "INTERNSHIPS",
   "internship.technologies": "Technologies:",
+  "internship.projectDetails": "Project Details",
   "internship.gpro": {
     "description": "Designed and developed a digital platform consolidating information necessary for building a great career by selecting a professional course."
   },
   "internship.satoripop": {
     "description": "Developed a mobile application to offer users an immersive experience to follow match scores, events, and news of the Premier League."
   },
-    "proofofcompletion": {
-        "title": "Proof of Achievement"
-    },
-    "skillsTitle":"Technologies I Work With",
-    "accomplissementSection":{
+  "proofofcompletion": {
+    "title": "Proof of Achievement"
+  },
+  "skillsTitle": "Technologies I Work With",
+  "accomplissementSection": {
+    "actionAidTitle":"ActionAid",
+    "formationnetTitle":"Formationnet",
     "title": "Accomplishments",
-    "actionAid":" 🏆 2nd place in the 'ActionAid' Social Entrepreneurship competition",
+    "actionAid": " 🏆 2nd place in the 'ActionAid' Social Entrepreneurship competition",
     "formationnet": "Created online educational content under the brand 'Formationnet' on Instagram"
-},
-"interestsection": {
+  },
+  "interestsection": {
     "title": "What Interests Me",
     "aiTools": {
       "name": "AI Tools",
@@ -137,7 +143,17 @@
       "name": "Music",
       "description": "Appreciating various genres"
     }
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "more": "More",
+    "achievements": "Achievements",
+    "education": "Education",
+    "interests": "Interests",
+    "contact": "Contact",
+    "description": "Full-stack developer specializing in building exceptional digital experiences with modern web technologies.",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "using": "using"
   }
-      
-
 }

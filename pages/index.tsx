@@ -11,6 +11,9 @@ import Internships from "@/components/internship";
 import Accomplishments from "@/components/accomplishment";
 import Interests from "@/components/interests";
 
+// Add this import at the top
+import Footer from '../components/footer';
+
 export default function Home() {
   
   return (
@@ -25,6 +28,8 @@ export default function Home() {
       <TechSection />
       <Accomplishments />
       <Interests />
+     
+<Footer />
     </>
   );
 }
@@ -36,3 +41,4 @@ export async function getStaticProps({ locale }: { locale: string }) {
     },
   };
 }
+

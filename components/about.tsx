@@ -27,9 +27,8 @@ const About = () => {
     };
 
     return (
-        <section id="about" className="min-h-screen py-24 md:py-36 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/path-to-subtle-pattern.png')] opacity-10 mix-blend-overlay" />
-            
+        <section id="about" className="relative pt-28 md:pt-24 pb-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
+            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
             <motion.div 
                 variants={containerVariants}
                 initial="hidden"
@@ -37,8 +36,15 @@ const About = () => {
                 className="container mx-auto px-6 relative z-10 max-w-7xl"
             >
                 <ProfileSection t={t} onOpenTerminal={() => setShowTerminal(true)} />
-                <ContactSection />
-                <CVDownloadSection t={t} />
+                
+                <div className="mt-12 md:mt-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                    <div className="w-full md:w-auto">
+                        <ContactSection />
+                    </div>
+                    <div className="w-full md:w-auto mt-8 md:mt-0">
+                        <CVDownloadSection t={t} />
+                    </div>
+                </div>
             </motion.div>
 
             {showTerminal && <Terminal onClose={() => setShowTerminal(false)} t={t} />}
