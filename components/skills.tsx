@@ -10,6 +10,8 @@ const technologies = [
     { name: 'NestJS', logo: '/images/nest.png', category: 'backend' },
     { name: 'Express.js', logo: '/images/express.png', category: 'backend' },
     { name: 'MongoDB', logo: '/images/mongoose.png', category: 'database' },
+    { name: 'PostgreSQL', logo: '/images/postgresql.png', category: 'database' },
+    { name: 'Prisma', logo: '/images/prisma.png', category: 'database' },
     { name: 'Next.js', logo: '/images/next-js.png', category: 'frontend' },
     { name: 'Redis', logo: '/images/redis.png', category: 'database' },
     { name: 'GraphQL', logo: '/images/Graph.png', category: 'backend' },
