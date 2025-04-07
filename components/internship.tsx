@@ -15,7 +15,7 @@ const Internships: React.FC = () => {
             logo: GproConsultingLogo,
             company: "Gpro Consulting",
             project: "SkillsyncEduct",
-            period: "Feb 2023 - June 2023",
+            period: "Feb 2022 - June 2022",
             description: t("internship.gpro.description"),
             tech: "React Js, Node JS, Express JS, Redux-Toolkit, Mongoose, Git, OAuth 2.0, Cloudinary",
             color: "from-blue-600 to-blue-400"
