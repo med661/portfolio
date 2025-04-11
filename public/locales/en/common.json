@@ -92,6 +92,10 @@
       "title": "Stress Test",
       "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design."
     },
+    "jobHuntDiary": {
+      "title": "Job Hunt Diary",
+      "description": "Job Hunt Diary is a comprehensive job application tracking system designed to help job seekers organize and manage their job search process efficiently. This modern web application provides a centralized platform for tracking job applications, interviews, and follow-ups, eliminating the need for scattered spreadsheets or notes."
+    },
     "comingSoon": {
       "title": "Coming Soon",
       "description": "More exciting projects in development"

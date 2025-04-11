@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslationContext } from '../contexts/translationContext';
 import { FaGithub, FaExternalLinkAlt, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { DiMongodb } from 'react-icons/di';
 
 const Projects: React.FC = () => {
     const { t } = useTranslationContext();
@@ -20,12 +21,12 @@ const Projects: React.FC = () => {
             color: "from-blue-600 to-blue-400"
         },
         {
-            title: t("myprojects.realtimeChat.title"),
-            image: "/images/chat.png",
-            description: t("myprojects.realtimeChat.description"),
-            technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
-            link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/",
-            color: "from-purple-600 to-purple-400"
+            title: t("myprojects.jobHuntDiary.title"),
+            image: "/images/hunt.png",
+            description: t("myprojects.jobHuntDiary.description"),
+            technologies: ["Node.js","React.js","ExpressJS","Mongodb", "Redux Thunk"],
+            link: "https://job-hunt-diary.vercel.app/",
+            color: "from-red-600 to-red-400"
         },
         {
             title: t("myprojects.stressTest.title"),
@@ -34,7 +35,16 @@ const Projects: React.FC = () => {
             technologies: ["Next.js", "Axios", "TypeScript", "React.js", "Tailwind CSS"],
             link: "https://stress-test-frontend.vercel.app/",
             color: "from-green-600 to-green-400"
+        },
+        {
+            title: t("myprojects.realtimeChat.title"),
+            image: "/images/chat.png",
+            description: t("myprojects.realtimeChat.description"),
+            technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
+            link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/",
+            color: "from-purple-600 to-purple-400"
         }
+      
     ];
 
     const container = {

@@ -94,6 +94,10 @@
     "comingSoon": {
       "title": "Bientôt Disponible",
       "description": "D'autres projets passionnants en développement."
+    },
+    "jobHuntDiary": {
+      "title": "Journal de Recherche d'Emploi",
+      "description": "Journal de Recherche d'Emploi est un système complet de suivi des candidatures conçu pour aider les chercheurs d'emploi à organiser et gérer efficacement leur processus de recherche. Cette application web moderne offre une plateforme centralisée pour suivre les candidatures, les entretiens et les suivis, éliminant ainsi le besoin de feuilles de calcul ou de notes éparpillées."
     }
   },
   "internships": "STAGES",
