@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
             description: t("myprojects.jobHuntDiary.description"),
             technologies: ["Node.js","React.js","ExpressJS","Mongodb", "Redux Thunk"],
             link: "https://job-hunt-diary.vercel.app/",
-            color: "from-red-600 to-red-400"
+            color: "from-emerald-500 to-teal-500" ,
         },
         {
             title: t("myprojects.stressTest.title"),
@@ -124,8 +124,11 @@ const Projects: React.FC = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={() => openProjectDetails(index)}
-                                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium flex items-center gap-2"
+                                        onClick={(e) => {
+                                            e.stopPropagation();  // Add this to prevent event bubbling
+                                            openProjectDetails(index);
+                                        }}
+                                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium flex items-center gap-2 w-full justify-center hover:bg-indigo-700 transition-colors z-10"  // Added w-full, justify-center, and z-10
                                     >
                                         <FaLaptopCode />
                                         {t('myprojects.viewDetails')}
