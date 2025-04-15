@@ -48,7 +48,7 @@ const ProofOfAchievement: React.FC = () => {
             icon: <FaLinux />,
             title: "Learning Linux Basics Course & Labs",
             platform: "Kodekloud",
-            link: "https://learn.kodekloud.com/certificate/7565608a-3b0b-4aef-8011-03dd1e73baff",
+            link: "https://learn.kodekloud.com/certificate/975e1983-7f4a-4be4-9bd7-312aa51d9dce",
             bgColor: "from-orange-600 to-orange-400"
         },
         {

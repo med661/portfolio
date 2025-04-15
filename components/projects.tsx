@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
     const projects = [
         {
             title: t("myprojects.learnHub.title"),
-            image: "/images/ehunb.jpg",
+            image: "/images/elhub.png",
             description: t("myprojects.learnHub.description"),
             technologies: ["NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redux Thunk"],
             link: "/",
