@@ -1,7 +1,7 @@
 import { useTranslationContext } from '../contexts/translationContext';
 import React, { useState } from 'react';
 import { FaDocker, FaJs, FaDatabase, FaPhp, FaLinux, FaTools, FaExternalLinkAlt, FaAward } from 'react-icons/fa';
-import { SiTerraform } from 'react-icons/si';
+import { SiKubernetes, SiTerraform } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const ProofOfAchievement: React.FC = () => {
@@ -57,7 +57,14 @@ const ProofOfAchievement: React.FC = () => {
             platform: "Kodekloud",
             link: "https://certificates.kodekloud.com/71da4f66-efa9-4e0b-b9ca-a26fbd15d29f/205d96ca-2463-4b3b-a27f-3d46b86cabe4/7565608a-3b0b-4aef-8011-03dd1e73baff.pdf",
             bgColor: "from-teal-600 to-teal-400"
-        }
+        },
+        {
+            icon: <SiKubernetes />,
+            title: "Kubernetes for the Absolute Beginners - Hands-on Tutorial",
+            platform: "Kodekloud",
+            link: "https://kodekloud.com/certificate-verification/2D0F952D05CE-2D0F8F287ED2-2D0D712B90A6",
+            bgColor: "from-blue-500 to-blue-300"
+        },
     ];
     
     const container = {

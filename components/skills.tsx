@@ -17,6 +17,7 @@ const technologies = [
     { name: 'GraphQL', logo: '/images/Graph.png', category: 'backend' },
     { name: 'FireBase', logo: '/images/fire.png', category: 'database' },
     { name: 'Docker', logo: '/images/docker.png', category: 'devops' },
+    { name: 'Kubernetes', logo: '/images/Kubernetes.png', category: 'devops' },
     { name: 'Git', logo: '/images/git.png', category: 'devops' },
 ];
 
