@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslationContext } from '@/contexts/translationContext';
+import { 
+    SiJavascript, 
+    SiTypescript, 
+    SiNodedotjs, 
+    SiNestjs, 
+    SiExpress, 
+    SiMongodb, 
+    SiPostgresql, 
+    SiPrisma, 
+    SiNextdotjs, 
+    SiRedis, 
+    SiGraphql, 
+    SiFirebase, 
+    SiDocker, 
+    SiKubernetes, 
+    SiGit 
+} from 'react-icons/si';
 
 const technologies = [
-    { name: 'JavaScript', logo: '/images/js.png', category: 'frontend' },
-    { name: 'TypeScript', logo: '/images/ts.png', category: 'frontend' },
-    { name: 'Node.js', logo: '/images/node.png', category: 'backend' },
-    { name: 'NestJS', logo: '/images/nest.png', category: 'backend' },
-    { name: 'Express.js', logo: '/images/express.png', category: 'backend' },
-    { name: 'MongoDB', logo: '/images/mongoose.png', category: 'database' },
-    { name: 'PostgreSQL', logo: '/images/postgresql.png', category: 'database' },
-    { name: 'Prisma', logo: '/images/prisma.png', category: 'database' },
-    { name: 'Next.js', logo: '/images/next-js.png', category: 'frontend' },
-    { name: 'Redis', logo: '/images/redis.png', category: 'database' },
-    { name: 'GraphQL', logo: '/images/Graph.png', category: 'backend' },
-    { name: 'FireBase', logo: '/images/fire.png', category: 'database' },
-    { name: 'Docker', logo: '/images/docker.png', category: 'devops' },
-    { name: 'Kubernetes', logo: '/images/Kubernetes.png', category: 'devops' },
-    { name: 'Git', logo: '/images/git.png', category: 'devops' },
+    { name: 'JavaScript', icon: <SiJavascript className="w-full h-full text-yellow-400" />, category: 'frontend' },
+    { name: 'TypeScript', icon: <SiTypescript className="w-full h-full text-blue-400" />, category: 'frontend' },
+    { name: 'Node.js', icon: <SiNodedotjs className="w-full h-full text-green-500" />, category: 'backend' },
+    { name: 'NestJS', icon: <SiNestjs className="w-full h-full text-red-500" />, category: 'backend' },
+    { name: 'Express.js', icon: <SiExpress className="w-full h-full text-gray-100" />, category: 'backend' },
+    { name: 'MongoDB', icon: <SiMongodb className="w-full h-full text-green-400" />, category: 'database' },
+    { name: 'PostgreSQL', icon: <SiPostgresql className="w-full h-full text-blue-400" />, category: 'database' },
+    { name: 'Prisma', icon: <SiPrisma className="w-full h-full text-teal-400" />, category: 'database' },
+    { name: 'Next.js', icon: <SiNextdotjs className="w-full h-full text-white" />, category: 'frontend' },
+    { name: 'Redis', icon: <SiRedis className="w-full h-full text-red-500" />, category: 'database' },
+    { name: 'GraphQL', icon: <SiGraphql className="w-full h-full text-pink-500" />, category: 'backend' },
+    { name: 'FireBase', icon: <SiFirebase className="w-full h-full text-yellow-500" />, category: 'database' },
+    { name: 'Docker', icon: <SiDocker className="w-full h-full text-blue-400" />, category: 'devops' },
+    { name: 'Kubernetes', icon: <SiKubernetes className="w-full h-full text-blue-500" />, category: 'devops' },
+    { name: 'Git', icon: <SiGit className="w-full h-full text-orange-500" />, category: 'devops' },
 ];
 
 const TechSection: React.FC = () => {
@@ -140,18 +156,11 @@ const TechSection: React.FC = () => {
                                     />
                                     
                                     <motion.div 
-                                        className="w-20 h-20 md:w-28 md:h-28 mb-4 md:mb-6 relative"
+                                        className="w-20 h-20 md:w-28 md:h-28 mb-4 md:mb-6 relative flex items-center justify-center"
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
-                                        <Image
-                                            src={tech.logo}
-                                            alt={tech.name}
-                                            fill
-                                            sizes="(max-width: 768px) 80px, 112px"
-                                            style={{ objectFit: "contain" }}
-                                            className="drop-shadow-xl"
-                                        />
+                                        {tech.icon}
                                     </motion.div>
                                     
                                     <h3 className="text-base md:text-lg font-semibold text-white mb-2">

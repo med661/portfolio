@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslationContext } from '../contexts/translationContext';
-import { FaInfoCircle, FaArrowRight } from 'react-icons/fa';
+import { 
+    FaRobot, 
+    FaLaptopCode, 
+    FaDocker, 
+    FaChess, 
+    FaPlane, 
+    FaMusic,
+    FaChevronDown,
+    FaChevronUp
+} from 'react-icons/fa';
 import Image from 'next/image';
 
 const Interests: React.FC = () => {
@@ -11,42 +20,42 @@ const Interests: React.FC = () => {
     const interests = [
         { 
             name: t("interestsection.aiTools.name"), 
-            icon: "🤖", 
+            icon: <FaRobot className="w-10 h-10 text-white" />, 
             description: t("interestsection.aiTools.description"),
             bgImage: "/images/interests/ai.jpg",
             color: "from-blue-600 to-indigo-600"
         },
         { 
             name: t("interestsection.webDevelopment.name"), 
-            icon: "💻", 
+            icon: <FaLaptopCode className="w-10 h-10 text-white" />, 
             description: t("interestsection.webDevelopment.description"),
             bgImage: "/images/interests/web.jpg",
             color: "from-purple-600 to-pink-600"
         },
         { 
             name: t("interestsection.devOps.name"), 
-            icon: "⚙️", 
+            icon: <FaDocker className="w-10 h-10 text-white" />, 
             description: t("interestsection.devOps.description"),
             bgImage: "/images/interests/devops.jpg",
             color: "from-orange-500 to-red-500"
         },
         { 
             name: t("interestsection.chess.name"), 
-            icon: "♟️", 
+            icon: <FaChess className="w-10 h-10 text-white" />, 
             description: t("interestsection.chess.description"),
             bgImage: "/images/interests/chess.jpg",
             color: "from-emerald-600 to-teal-600"
         },
         { 
             name: t("interestsection.traveling.name"), 
-            icon: "✈️", 
+            icon: <FaPlane className="w-10 h-10 text-white" />, 
             description: t("interestsection.traveling.description"),
             bgImage: "/images/interests/travel.jpg",
             color: "from-sky-500 to-cyan-500"
         },
         { 
             name: t("interestsection.music.name"), 
-            icon: "🎶", 
+            icon: <FaMusic className="w-10 h-10 text-white" />, 
             description: t("interestsection.music.description"),
             bgImage: "/images/interests/music.jpg",
             color: "from-amber-500 to-yellow-500"
@@ -125,9 +134,7 @@ const Interests: React.FC = () => {
                             <div className="relative z-20 p-8 h-full flex flex-col">
                                 <div className="flex flex-col items-center text-center space-y-4">
                                     <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${interest.color} flex items-center justify-center shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}>
-                                        <span className="text-4xl">
-                                            {interest.icon}
-                                        </span>
+                                        {interest.icon}
                                     </div>
                                     <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
                                         {interest.name}
