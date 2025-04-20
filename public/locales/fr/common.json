@@ -29,7 +29,7 @@
       "date": "Nov 2022 - Janv 2025",
       "projects": {
         "project1": {
-          "title": "Plateforme DeFi 91Funds",
+          "title": "Plateforme 91Funds",
           "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle.",
           "image": "/images/91funds.png",
           "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
