@@ -1,4 +1,6 @@
 import { Command } from "./commandInterface";
+import { textToFiglet } from './figlet';
+
 // Add this before commands array
 const gameManager = {
     currentGame: {
@@ -23,10 +25,10 @@ const gameManager = {
             { word: 'frontend', hint: 'The part of a website that users interact with directly' },
             { word: 'backend', hint: 'The server-side of a website that users don\'t see directly' }
         ];
-
+        
         const randomIndex = Math.floor(Math.random() * wordList.length);
         const selectedWord = wordList[randomIndex];
-
+        
         this.currentGame = {
             word: selectedWord.word,
             hint: selectedWord.hint,
@@ -77,14 +79,14 @@ const gameManager = {
         let status = `\nWord: ${displayWord}
 Attempts left: ${'❤️'.repeat(this.currentGame.attempts)}
 Guessed letters: ${Array.from(this.currentGame.guessed).join(', ') || 'none'}`;
-
+        
         // Add hint info
         if (this.currentGame.hintsUsed > 0) {
             status += `\nHint: ${this.currentGame.hint}`;
         } else {
             status += `\nType 'hangman hint' to get a hint (costs 1 attempt)`;
         }
-
+        
         return status;
     },
 
@@ -93,25 +95,25 @@ Guessed letters: ${Array.from(this.currentGame.guessed).join(', ') || 'none'}`;
             .split('')
             .every(letter => this.currentGame.guessed.has(letter));
     },
-
+    
     getHint() {
         if (!this.currentGame.isActive) {
             return 'No active game. Type "hangman start" to begin!';
         }
-
+        
         if (this.currentGame.hintsUsed > 0) {
             return `Hint: ${this.currentGame.hint}\n${this.getGameStatus()}`;
         }
-
+        
         // Using a hint costs one attempt
         this.currentGame.attempts--;
         this.currentGame.hintsUsed++;
-
+        
         if (this.currentGame.attempts === 0) {
             this.currentGame.isActive = false;
             return `💀 Game Over! The word was: ${this.currentGame.word}\nType 'hangman start' to play again!`;
         }
-
+        
         return `🔍 Hint: ${this.currentGame.hint}\n${this.getGameStatus()}`;
     }
 };
@@ -169,6 +171,7 @@ export const commands: Command[] = [
 🎮 Games & Fun:
   ✊  rps        Play Rock Paper Scissors (ex: rps rock)
   🔤  hangman    Play Word Guessing game (ex: hangman start)
+  🎨  figlet     Display text as ASCII art (ex: figlet Hello)
 
 ⌨️ Keyboard Shortcuts:
   Tab (2x)    Show command suggestions
@@ -263,7 +266,20 @@ OPTIONS
 
 EXAMPLES
 projectex -a     Show all projects
-projectex -h     Show this help message`
+projectex -h     Show this help message`,
+                figlet: `NAME
+    figlet - display text as ASCII art
+
+SYNOPSIS
+    figlet <text>
+
+DESCRIPTION
+    Converts text to large ASCII art characters.
+    Makes your text stand out in the terminal.
+
+EXAMPLES
+    figlet Hello     - Display "Hello" in ASCII art
+    figlet Welcome   - Display "Welcome" in ASCII art`
             };
             return manPages[args.toLowerCase()] || `No manual entry for ${args}`;
         }
@@ -325,7 +341,7 @@ projectex -h     Show this help message`
     {
         command: 'clear',
         description: 'Clear terminal',
-        action: (args?: string, setOutput?: (output: string[]) => void) => {
+        action: (_args?: string, setOutput?: (output: string[]) => void) => {
             if (setOutput) {
                 setOutput([]);
             }
@@ -366,7 +382,7 @@ projectex -h     Show this help message`
     {
         command: 'cat',
         description: 'View file contents',
-        action: (args?: string, setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
+        action: (args?: string, _setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
             if (!t) return "Translation function not available";
 
             if (!args) return "Usage: cat <filename>\nExample: cat bio";
@@ -440,7 +456,7 @@ Result: ${getResult(playerChoice, computerChoice)}`;
 {
     command: 'projectex',
     description: 'List professional projects',
-    action: (args?: string, setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
+    action: (args?: string, _setOutput?: (output: string[]) => void, t?: (key: string) => string) => {
         if (!t) return "Translation function not available";
 
         // Show help if no arguments
@@ -516,7 +532,7 @@ hangman hint    - Get a hint`;
         if (command === 'start') {
             return gameManager.startNewGame();
         }
-
+        
         if (command === 'hint') {
             return gameManager.getHint();
         }
@@ -527,6 +543,20 @@ hangman hint    - Get a hint`;
 
         return gameManager.makeGuess(command);
     }
+},
+// Add the figlet command
+{
+    command: 'figlet',
+    description: 'Display text as ASCII art',
+    action: (args?: string) => {
+        if (!args || args.trim() === '') {
+            return `Usage: figlet <text>
+Example: figlet Hello World
+
+Displays text as ASCII art.`;
+        }
+        
+        return textToFiglet(args);
+    }
 }
 ];
-
