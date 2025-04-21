@@ -106,7 +106,7 @@ img {
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: .15em;
-    animation: 
+    animation:
         typing 3.5s steps(40, end),
         blink-caret .75s step-end infinite;
   }
@@ -156,6 +156,45 @@ img {
   /****************************************************
    * Custom styles
    ****************************************************/
-   
+
+  /* Terminal-style scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #111827; /* bg-gray-900 equivalent */
+    border-left: 1px solid #1f2937; /* bg-gray-800 equivalent */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #1f2937, #374151); /* gray-800 to gray-700 */
+    border: 1px solid #4b5563; /* gray-600 */
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, #374151, #4b5563); /* gray-700 to gray-600 */
+    border-color: #6b7280; /* gray-500 */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(to right, #4b5563, #6b7280); /* gray-600 to gray-500 */
+    border-color: #9ca3af; /* gray-400 */
+  }
+
+  /* Scrollbar corner */
+  .custom-scrollbar::-webkit-scrollbar-corner {
+    background: #111827; /* bg-gray-900 equivalent */
+  }
+
+  /* Firefox scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #374151 #111827; /* gray-700 and gray-900 */
+  }
 }
 

@@ -72,6 +72,32 @@ Guessed letters: ${Array.from(this.currentGame.guessed).join(', ') || 'none'}`;
 
 export const commands: Command[] = [
     {
+        command: 'alias',
+        description: 'Show command aliases',
+        action: () => {
+            const aliases = {
+                'ls': 'help',
+                'h': 'help',
+                'cls': 'clear',
+                'c': 'clear',
+                'sk': 'skills',
+                'bio': 'cat bio',
+                'projects': 'projectex -a',
+                'me': 'whoami',
+                'g': 'grep',
+                'find': 'grepskills'
+            };
+
+            let output = '🔄 Available Command Aliases:\n\n';
+
+            for (const [alias, command] of Object.entries(aliases)) {
+                output += `${alias.padEnd(10)} → ${command}\n`;
+            }
+
+            return output;
+        }
+    },
+    {
         command: 'help',
         description: 'Show available commands',
         action: () =>
@@ -80,22 +106,33 @@ export const commands: Command[] = [
 📋 General:
   ℹ️  help       Shows this help message
   👤  whoami     Show the current user
-  🧹  clear      Clear the terminal screen
+  🧹  clear      Clear the terminal screen (alias: cls, c)
   📖  man        Show manual for a command (ex: man grep)
+  🔄  alias      Show available command shortcuts
 
 👨‍💻 Professional Info:
-  📝  cat bio    View my professional biography
-  🛠️  skills     Display my technical skillset
+  📝  cat bio    View my professional biography (alias: bio)
+  🛠️  skills     Display my technical skillset (alias: sk)
   📧  contact    Show my contact information
-  📂  projectex  List professional projects (ex: projectex -a)
+  📂  projectex  List professional projects (alias: projects)
 
 🔍 Search Tools:
-  🔎  grep       Search through command output (ex: grep react | skills)
-  🔍  grepskills Search through skills (ex: grepskills express)
+  🔎  grep       Search through command output (alias: g)
+  🔍  grepskills Search through skills (alias: find)
 
 🎮 Games & Fun:
   ✊  rps        Play Rock Paper Scissors (ex: rps rock)
   🔤  hangman    Play Word Guessing game (ex: hangman start)
+
+⌨️ Keyboard Shortcuts:
+  Tab (2x)    Show command suggestions
+  Tab        Apply selected suggestion
+  ↑↓         Navigate history/suggestions
+  Ctrl+L     Clear terminal
+  Ctrl+K     Show keyboard shortcuts
+  Ctrl+H     Show command history
+  Ctrl+S     Toggle suggestions on/off
+  |          Pipe commands (ex: skills | grep react)
 
 Type any command to get started!`
     },
