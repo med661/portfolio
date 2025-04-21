@@ -3,21 +3,37 @@ import { Command } from "./commandInterface";
 const gameManager = {
     currentGame: {
         word: '',
+        hint: '',
         guessed: new Set<string>(),
         attempts: 6,
-        isActive: false
+        isActive: false,
+        hintsUsed: 0
     },
 
     startNewGame() {
-        const words = [
-            'typescript', 'javascript', 'react', 'nodejs', 'express',
-            'mongodb', 'docker', 'github', 'frontend', 'backend'
+        const wordList = [
+            { word: 'typescript', hint: 'A statically typed superset of JavaScript' },
+            { word: 'javascript', hint: 'The language of the web' },
+            { word: 'react', hint: 'A popular UI library created by Facebook' },
+            { word: 'nodejs', hint: 'JavaScript runtime built on Chrome\'s V8 engine' },
+            { word: 'express', hint: 'Fast, unopinionated web framework for Node.js' },
+            { word: 'mongodb', hint: 'NoSQL database that stores data in JSON-like documents' },
+            { word: 'docker', hint: 'Platform for developing, shipping, and running applications in containers' },
+            { word: 'github', hint: 'Web-based platform for version control using Git' },
+            { word: 'frontend', hint: 'The part of a website that users interact with directly' },
+            { word: 'backend', hint: 'The server-side of a website that users don\'t see directly' }
         ];
+
+        const randomIndex = Math.floor(Math.random() * wordList.length);
+        const selectedWord = wordList[randomIndex];
+
         this.currentGame = {
-            word: words[Math.floor(Math.random() * words.length)],
+            word: selectedWord.word,
+            hint: selectedWord.hint,
             guessed: new Set<string>(),
             attempts: 6,
-            isActive: true
+            isActive: true,
+            hintsUsed: 0
         };
         return this.getGameStatus();
     },
@@ -58,15 +74,45 @@ const gameManager = {
             .map(letter => this.currentGame.guessed.has(letter) ? letter : '_')
             .join(' ');
 
-        return `\nWord: ${displayWord}
+        let status = `\nWord: ${displayWord}
 Attempts left: ${'❤️'.repeat(this.currentGame.attempts)}
 Guessed letters: ${Array.from(this.currentGame.guessed).join(', ') || 'none'}`;
+
+        // Add hint info
+        if (this.currentGame.hintsUsed > 0) {
+            status += `\nHint: ${this.currentGame.hint}`;
+        } else {
+            status += `\nType 'hangman hint' to get a hint (costs 1 attempt)`;
+        }
+
+        return status;
     },
 
     isWin() {
         return this.currentGame.word
             .split('')
             .every(letter => this.currentGame.guessed.has(letter));
+    },
+
+    getHint() {
+        if (!this.currentGame.isActive) {
+            return 'No active game. Type "hangman start" to begin!';
+        }
+
+        if (this.currentGame.hintsUsed > 0) {
+            return `Hint: ${this.currentGame.hint}\n${this.getGameStatus()}`;
+        }
+
+        // Using a hint costs one attempt
+        this.currentGame.attempts--;
+        this.currentGame.hintsUsed++;
+
+        if (this.currentGame.attempts === 0) {
+            this.currentGame.isActive = false;
+            return `💀 Game Over! The word was: ${this.currentGame.word}\nType 'hangman start' to play again!`;
+        }
+
+        return `🔍 Hint: ${this.currentGame.hint}\n${this.getGameStatus()}`;
     }
 };
 
@@ -446,6 +492,7 @@ Example: projects -a`;
 Commands:
 - hangman start : Start new game
 - hangman <letter> : Guess a letter
+- hangman hint : Get a hint (costs 1 attempt)
 - hangman help : Show commands
 
 Type 'hangman start' to begin!`;
@@ -457,15 +504,21 @@ Type 'hangman start' to begin!`;
             return `🎮 Word Guessing Commands:
 start     : Start new game
 <letter>  : Guess a letter
+hint      : Get a hint (costs 1 attempt)
 help      : Show this help message
 
 Example:
 hangman start   - Start new game
-hangman a       - Guess letter 'a'`;
+hangman a       - Guess letter 'a'
+hangman hint    - Get a hint`;
         }
 
         if (command === 'start') {
             return gameManager.startNewGame();
+        }
+
+        if (command === 'hint') {
+            return gameManager.getHint();
         }
 
         if (command.length !== 1) {
