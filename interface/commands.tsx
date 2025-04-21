@@ -7,7 +7,7 @@ const gameManager = {
         attempts: 6,
         isActive: false
     },
-    
+
     startNewGame() {
         const words = [
             'typescript', 'javascript', 'react', 'nodejs', 'express',
@@ -35,7 +35,7 @@ const gameManager = {
 
         if (!this.currentGame.word.includes(letter)) {
             this.currentGame.attempts--;
-            
+
             if (this.currentGame.attempts === 0) {
                 this.currentGame.isActive = false;
                 return `💀 Game Over! The word was: ${this.currentGame.word}\nType 'hangman start' to play again!`;
@@ -74,22 +74,30 @@ export const commands: Command[] = [
     {
         command: 'help',
         description: 'Show available commands',
-     action: () => 
-            `*********************** 🚀 Available Commands: ***********************
-             ************************  ℹ️  help: Shows this help message  ***********
-             ************************  📝  cat bio: View my professional biography *
-             ************************  🛠️  skills: Display my technical skillset  **
-                ************************   🔍  grep: Search through command output  ******
-                ************************   📧  contact: Show my contact information  
-                ************************   🧹  clear: Clear the terminal screen  
-                ************************   📖  man: Show manual for a command  
-                ***********  🔎  grepskills: Search through skills ex: grepskills express | skills  
-                *********************** 👤  whoami: Show the current user  ***********
-                📂  projectex: List professional projects ex: projectex -a  
-                ********************** 🎮  Games & Fun: **************************
-                ************** ✊🖐✌  rps: Play Rock Paper Scissors: rps start   
-                ************** 🔤  hangman: Play Word Guessing game: hangman start    
-                .......................... ⌨️  Type any command to continue...`
+        action: () =>
+`🚀 Available Commands
+
+📋 General:
+  ℹ️  help       Shows this help message
+  👤  whoami     Show the current user
+  🧹  clear      Clear the terminal screen
+  📖  man        Show manual for a command (ex: man grep)
+
+👨‍💻 Professional Info:
+  📝  cat bio    View my professional biography
+  🛠️  skills     Display my technical skillset
+  📧  contact    Show my contact information
+  📂  projectex  List professional projects (ex: projectex -a)
+
+🔍 Search Tools:
+  🔎  grep       Search through command output (ex: grep react | skills)
+  🔍  grepskills Search through skills (ex: grepskills express)
+
+🎮 Games & Fun:
+  ✊  rps        Play Rock Paper Scissors (ex: rps rock)
+  🔤  hangman    Play Word Guessing game (ex: hangman start)
+
+Type any command to get started!`
     },
 
 
@@ -98,7 +106,7 @@ export const commands: Command[] = [
         command: 'skills',
         description: 'List technical skills',
         action: () =>
-            `My Technical Skills           :         
+            `My Technical Skills           :
                 Languages: • JavaScript • TypeScript
                 Backend: • Node.js • NestJS • Express
                 Frontend: • React • Next.js • Redux
@@ -414,7 +422,7 @@ start     : Start new game
 <letter>  : Guess a letter
 help      : Show this help message
 
-Example: 
+Example:
 hangman start   - Start new game
 hangman a       - Guess letter 'a'`;
         }

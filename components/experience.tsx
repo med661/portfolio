@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaCheckCircle, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
-import Image from 'next/image';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslationContext } from '@/contexts/translationContext';
+import Image from 'next/image';
+import { FaCheckCircle, FaExternalLinkAlt, FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
+import { useTranslationContext } from '../contexts/translationContext';
 
 const Experience = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [isProjectImage, setIsProjectImage] = useState(false);
     const { t, changeLanguage } = useTranslationContext();
-
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -16,38 +16,60 @@ const Experience = () => {
             changeLanguage("en");
             isFirstRender.current = false;
         }
-    }, [changeLanguage])
+    }, [changeLanguage]);
 
     const meetupImages = [
         { src: "/eximages/dar.jpg", alt: "Meetup 1" },
         { src: "/eximages/li.jpg", alt: "Meetup 2" },
     ];
 
+    const projectKeys = ['project1', 'project2', 'project3'];
+
+    const handleProjectImageClick = (imagePath: string) => {
+        setIsProjectImage(true);
+        setSelectedImage(imagePath);
+        setSelectedImageIndex(null);
+    };
+
+    const handleMeetupImageClick = (index: number, src: string) => {
+        setIsProjectImage(false);
+        setSelectedImageIndex(index);
+        setSelectedImage(src);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
+        setSelectedImageIndex(null);
+        setIsProjectImage(false);
+    };
+
     const nextImage = () => {
-        setSelectedImageIndex((prev) => (prev !== null && prev < meetupImages.length - 1 ? prev + 1 : 0));
+        if (isProjectImage) return;
+        const newIndex = selectedImageIndex !== null && selectedImageIndex < meetupImages.length - 1 
+            ? selectedImageIndex + 1 
+            : 0;
+        setSelectedImageIndex(newIndex);
+        setSelectedImage(meetupImages[newIndex].src);
     };
 
     const prevImage = () => {
-        setSelectedImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : meetupImages.length - 1));
+        if (isProjectImage) return;
+        const newIndex = selectedImageIndex !== null && selectedImageIndex > 0 
+            ? selectedImageIndex - 1 
+            : meetupImages.length - 1;
+        setSelectedImageIndex(newIndex);
+        setSelectedImage(meetupImages[newIndex].src);
     };
-    const projectKeys = ['project1', 'project2', 'project3'];
 
     // Helper function to validate image path
     const getImagePath = (key: string): string => {
         const path = t(`experiences.job1.projects.${key}.image`);
-        if (!path || !path.startsWith('/')) {
-            return '/images/placeholder.png'; // Fallback image
-        }
-        return path;
+        return path && path.startsWith('/') ? path : '/images/placeholder.png';
     };
 
     const getTechnologies = (projectKey: string): string[] => {
         const techs = t(`experiences.job1.projects.${projectKey}.technologies`);
-        // Handle both array and string formats
-        if (typeof techs === 'string') {
-            return techs.split(',');
-        }
-        return [];
+        return typeof techs === 'string' ? techs.split(',') : [];
     };
 
     return (
@@ -122,7 +144,7 @@ const Experience = () => {
                                         <div className="flex-shrink-0 flex items-center">
                                             <div
                                                 className="relative cursor-pointer group"
-                                                onClick={() => setSelectedImage(getImagePath(projectKey))}
+                                                onClick={() => handleProjectImageClick(getImagePath(projectKey))}
                                             >
                                                 <div className="bg-gray-800/50 p-4 rounded-lg transition-transform duration-300 group-hover:scale-105 shadow-md">
                                                     <Image
@@ -176,10 +198,7 @@ const Experience = () => {
                                                     ? 0
                                                     : -centerOffset + (index * 100),
                                             }}
-                                            onClick={() => {
-                                                setSelectedImageIndex(index);
-                                                setSelectedImage(image.src);
-                                            }}
+                                            onClick={() => handleMeetupImageClick(index, image.src)}
                                         >
                                             <div className="relative w-full h-full">
                                                 <Image
@@ -207,15 +226,15 @@ const Experience = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 md:p-8"
-                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-2 sm:p-4 md:p-8"
+                        onClick={closeModal}
                     >
                         <motion.div
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, y: 20 }}
                             transition={{ type: "spring", damping: 25 }}
-                            className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-4 rounded-2xl max-w-5xl w-full overflow-hidden border border-gray-700/30 shadow-2xl"
+                            className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-2 sm:p-4 rounded-2xl w-full max-w-5xl overflow-hidden border border-gray-700/30 shadow-2xl"
                             onClick={e => e.stopPropagation()}
                         >
                             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl group">
@@ -224,7 +243,7 @@ const Experience = () => {
                                     alt="Selected Image"
                                     fill
                                     quality={100}
-                                    sizes="(max-width: 768px) 100vw, 1200px"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-contain transform transition-transform duration-500 group-hover:scale-105"
                                     priority
                                 />
@@ -236,15 +255,16 @@ const Experience = () => {
                                     whileTap={{ scale: 0.9 }}
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setSelectedImage(null);
+                                        closeModal();
                                     }}
-                                    className="absolute top-4 right-4 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm z-10"
+                                    className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/60 text-white p-2 sm:p-3 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm z-10"
                                     aria-label="Close image preview"
                                 >
-                                    <FaTimes className="w-5 h-5" />
+                                    <FaTimes className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </motion.button>
 
-                                {meetupImages.length > 1 && (
+                                {/* Navigation buttons - only show for meetup images */}
+                                {!isProjectImage && meetupImages.length > 1 && (
                                     <>
                                         <motion.button
                                             whileHover={{ scale: 1.1, x: -5 }}
@@ -252,14 +272,11 @@ const Experience = () => {
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 prevImage();
-                                                const currentIndex = selectedImageIndex !== null ? selectedImageIndex : 0;
-                                                const newIndex = currentIndex > 0 ? currentIndex - 1 : meetupImages.length - 1;
-                                                setSelectedImage(meetupImages[newIndex].src);
                                             }}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-4 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm group z-10"
+                                            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-2 sm:p-4 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm group z-10"
                                             aria-label="Previous image"
                                         >
-                                            <FaArrowLeft className="w-5 h-5 transform transition-transform group-hover:-translate-x-1" />
+                                            <FaArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform group-hover:-translate-x-1" />
                                         </motion.button>
                                         <motion.button
                                             whileHover={{ scale: 1.1, x: 5 }}
@@ -267,46 +284,46 @@ const Experience = () => {
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 nextImage();
-                                                const currentIndex = selectedImageIndex !== null ? selectedImageIndex : 0;
-                                                const newIndex = currentIndex < meetupImages.length - 1 ? currentIndex + 1 : 0;
-                                                setSelectedImage(meetupImages[newIndex].src);
                                             }}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-4 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm group z-10"
+                                            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-2 sm:p-4 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm group z-10"
                                             aria-label="Next image"
                                         >
-                                            <FaArrowRight className="w-5 h-5 transform transition-transform group-hover:translate-x-1" />
+                                            <FaArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform group-hover:translate-x-1" />
                                         </motion.button>
                                     </>
                                 )}
                             </div>
                             
-                            <div className="mt-4 px-2">
-                                <div className="flex items-center justify-between">
-                                    <motion.h3 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="text-xl text-white font-medium"
-                                    >
-                                        {selectedImageIndex !== null && meetupImages[selectedImageIndex].alt}
-                                    </motion.h3>
-                                    {meetupImages.length > 1 && (
-                                        <motion.div 
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            className="text-gray-400 text-sm"
+                            {/* Image info - only show for meetup images */}
+                            {!isProjectImage && (
+                                <div className="mt-4 px-2">
+                                    <div className="flex items-center justify-between">
+                                        <motion.h3 
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="text-base sm:text-xl text-white font-medium"
                                         >
-                                            {selectedImageIndex !== null ? selectedImageIndex + 1 : 1} / {meetupImages.length}
-                                        </motion.div>
-                                    )}
+                                            {selectedImageIndex !== null && meetupImages[selectedImageIndex].alt}
+                                        </motion.h3>
+                                        {meetupImages.length > 1 && (
+                                            <motion.div 
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                className="text-gray-400 text-xs sm:text-sm"
+                                            >
+                                                {selectedImageIndex !== null ? selectedImageIndex + 1 : 1} / {meetupImages.length}
+                                            </motion.div>
+                                        )}
+                                    </div>
+                                    
+                                    <motion.div 
+                                        initial={{ width: "0%" }}
+                                        animate={{ width: "100%" }}
+                                        className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2"
+                                        transition={{ duration: 0.5 }}
+                                    />
                                 </div>
-                                
-                                <motion.div 
-                                    initial={{ width: "0%" }}
-                                    animate={{ width: "100%" }}
-                                    className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2"
-                                    transition={{ duration: 0.5 }}
-                                />
-                            </div>
+                            )}
                         </motion.div>
                     </motion.div>
                 )}
@@ -314,5 +331,4 @@ const Experience = () => {
         </section>
     );
 };
-
 export default Experience;

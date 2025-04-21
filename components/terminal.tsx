@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaQuestionCircle } from 'react-icons/fa';
 import { commands } from '@/interface/commands';
 
 interface TerminalProps {
@@ -22,7 +22,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
             setOutput([]);
             return null;
         }
-        
+
 
         // Split command and arguments
         const [command, ...args] = cmd.trim().split(' ');
@@ -35,7 +35,29 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
         return `Command not found: ${command}. Type 'help' for available commands.`;
     };
 
-    // Add this function to handle arrow key navigation
+    // Format terminal output with syntax highlighting
+    const formatOutput = (line: string) => {
+        // Command input lines
+        if (line.startsWith('$')) {
+            return <span className="text-blue-400">{line}</span>;
+        }
+
+        // Process multi-line text without changing color or size
+        const processText = (text: string) => {
+            // Split by newlines but preserve them in the output
+            return text.split('\n').map((part, i, arr) => (
+                <React.Fragment key={i}>
+                    {part}
+                    {i < arr.length - 1 && <br />}
+                </React.Fragment>
+            ));
+        };
+
+        // Default text color for all output
+        return <span className="text-gray-300">{processText(line)}</span>;
+    };
+
+    // Handle keyboard navigation
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             const trimmedInput = input.trim();
@@ -43,7 +65,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                 // Add command to history
                 setCommandHistory(prev => [...prev, trimmedInput]);
                 setHistoryIndex(-1);
-                
+
                 const result = handleCommand(trimmedInput);
                 if (result !== null) {
                     const newOutput = [...output, `$ ${trimmedInput}`, result];
@@ -51,7 +73,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                 }
             }
             setInput('');
-            
+
             // Scroll to bottom
             if (terminalRef.current) {
                 setTimeout(() => {
@@ -104,12 +126,13 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                 </div>
                 {/* Terminal content */}
                 <div className="p-4 h-96 overflow-auto font-mono" ref={terminalRef}>
-                    <div className="text-green-400 mb-4">
+                    <div className="text-green-400 mb-4 flex items-center">
+                        <FaQuestionCircle className="mr-2" />
                         Welcome to my interactive terminal! Type 'help' to see available commands.
                     </div>
                     {output.map((line, i) => (
-                        <div key={i} className={`mb-2 ${line.startsWith('$') ? 'text-blue-400' : 'text-gray-300'}`}>
-                            {line}
+                        <div key={i} className="mb-2 whitespace-pre-wrap">
+                            {formatOutput(line)}
                         </div>
                     ))}
                     <div className="flex items-center">
