@@ -147,16 +147,21 @@ const Experience = () => {
                                 {t("experiences.job1.title")}
                             </h3>
                             <div className="text-lg md:text-xl text-gray-300 mb-2">{t("experiences.job1.company")}</div>
-                            <time className="block text-gray-400 text-sm">Nov 2022 – Jan 2025</time> {/* Keep consistent format */}
+                            <time className="block text-gray-400 text-sm">Nov 2022 – Jan 2025</time>
                         </div>
-                        {/* Company Logo */}
-                         <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                        {/* Company Logo - Updated for mobile right alignment */}
+                        <motion.div 
+                            variants={itemVariants} 
+                            whileHover={{ scale: 1.05 }} 
+                            transition={{ duration: 0.2 }}
+                            className="ml-auto sm:ml-0"
+                        >
                             <Image
-                                src="/images/assetdar.png" // Ensure this path is correct and image exists
+                                src="/images/assetdar.png"
                                 alt="Darblochain Logo"
-                                width={120} // Slightly adjusted size
-                                height={80}
-                                className="object-contain rounded-md" // Added rounded corners
+                                width={80}  // Smaller size for mobile
+                                height={60}
+                                className="object-contain rounded-md sm:w-[120px] sm:h-[80px]" // Original size for desktop
                             />
                         </motion.div>
                     </motion.div>
@@ -318,63 +323,25 @@ const Experience = () => {
                                 <FaTimes className="w-4 h-4 sm:w-5 h-5" />
                             </motion.button>
 
+
                             {modalContent.type === 'project' && modalContent.data && (
-                                // Project Detail View
-                                <div className="flex flex-col md:flex-row gap-6">
-                                    <div className="w-full md:w-1/2 flex-shrink-0 flex items-center justify-center p-4 bg-gray-700/30 rounded-lg border border-gray-600/30">
-                                        <motion.div
-                                            className="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden rounded-md" // Fixed aspect ratio for image container
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            transition={{ delay: 0.2, duration: 0.5 }}
-                                        >
-                                            <Image
-                                                src={(modalContent.data as Project).image}
-                                                alt={`Preview of ${(modalContent.data as Project).title}`}
-                                                fill
-                                                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 400px"
-                                                className="object-contain rounded-md"
-                                            />
-                                        </motion.div>
-                                    </div>
-                                    <div className="flex-1 pt-4 md:pt-0">
-                                        <motion.h3
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.3, duration: 0.5 }}
-                                            className="text-2xl sm:text-3xl font-bold text-white mb-4"
-                                        >
-                                            {(modalContent.data as Project).title}
-                                        </motion.h3>
-                                         <motion.div
-                                            initial={{ width: "0%" }}
-                                            animate={{ width: "100%" }}
-                                            transition={{ duration: 0.5, delay: 0.4 }}
-                                            className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mb-6"
+                                <div className="w-full h-full flex items-center justify-center">
+                                    <motion.div
+                                        className="relative w-full h-full max-w-4xl max-h-[90vh]"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.2, duration: 0.5 }}
+                                    >
+                                        <Image
+                                             src={(modalContent.data as Project).image}
+                                          alt={`Preview of ${(modalContent.data as Project).title}`}
+                                          width={1200}  // Added width property
+                                          height={800}  // Added height property
+                                          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1200px"
+                                          className="object-contain rounded-lg"
+                                          priority
                                         />
-                                        <motion.p
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.5, duration: 0.5 }}
-                                            className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6"
-                                        >
-                                            {(modalContent.data as Project).description}
-                                        </motion.p>
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.6, duration: 0.5 }}
-                                            className="flex flex-wrap gap-2"
-                                        >
-                                            {(modalContent.data as Project).technologies.map((tech, techIndex) => (
-                                                <span key={techIndex} className="px-3 py-1 bg-teal-600/20 text-teal-300 rounded-full text-xs font-medium">
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </motion.div>
-                                        {/* Add project links here if available */}
-                                        {/* <div className="mt-6">... Project Links ...</div> */}
-                                    </div>
+                                    </motion.div>
                                 </div>
                             )}
 
