@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslationContext } from '@/contexts/translationContext';
-import { 
-    SiJavascript, 
-    SiTypescript, 
-    SiNodedotjs, 
-    SiNestjs, 
-    SiExpress, 
-    SiMongodb, 
-    SiPostgresql, 
-    SiPrisma, 
-    SiNextdotjs, 
-    SiRedis, 
-    SiGraphql, 
-    SiFirebase, 
-    SiDocker, 
-    SiKubernetes, 
-    SiGit 
+import {
+    SiJavascript,
+    SiTypescript,
+    SiNodedotjs,
+    SiNestjs,
+    SiExpress,
+    SiMongodb,
+    SiPostgresql,
+    SiPrisma,
+    SiNextdotjs,
+    SiRedis,
+    SiGraphql,
+    SiFirebase,
+    SiDocker,
+    SiKubernetes,
+    SiGit,
+    SiLinux
 } from 'react-icons/si';
 
 const technologies = [
@@ -32,6 +33,7 @@ const technologies = [
     { name: 'Redis', icon: <SiRedis className="w-full h-full text-red-500" />, category: 'database' },
     { name: 'GraphQL', icon: <SiGraphql className="w-full h-full text-pink-500" />, category: 'backend' },
     { name: 'FireBase', icon: <SiFirebase className="w-full h-full text-yellow-500" />, category: 'database' },
+    { name: 'Linux', icon: <SiLinux className="w-full h-full text-yellow-500" />, category: 'devops' },
     { name: 'Docker', icon: <SiDocker className="w-full h-full text-blue-400" />, category: 'devops' },
     { name: 'Kubernetes', icon: <SiKubernetes className="w-full h-full text-blue-500" />, category: 'devops' },
     { name: 'Git', icon: <SiGit className="w-full h-full text-orange-500" />, category: 'devops' },
@@ -41,18 +43,18 @@ const TechSection: React.FC = () => {
     const { t } = useTranslationContext();
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [hoveredTech, setHoveredTech] = useState<string | null>(null);
-    
+
     const categories = [
         { id: 'frontend', name: 'Frontend', color: 'from-blue-500 to-cyan-400' },
         { id: 'backend', name: 'Backend', color: 'from-green-500 to-emerald-400' },
         { id: 'database', name: 'Database', color: 'from-orange-500 to-amber-400' },
         { id: 'devops', name: 'DevOps', color: 'from-purple-500 to-indigo-400' },
     ];
-    
-    const filteredTechnologies = activeCategory 
+
+    const filteredTechnologies = activeCategory
         ? technologies.filter(tech => tech.category === activeCategory)
         : technologies;
-    
+
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -62,17 +64,17 @@ const TechSection: React.FC = () => {
             }
         }
     };
-    
+
     const item = {
         hidden: { y: 20, opacity: 0 },
         show: { y: 0, opacity: 1 }
     };
-    
+
     return (
         <section id='skills' className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
             <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
             <div className="container mx-auto px-6 z-10">
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -83,8 +85,8 @@ const TechSection: React.FC = () => {
                         {t('skillsTitle')}
                     </span>
                 </motion.h2>
-                
-                <motion.div 
+
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -94,8 +96,8 @@ const TechSection: React.FC = () => {
                     <button
                         onClick={() => setActiveCategory(null)}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                            activeCategory === null 
-                                ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/30' 
+                            activeCategory === null
+                                ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/30'
                                 : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
                         }`}
                     >
@@ -106,8 +108,8 @@ const TechSection: React.FC = () => {
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                                activeCategory === category.id 
-                                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg` 
+                                activeCategory === category.id
+                                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                                     : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
                             }`}
                         >
@@ -115,9 +117,9 @@ const TechSection: React.FC = () => {
                         </button>
                     ))}
                 </motion.div>
-                
+
                 <AnimatePresence mode="wait">
-                    <motion.div 
+                    <motion.div
                         key={activeCategory || 'all'}
                         variants={container}
                         initial="hidden"
@@ -131,47 +133,47 @@ const TechSection: React.FC = () => {
                             const category = categories.find(c => c.id === tech.category);
                             const gradientFrom = category?.color.split(' ')[0].replace('from-', '');
                             const gradientTo = category?.color.split(' ')[1].replace('to-', '');
-                            
+
                             return (
                                 <motion.div
                                     key={tech.name}
                                     variants={item}
-                                    whileHover={{ 
+                                    whileHover={{
                                         y: -10,
                                         transition: { duration: 0.3 }
                                     }}
                                     onHoverStart={() => setHoveredTech(tech.name)}
                                     onHoverEnd={() => setHoveredTech(null)}
-                                    className={`relative flex flex-col items-center text-center p-4 md:p-6 rounded-xl 
+                                    className={`relative flex flex-col items-center text-center p-4 md:p-6 rounded-xl
                                              transition-all duration-300 backdrop-blur-sm
                                              ${hoveredTech === tech.name ? 'bg-gray-800/70 shadow-xl' : 'bg-gray-800/30 shadow-md'}`}
                                 >
-                                    <div 
+                                    <div
                                         className="absolute inset-0 rounded-xl bg-gradient-to-br opacity-0 hover:opacity-20 transition-opacity duration-300"
-                                        style={{ 
-                                            backgroundImage: category 
-                                                ? `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})` 
+                                        style={{
+                                            backgroundImage: category
+                                                ? `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})`
                                                 : 'none'
-                                        }} 
+                                        }}
                                     />
-                                    
-                                    <motion.div 
+
+                                    <motion.div
                                         className="w-20 h-20 md:w-28 md:h-28 mb-4 md:mb-6 relative flex items-center justify-center"
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
                                         {tech.icon}
                                     </motion.div>
-                                    
+
                                     <h3 className="text-base md:text-lg font-semibold text-white mb-2">
                                         {tech.name}
                                     </h3>
-                                    
-                                    <span 
+
+                                    <span
                                         className="text-xs px-3 py-1 rounded-full text-white"
                                         style={{
-                                            background: category 
-                                                ? `linear-gradient(to right, ${gradientFrom}, ${gradientTo})` 
+                                            background: category
+                                                ? `linear-gradient(to right, ${gradientFrom}, ${gradientTo})`
                                                 : 'none',
                                             opacity: 0.7
                                         }}

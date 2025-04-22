@@ -11,7 +11,7 @@
   "aboutme": {
     "title": "About Me",
     "greeting": "Hi, I'm Salah Sfar!",
-    "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm passionate about developing innovative solutions and continuously improving my skills.",
+    "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm also proficient with Linux environments for development and deployment. I'm passionate about developing innovative solutions and continuously improving my skills.",
     "profile": {
       "alt": "Salah Sfar"
     },
@@ -71,14 +71,14 @@
     }
   },
   "myprojects": {
-   
+
     "title": "My Projects",
     "visitProject": "View Project",
     "viewDetails": "View Details",
     "technologies": "Technologies",
     "discordClone": {
       "title": "Discord Clone",
-      "description": "An application allowing users to communicate via messages and create group video conferencing rooms."
+      "description": "A full-stack Discord clone built with modern web technologies. This real-time communication platform allows users to create servers, channels, and communicate via text messages and voice chat. Features include user authentication, real-time messaging with Socket.io, server and channel management, direct messaging, and voice chat capabilities."
     },
     "realtimeChat": {
       "title": "Real-Time Chat App",
@@ -90,7 +90,7 @@
     },
     "stressTest": {
       "title": "Stress Test",
-      "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design."
+      "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design. Deployed and optimized on Linux servers for maximum performance and reliability."
     },
     "jobHuntDiary": {
       "title": "Job Hunt Diary",
@@ -99,6 +99,10 @@
     "comingSoon": {
       "title": "Coming Soon",
       "description": "More exciting projects in development"
+    },
+    "portfolio": {
+      "title": "Personal Portfolio",
+      "description": "A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features include internationalization support (English and French), interactive UI components with Framer Motion animations, and a terminal-inspired interface. The portfolio showcases my projects, skills, and professional experience in an elegant, user-friendly design."
     }
   },
   "internships": "INTERNSHIPS",

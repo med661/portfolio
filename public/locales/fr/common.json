@@ -77,7 +77,7 @@
     "technologies": "Technologies",
     "discordClone": {
       "title": "Clone de Discord",
-      "description": "Une application permettant aux utilisateurs de communiquer via des messages et de créer des salles de visioconférence de groupe."
+      "description": "Un clone de Discord full-stack construit avec des technologies web modernes. Cette plateforme de communication en temps réel permet aux utilisateurs de créer des serveurs, des canaux et de communiquer via des messages texte et des discussions vocales. Les fonctionnalités comprennent l'authentification des utilisateurs, la messagerie en temps réel avec Socket.io, la gestion des serveurs et des canaux, la messagerie directe et les capacités de chat vocal."
     },
     "realtimeChat": {
       "title": "Application de Chat en Temps Réel",
@@ -98,6 +98,10 @@
     "jobHuntDiary": {
       "title": "Journal de Recherche d'Emploi",
       "description": "Journal de Recherche d'Emploi est un système complet de suivi des candidatures conçu pour aider les chercheurs d'emploi à organiser et gérer efficacement leur processus de recherche. Cette application web moderne offre une plateforme centralisée pour suivre les candidatures, les entretiens et les suivis, éliminant ainsi le besoin de feuilles de calcul ou de notes éparpillées."
+    },
+    "portfolio": {
+      "title": "Portfolio Personnel",
+      "description": "Un site web de portfolio moderne et réactif construit avec Next.js, TypeScript et Tailwind CSS. Les fonctionnalités incluent le support de l'internationalisation (anglais et français), des composants d'interface utilisateur interactifs avec des animations Framer Motion, et une interface inspirée d'un terminal. Le portfolio présente mes projets, compétences et expérience professionnelle dans une conception élégante et conviviale."
     }
   },
   "internships": "STAGES",

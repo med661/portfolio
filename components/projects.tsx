@@ -12,6 +12,7 @@ const Projects: React.FC = () => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     const projects = [
+     
         {
             title: t("myprojects.learnHub.title"),
             image: "/images/elhub.png",
@@ -32,7 +33,7 @@ const Projects: React.FC = () => {
             title: t("myprojects.stressTest.title"),
             image: "/images/stress.png",
             description: t("myprojects.stressTest.description"),
-            technologies: ["Next.js", "Axios", "TypeScript", "React.js", "Tailwind CSS"],
+            technologies: ["Next.js", "Axios", "TypeScript", "React.js", "Tailwind CSS", "Linux"],
             link: "https://stress-test-frontend.vercel.app/",
             color: "from-green-600 to-green-400"
         },
@@ -42,9 +43,25 @@ const Projects: React.FC = () => {
             description: t("myprojects.realtimeChat.description"),
             technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
             link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/",
+            color: "from-pink-600 to-pink-400"
+        },
+        {
+            title: t("myprojects.portfolio.title"),
+            image: "/images/portfolio.png",
+            description: t("myprojects.portfolio.description"),
+            technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18next", "React"],
+            link: "/",
+            color: "from-indigo-600 to-indigo-400"
+        },
+        {
+            title: t("myprojects.discordClone.title"),
+            image: "/images/discord.png",
+            description: t("myprojects.discordClone.description"),
+            technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "WebRTC"],
+            link: "https://github.com/med661/discord-clone",
             color: "from-purple-600 to-purple-400"
         }
-      
+
     ];
 
     const container = {
@@ -56,7 +73,7 @@ const Projects: React.FC = () => {
             }
         }
     };
-    
+
     const item = {
         hidden: { opacity: 0, y: 20 },
         show: { opacity: 1, y: 0 }
@@ -82,7 +99,7 @@ const Projects: React.FC = () => {
         <section id="projects" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
             <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
             <div className="container mx-auto px-4 z-10">
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -93,8 +110,8 @@ const Projects: React.FC = () => {
                         {t('myprojects.title')}
                     </span>
                 </motion.h2>
-                
-                <motion.div 
+
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -134,13 +151,13 @@ const Projects: React.FC = () => {
                                         {t('myprojects.viewDetails')}
                                     </motion.button>
                                 </div>
-                                
+
                                 {/* Gradient overlay based on project color */}
-                                <div 
+                                <div
                                     className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
                                 ></div>
                             </div>
-                            
+
                             <div className="p-6 flex flex-col flex-grow">
                                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
                                     {project.title}
@@ -149,7 +166,7 @@ const Projects: React.FC = () => {
                                 <p className="text-gray-300 mb-6 text-sm leading-relaxed line-clamp-3">
                                     {project.description}
                                 </p>
-                                
+
                                 <div className="mt-auto">
                                     <div className="flex flex-wrap gap-2 mb-4">
                                         {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -161,7 +178,7 @@ const Projects: React.FC = () => {
                                             </span>
                                         ))}
                                         {project.technologies.length > 3 && (
-                                            <span 
+                                            <span
                                                 className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full cursor-pointer hover:bg-gray-700/70 transition-colors"
                                                 onClick={() => openProjectDetails(index)}
                                             >
@@ -169,7 +186,7 @@ const Projects: React.FC = () => {
                                             </span>
                                         )}
                                     </div>
-                                    
+
                                     <div className="flex justify-between items-center">
                                         <a
                                             href={project.link}
@@ -180,7 +197,7 @@ const Projects: React.FC = () => {
                                             <FaExternalLinkAlt className="text-xs" />
                                             {t('myprojects.visitProject')}
                                         </a>
-                                        
+
                                         <motion.button
                                             whileHover={{ scale: 1.1, rotate: 5 }}
                                             whileTap={{ scale: 0.9 }}
@@ -211,7 +228,7 @@ const Projects: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-white mb-3">{t('myprojects.comingSoon.title')}</h3>
                         <p className="text-gray-400 text-center">{t('myprojects.comingSoon.description')}</p>
-                        <motion.button 
+                        <motion.button
                             className="mt-6 px-6 py-2 bg-indigo-600/20 text-indigo-400 rounded-lg hover:bg-indigo-600/30 transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -225,14 +242,14 @@ const Projects: React.FC = () => {
             {/* Project Details Modal */}
             <AnimatePresence>
                 {activeProject !== null && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                         onClick={handleModalClick}
                     >
-                        <motion.div 
+                        <motion.div
                             ref={modalRef}
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
@@ -248,25 +265,25 @@ const Projects: React.FC = () => {
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                                <button 
+                                <button
                                     onClick={closeProjectDetails}
                                     className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                                 >
                                     ✕
                                 </button>
                             </div>
-                            
+
                             <div className="p-6 md:p-8">
                                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                                     {projects[activeProject].title}
                                 </h3>
-                                
+
                                 <div className="w-20 h-1 bg-indigo-600 mb-6 rounded-full"></div>
-                                
+
                                 <p className="text-gray-300 mb-8 leading-relaxed">
                                     {projects[activeProject].description}
                                 </p>
-                                
+
                                 <div className="mb-8">
                                     <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                                         <FaCode className="text-indigo-400" />
@@ -286,7 +303,7 @@ const Projects: React.FC = () => {
                                         ))}
                                     </div>
                                 </div>
-                                
+
                                 <div className="flex justify-end">
                                     <motion.a
                                         href={projects[activeProject].link}
