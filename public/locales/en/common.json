@@ -42,9 +42,9 @@
         },
         "project3": {
           "title": "EcoSystem Dao",
-          "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons.",
+          "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons. Implemented real-time notifications and chat features for seamless communication between entrepreneurs and mentors.",
           "image": "/images/dao2.png",
-          "technologies": "Node.js,Express.js,Mongoose,TypeScript"
+          "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io"
         }
       }
     }
