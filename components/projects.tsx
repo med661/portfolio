@@ -12,6 +12,7 @@ const Projects: React.FC = () => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     const projects = [
+
      
         {
             title: t("myprojects.learnHub.title"),
@@ -60,7 +61,14 @@ const Projects: React.FC = () => {
             technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "WebRTC"],
             link: "https://github.com/med661/discord-clone",
             color: "from-purple-600 to-purple-400"
-        }
+        },   {
+            title: t("myprojects.ecommerceBackend.title"),
+            image: "/images/ec.jpeg",
+            description: t("myprojects.ecommerceBackend.description"),
+            technologies: ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "AWS S3", "REST API"],
+            link: "https://github.com/med661/ecommerce-backend",
+            color: "from-amber-600 to-amber-400"
+        },
 
     ];
 

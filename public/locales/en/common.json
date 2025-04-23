@@ -30,9 +30,9 @@
       "projects": {
         "project1": {
           "title": "91Funds Platform",
-          "description": "Developed the backend for security features, including two-factor authentication (2FA), and a statistics dashboard for 91, a crypto investment platform that enables users to access expert-managed cryptocurrency trading portfolios through NFTs as a gateway.",
+          "description": "Developed the backend for security features, including two-factor authentication (2FA), and a statistics dashboard for 91, a crypto investment platform that enables users to access expert-managed cryptocurrency trading portfolios through NFTs as a gateway. Implemented comprehensive API documentation using Swagger for improved developer experience and easier integration.",
           "image": "/images/91funds.png",
-          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
+          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis,Swagger"
         },
         "project2": {
           "title": "ReCut",
@@ -42,9 +42,9 @@
         },
         "project3": {
           "title": "EcoSystem Dao",
-          "description": "Developed a backend system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons. Implemented real-time notifications and chat features for seamless communication between entrepreneurs and mentors.",
+          "description": "Developed a full-stack system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons. Implemented real-time notifications and chat features for seamless communication between entrepreneurs and mentors. Built a responsive frontend with React and Redux for state management.",
           "image": "/images/dao2.png",
-          "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io"
+          "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io,React,Redux"
         }
       }
     }
@@ -103,6 +103,10 @@
     "portfolio": {
       "title": "Personal Portfolio",
       "description": "A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features include internationalization support (English and French), interactive UI components with Framer Motion animations, and a terminal-inspired interface. The portfolio showcases my projects, skills, and professional experience in an elegant, user-friendly design."
+    },
+    "ecommerceBackend": {
+      "title": "E-commerce Backend API",
+      "description": "A scalable e-commerce backend API built with Node.js, Express, and MongoDB. This API powers a complete online shopping platform with features for product management, user authentication, and order processing. Implemented secure JWT authentication, cloud storage integration with AWS S3, and followed RESTful architecture principles for a robust and maintainable codebase."
     }
   },
   "internships": "INTERNSHIPS",

@@ -30,9 +30,9 @@
       "projects": {
         "project1": {
           "title": "Plateforme 91Funds",
-          "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle.",
+          "description": "Développé la partie back-end des fonctionnalités de sécurité, y compris l'authentification à deux facteurs (2FA), ainsi que du tableau de bord statistiques pour 91, une plateforme d'investissement crypto fonctionnant sur un modèle d'abonnement, permettant aux utilisateurs d'accéder à des portefeuilles de trading de cryptomonnaies gérés par des experts via les NFTs comme passerelle. Implémenté une documentation complète des API avec Swagger pour améliorer l'expérience des développeurs et faciliter l'intégration.",
           "image": "/images/91funds.png",
-          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis"
+          "technologies": "NestJS,Mongoose,TypeScript,Node.js,Redis,Swagger"
         },
         "project2": {
           "title": "ReCut",
@@ -42,9 +42,9 @@
         },
         "project3": {
           "title": "EcoSystem Dao",
-          "description": "Développé un système back-end pour soutenir les entrepreneurs en leur offrant des opportunités de rencontrer des experts, de participer à des programmes d'accompagnement et de prendre part à des hackathons. Implémenté des notifications en temps réel et des fonctionnalités de chat pour une communication fluide entre entrepreneurs et mentors.",
+          "description": "Développé un système full-stack pour soutenir les entrepreneurs en leur offrant des opportunités de rencontrer des experts, de participer à des programmes d'accompagnement et de prendre part à des hackathons. Implémenté des notifications en temps réel et des fonctionnalités de chat pour une communication fluide entre entrepreneurs et mentors. Construit une interface frontend responsive avec React et Redux pour la gestion des états.",
           "image": "/images/dao2.png",
-          "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io"
+          "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io,React,Redux"
         }
       }
     }
@@ -102,6 +102,10 @@
     "portfolio": {
       "title": "Portfolio Personnel",
       "description": "Un site web de portfolio moderne et réactif construit avec Next.js, TypeScript et Tailwind CSS. Les fonctionnalités incluent le support de l'internationalisation (anglais et français), des composants d'interface utilisateur interactifs avec des animations Framer Motion, et une interface inspirée d'un terminal. Le portfolio présente mes projets, compétences et expérience professionnelle dans une conception élégante et conviviale."
+    },
+    "ecommerceBackend": {
+      "title": "API Backend E-commerce",
+      "description": "Une API backend e-commerce évolutive construite avec Node.js, Express et MongoDB. Cette API alimente une plateforme complète de commerce en ligne avec des fonctionnalités de gestion de produits, d'authentification des utilisateurs et de traitement des commandes. Implémentation d'une authentification sécurisée par JWT, intégration du stockage cloud avec AWS S3, et respect des principes d'architecture RESTful pour un code robuste et maintenable."
     }
   },
   "internships": "STAGES",
