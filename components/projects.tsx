@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
             image: "/images/elhub.png",
             description: t("myprojects.learnHub.description"),
             technologies: ["NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redux Thunk"],
-            link: "/",
+            link: "https://knowledgehubster.vercel.app/",
             color: "from-blue-600 to-blue-400"
         },
         {
