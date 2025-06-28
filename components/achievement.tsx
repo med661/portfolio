@@ -60,9 +60,9 @@ const ProofOfAchievement: React.FC = () => {
         },
         {
             icon: <SiKubernetes />,
-            title: "Kubernetes for the Absolute Beginners",
+            title: "Certified Kubernetes Developer – CKAD",
             platform: "Kodekloud",
-            link: "https://learn.kodekloud.com/user/certificate/30f7444f-fb3d-4dd9-a682-065d12c15cac",
+            link: "https://learn.kodekloud.com/user/certificate/330ab001-e869-483d-a398-37f4bfe55b24",
             bgColor: "from-blue-500 to-blue-300"
         },
     ];
