@@ -31,14 +31,6 @@ const Projects: React.FC = () => {
             color: "from-emerald-500 to-teal-500" ,
         },
         {
-            title: t("myprojects.stressTest.title"),
-            image: "/images/stress.png",
-            description: t("myprojects.stressTest.description"),
-            technologies: ["Next.js", "Axios", "TypeScript", "React.js", "Tailwind CSS", "Linux"],
-            link: "https://stress-test-frontend.vercel.app/",
-            color: "from-green-600 to-green-400"
-        },
-        {
             title: t("myprojects.realtimeChat.title"),
             image: "/images/chat.png",
             description: t("myprojects.realtimeChat.description"),
@@ -55,13 +47,6 @@ const Projects: React.FC = () => {
             color: "from-indigo-600 to-indigo-400"
         },
         {
-            title: t("myprojects.discordClone.title"),
-            image: "/images/discord.png",
-            description: t("myprojects.discordClone.description"),
-            technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "WebRTC"],
-            link: "https://github.com/med661/discord-clone",
-            color: "from-purple-600 to-purple-400"
-        },   {
             title: t("myprojects.ecommerceBackend.title"),
             image: "/images/ec.jpeg",
             description: t("myprojects.ecommerceBackend.description"),
