@@ -1,4 +1,7 @@
 {
+  "common": {
+    "view": "View"
+  },
   "about": "ABOUT",
   "experience": "EXPERIENCE",
   "education": "EDUCATION",
@@ -10,10 +13,13 @@
   "interests": "INTERESTS",
   "aboutme": {
     "title": "About Me",
-    "greeting": "Hi, I'm Salah Sfar!",
-    "bio": "A Backend Developer specializing in Node.js with a focus on creating scalable and efficient backend solutions. I have experience working with technologies like the MERN stack, Nest.js, and Express.js. I'm also proficient with Linux environments for development and deployment. I'm passionate about developing innovative solutions and continuously improving my skills.",
+    "greeting": "Hi, I'm",
+    "name": "Salah Sfar",
+    "role": "Software Engineer (Full Stack)",
+    "bio": "Full Stack Software Engineer with more than 3 years of experience developing scalable web applications in Agile environments. Skilled at optimizing performance and delivering secure, maintainable solutions.",
     "profile": {
-      "alt": "Salah Sfar"
+      "alt": "Salah Sfar",
+      "terminal": "Terminal"
     },
     "cv": {
       "title": "Download My Resume",
@@ -23,9 +29,15 @@
   },
   "experiences": {
     "title": "Professional Experience",
+    "meetups": {
+      "title": "Meetups",
+      "meetup1": "Meetup 1: Darblochain Event",
+      "meetup2": "Meetup 2: LinkedIn Local Meeting"
+    },
     "job1": {
       "title": "Backend Developer",
       "company": "Dar Blockchain",
+      "logo": "/images/assetdar.png",
       "date": "Nov 2022 - Jan 2025",
       "projects": {
         "project1": {
@@ -45,6 +57,21 @@
           "description": "Developed a full-stack system to support entrepreneurs by providing opportunities to meet experts, join assistance programs, and participate in hackathons. Implemented real-time notifications and chat features for seamless communication between entrepreneurs and mentors. Built a responsive frontend with React and Redux for state management.",
           "image": "/images/dao2.png",
           "technologies": "Node.js,Express.js,Mongoose,TypeScript,Socket.io,React,Redux"
+        }
+      }
+    },
+    "job2": {
+      "title": "Full Stack Developer",
+      "company": "Formationnet",
+      "logo": "/images/logosfar.png",
+      "date": "Feb 2025 - Present",
+      "projects": {
+        "project1": {
+          "title": "FitStack",
+          "description": "Developed the FitStack ecosystem including a website, mobile application (React Native), and an admin dashboard. Implemented using NestJS, PostgreSQL, Redis, Next.js, and Docker.",
+          "image": "/images/admindasbordgym.jpeg",
+          "technologies": "React Native, NestJS, PostgreSQL, Redis, Next.js, Docker",
+          "link": "https://vitrinefitness.vercel.app"
         }
       }
     }
@@ -71,7 +98,6 @@
     }
   },
   "myprojects": {
-
     "title": "My Projects",
     "visitProject": "View Project",
     "viewDetails": "View Details",
@@ -98,7 +124,8 @@
     },
     "comingSoon": {
       "title": "Coming Soon",
-      "description": "More exciting projects in development"
+      "description": "More exciting projects in development",
+      "stayTuned": "Stay Tuned"
     },
     "portfolio": {
       "title": "Personal Portfolio",
@@ -113,24 +140,39 @@
   "internship.technologies": "Technologies:",
   "internship.projectDetails": "Project Details",
   "internship.gpro": {
+    "period": "Feb 2022 - June 2022",
     "description": "Designed and developed a digital platform consolidating information necessary for building a great career by selecting a professional course."
   },
   "internship.satoripop": {
+    "period": "July 2021 - Sept 2021",
     "description": "Developed a mobile application to offer users an immersive experience to follow match scores, events, and news of the Premier League."
   },
   "proofofcompletion": {
     "title": "Proof of Achievement"
   },
   "skillsTitle": "Technologies I Work With",
+  "skillsSection": {
+      "categories": {
+          "all": "All",
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "database": "Database",
+          "devops": "DevOps"
+      }
+  },
   "accomplissementSection": {
-    "actionAidTitle":"ActionAid",
-    "formationnetTitle":"Formationnet",
+    "actionAidTitle": "ActionAid",
+    "formationnetTitle": "Formationnet",
     "title": "Accomplishments",
     "actionAid": " 🏆 2nd place in the 'ActionAid' Social Entrepreneurship competition",
-    "formationnet": "Created online educational content under the brand 'Formationnet' on Instagram"
+    "formationnet": "Created online educational content under the brand 'Formationnet' on Instagram",
+    "socialEntrepreneurship": "Social Entrepreneurship",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
   },
   "interestsection": {
     "title": "What Interests Me",
+    "showLess": "Show less",
     "aiTools": {
       "name": "AI Tools",
       "description": "Exploring the latest in artificial intelligence"
@@ -155,6 +197,12 @@
       "name": "Music",
       "description": "Appreciating various genres"
     }
+  },
+  "contact": {
+    "email": "Email",
+    "phone": "Phone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
   },
   "footer": {
     "navigation": "Navigation",

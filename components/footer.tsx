@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaArrowUp } from 'react-icons/fa';
 import { useTranslationContext } from '../contexts/translationContext';
 import Link from 'next/link';
+import { CONTACT_INFO } from '../constants/data';
 
 const Footer: React.FC = () => {
   const { t } = useTranslationContext();
@@ -19,17 +20,17 @@ const Footer: React.FC = () => {
     {
       name: 'GitHub',
       icon: <FaGithub />,
-      url: 'https://github.com/med661'
+      url: CONTACT_INFO.github.href
     },
     {
       name: 'LinkedIn',
       icon: <FaLinkedin />,
-      url: 'https://www.linkedin.com/in/salah-sfar'
+      url: CONTACT_INFO.linkedin.href
     },
     {
       name: 'Email',
       icon: <FaEnvelope />,
-      url: 'mailto:salahsfar.pro@gmail.com'
+      url: CONTACT_INFO.email.href
     }
   ];
 
@@ -134,7 +135,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t border-gray-800">
+        <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <motion.p 
               className="text-gray-500 text-sm mb-4 md:mb-0"

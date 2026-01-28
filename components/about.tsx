@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslationContext } from '../contexts/translationContext';
 import { ProfileSection } from './profile';
@@ -8,15 +8,7 @@ import { CVDownloadSection } from './downloadSection';
 
 const About = () => {
     const { t, changeLanguage } = useTranslationContext();
-    const isFirstRender = useRef(true);
     const [showTerminal, setShowTerminal] = React.useState(false);
-
-    useEffect(() => {
-        if (isFirstRender.current) {
-            changeLanguage("en");
-            isFirstRender.current = false;
-        }
-    }, [changeLanguage]);
 
     const containerVariants = {
         hidden: { opacity: 0 },

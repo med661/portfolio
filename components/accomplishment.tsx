@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FaInstagram, FaLinkedin, FaAward, FaTrophy, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslationContext } from '@/contexts/translationContext';
+import { ACCOMPLISHMENTS_DATA } from '@/constants/data';
 
 const Accomplishments: React.FC = () => {
     const { t } = useTranslationContext();
@@ -32,20 +33,20 @@ const Accomplishments: React.FC = () => {
                                  shadow-lg hover:shadow-xl rounded-xl overflow-hidden border border-gray-700/30"
                         whileHover={{ y: -5 }}
                     >
-                        <div className="p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
+                        <div className="p-8 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8">
                             <div className="flex-shrink-0 bg-indigo-500/20 p-5 rounded-full">
                                 <FaTrophy className="text-5xl md:text-6xl text-indigo-400" />
                             </div>
                             <div className="flex-grow">
                                 <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                                    {t('accomplissementSection.actionAidTitle') || 'ActionAid Competition'}
+                                    {t('accomplissementSection.actionAidTitle')}
                                 </h3>
                                 <p className="text-white text-lg">
                                     {t('accomplissementSection.actionAid')}
                                 </p>
                                 <div className="mt-4 inline-block">
                                     <span className="px-4 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm">
-                                        Social Entrepreneurship
+                                        {t('accomplissementSection.socialEntrepreneurship')}
                                     </span>
                                 </div>
                             </div>
@@ -56,44 +57,43 @@ const Accomplishments: React.FC = () => {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm 
-                                 shadow-lg hover:shadow-xl rounded-xl overflow-hidden border border-gray-700/30"
+                        className="glass-strong rounded-xl overflow-hidden border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300"
                         whileHover={{ y: -5 }}
                     >
                         <div className="p-8 md:p-10">
                             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                                <div className="text-left space-y-6 flex-grow">
+                                <div className="text-start space-y-6 flex-grow">
                                     <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-                                        {t('accomplissementSection.formationnetTitle') || 'Formationnet'}
+                                        {t('accomplissementSection.formationnetTitle')}
                                     </h3>
                                     <p className="text-white text-lg">
                                         {t('accomplissementSection.formationnet')}
                                     </p>
-                                    <div className="flex space-x-6 mt-6">
+                                    <div className="flex gap-6 mt-6">
                                         <motion.a 
                                             whileHover={{ scale: 1.1, y: -3 }}
                                             whileTap={{ scale: 0.9 }}
-                                            href="https://www.instagram.com/formationnet" 
+                                            href={ACCOMPLISHMENTS_DATA.formationnet.instagram}
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-600/30 to-pink-500/30 
                                                      hover:from-pink-600/50 hover:to-pink-500/50 rounded-lg text-pink-300 transition-all duration-300"
                                         >
                                             <FaInstagram size={20} />
-                                            <span>Instagram</span>
-                                            <FaExternalLinkAlt size={12} className="ml-1 opacity-70" />
+                                            <span>{t('accomplissementSection.instagram')}</span>
+                                            <FaExternalLinkAlt size={12} className="ms-1 opacity-70" />
                                         </motion.a>
                                         <motion.a 
                                             whileHover={{ scale: 1.1, y: -3 }}
                                             whileTap={{ scale: 0.9 }}
-                                            href="https://www.linkedin.com/company/75032139" 
+                                            href={ACCOMPLISHMENTS_DATA.formationnet.linkedin}
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600/30 to-blue-500/30 
                                                      hover:from-blue-600/50 hover:to-blue-500/50 rounded-lg text-blue-300 transition-all duration-300"
                                         >
                                             <FaLinkedin size={20} />
-                                            <span>LinkedIn</span>
+                                            <span>{t('accomplissementSection.linkedin')}</span>
                                             <FaExternalLinkAlt size={12} className="ml-1 opacity-70" />
                                         </motion.a>
                                     </div>

@@ -158,7 +158,7 @@ const Interests: React.FC = () => {
                                                     whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
                                                 >
-                                                    <span>Show less</span>
+                                                    <span>{t('interestsection.showLess')}</span>
                                                 </motion.button>
                                             </motion.div>
                                         ) : (

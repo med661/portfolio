@@ -9,14 +9,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background:rgb(0, 0, 0);
+    --background: #0a0a0a; /* Darker black */
     --foreground: #ededed;
   }
 }
 
+/* Global Styles */
 html, body {
-  @apply overflow-x-hidden;
-  min-height: 100dvh; /* dynamic viewport height */
+  @apply overflow-x-hidden custom-scrollbar;
+  min-height: 100dvh;
   width: 100%;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -33,168 +34,66 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optimize image rendering */
-img {
-  content-visibility: auto;
-  will-change: transform;
+/* Selection */
+::selection {
+  @apply bg-indigo-500/30 text-indigo-200;
 }
 
-#__next {
-  @apply flex flex-col min-h-screen;
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
 }
 
-@supports (-webkit-touch-callout: none) {
-  .min-h-screen {
-    min-height: -webkit-fill-available;
-  }
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-900;
 }
 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full border-2 border-gray-900;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Utility Classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  html {
-    scroll-behavior: smooth;
+  
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  
+  .glass-strong {
+    @apply bg-gray-900/80 backdrop-blur-lg border border-white/5 shadow-2xl;
   }
 
-  /* Add content-visibility for better performance */
-  .content-visibility-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 5000px;
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
   }
-
-  /* Optimize image rendering */
-  .image-rendering-optimized {
-    image-rendering: optimizeSpeed;
+  
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
-
-  /* Optimize animations */
-  .optimize-animation {
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-  }
-
-  /* Lazy load sections */
-  .lazy-section {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 500px;
-  }
-
-  /* Simplified animations for better performance */
-  .simple-hover {
-    transition: transform 0.2s ease-out;
-  }
-  .simple-hover:hover {
-    transform: translateY(-5px);
-  }
-
-  /* Rest of your existing animations but optimized */
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: orange; }
-  }
-
-  .typewriter {
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation:
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-  }
-
-  /* Simplified animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideInUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  .fadeIn {
-    animation: fadeIn 1.5s ease-in-out;
-  }
-
-  .slideInUp {
-    animation: slideInUp 1s ease-out;
-  }
-
-  .contactCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  @keyframes rotateIn {
-    from { transform: rotate(-30deg); opacity: 0; }
-    to { transform: rotate(0); opacity: 1; }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 1s ease-in-out;
-  }
-
-  .animate-rotateIn {
-    animation: rotateIn 1s ease-in-out;
-  }
-
-  .hover\:rotate-1:hover {
-    transform: rotate(1deg);
-  }
-
-  /****************************************************
-   * Custom styles
-   ****************************************************/
-
-  /* Terminal-style scrollbar */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #111827; /* bg-gray-900 equivalent */
-    border-left: 1px solid #1f2937; /* bg-gray-800 equivalent */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(to right, #1f2937, #374151); /* gray-800 to gray-700 */
-    border: 1px solid #4b5563; /* gray-600 */
-    border-radius: 2px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to right, #374151, #4b5563); /* gray-700 to gray-600 */
-    border-color: #6b7280; /* gray-500 */
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(to right, #4b5563, #6b7280); /* gray-600 to gray-500 */
-    border-color: #9ca3af; /* gray-400 */
-  }
-
-  /* Scrollbar corner */
-  .custom-scrollbar::-webkit-scrollbar-corner {
-    background: #111827; /* bg-gray-900 equivalent */
-  }
-
-  /* Firefox scrollbar */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #374151 #111827; /* gray-700 and gray-900 */
-  }
+  
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
 }
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Content Visibility for Performance */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 5000px;
+}

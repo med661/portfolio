@@ -376,23 +376,23 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-gray-900 w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden"
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                className="glass-strong w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden border border-white/10"
             >
                 {/* Terminal header */}
-                <div className="flex items-center justify-between px-4 py-2 bg-gray-800">
+                <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
                     <div className="flex items-center space-x-4">
                         <div className="flex space-x-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500" />
+                            <button onClick={onClose} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
                             <div className="w-3 h-3 rounded-full bg-green-500" />
                         </div>
-                        <span className="text-gray-300 text-sm flex items-center">
-                            <FaTerminal className="mr-2" /> Terminal
+                        <span className="text-gray-400 text-sm font-mono flex items-center select-none">
+                             salah-sfar ~ portfolio
                         </span>
                     </div>
                     <div className="flex items-center space-x-3">

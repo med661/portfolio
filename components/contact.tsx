@@ -1,32 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { useTranslationContext } from '../contexts/translationContext';
+import { CONTACT_INFO } from '../constants/data';
 
 export const ContactSection: React.FC = () => {
+    const { t } = useTranslationContext();
+
     const contacts = [
         {
             icon: <FaEnvelope className="text-2xl" />,
-            label: 'Email',
-            value: 'salahsfar.pro@gmail.com',
-            href: 'mailto:salahsfar.pro@gmail.com'
+            label: t(CONTACT_INFO.email.labelKey),
+            value: CONTACT_INFO.email.value,
+            href: CONTACT_INFO.email.href
         },
         {
             icon: <FaPhone className="text-2xl" />,
-            label: 'Phone',
-            value: '+216 58962808',
-            href: 'tel:+21658962808'
+            label: t(CONTACT_INFO.phone.labelKey),
+            value: CONTACT_INFO.phone.value,
+            href: CONTACT_INFO.phone.href
         },
         {
             icon: <FaGithub className="text-2xl" />,
-            label: 'GitHub',
-            value: 'github.com/med661',
-            href: 'https://github.com/med661'
+            label: t(CONTACT_INFO.github.labelKey),
+            value: CONTACT_INFO.github.value,
+            href: CONTACT_INFO.github.href
         },
         {
             icon: <FaLinkedin className="text-2xl" />,
-            label: 'LinkedIn',
-            value: 'Salah sfar',
-            href: 'https://www.linkedin.com/in/salah-sfar'
+            label: t(CONTACT_INFO.linkedin.labelKey),
+            value: CONTACT_INFO.linkedin.value,
+            href: CONTACT_INFO.linkedin.href
         }
     ];
 

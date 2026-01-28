@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { FaCheckCircle, FaRegEye, FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
+import { FaCheckCircle, FaRegEye, FaArrowLeft, FaArrowRight, FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 import { useTranslationContext } from '../contexts/translationContext';
+import { MEETUP_IMAGES } from '../constants/data';
 
 // Define types for clarity and type safety
 interface MeetupImage {
@@ -11,60 +12,66 @@ interface MeetupImage {
 }
 
 interface Project {
-    key: string; // Use the key to fetch translation data
-    title: string; // Derived from translation
-    description: string; // Derived from translation
-    image: string; // Derived from translation
-    technologies: string[]; // Derived from translation
-    // Add link if available in translation data? (Assuming not based on original code)
+    key: string;
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    link?: string;
 }
 
 interface ModalContent {
     type: 'project' | 'meetup';
-    data: Project | MeetupImage[]; // Project object or array of MeetupImage for carousel
-    initialIndex?: number; // For meetup carousel
+    data: Project | MeetupImage[];
+    initialIndex?: number;
 }
 
 const Experience = () => {
-    const { t, changeLanguage } = useTranslationContext();
-    const isFirstRender = useRef(true);
+    const { t } = useTranslationContext();
 
-    // Use a single state for modal content
     const [modalContent, setModalContent] = useState<ModalContent | null>(null);
-    const [currentMeetupIndex, setCurrentMeetupIndex] = useState(0); // Track index for meetup carousel
+    const [currentMeetupIndex, setCurrentMeetupIndex] = useState(0);
 
-    useEffect(() => {
-        if (isFirstRender.current) {
-            // Initial language change only on first render
-            changeLanguage("en");
-            isFirstRender.current = false;
+    const meetupImages: MeetupImage[] = MEETUP_IMAGES.map(img => ({
+        src: img.src,
+        alt: t(img.altKey)
+    }));
+
+    // Order jobs: Formationnet (job2) first, then Dar Blockchain (job1)
+    const jobsConfig = [
+        {
+            key: 'job2',
+            projectKeys: ['project1']
+        },
+        {
+            key: 'job1',
+            projectKeys: ['project1', 'project2', 'project3']
         }
-    }, [changeLanguage]);
-
-    // Meetup images data
-    const meetupImages: MeetupImage[] = [
-        { src: "/eximages/dar.jpg", alt: "Meetup 1: Darblochain Event" }, // Added more descriptive alt
-        { src: "/eximages/li.jpg", alt: "Meetup 2: LinkedIn Local Meeting" }, // Added more descriptive alt
-        // Add more meetup images here if needed
     ];
 
-    const projectKeys = ['project1', 'project2', 'project3'];
-
-    // Helper function to retrieve project data from translation
-    const getProjectData = (key: string): Project => {
-        const path = t(`experiences.job1.projects.${key}.image`);
-        const techs = t(`experiences.job1.projects.${key}.technologies`);
+    const getProjectData = (jobKey: string, projectKey: string): Project => {
+        const baseKey = `experiences.${jobKey}.projects.${projectKey}`;
+        const path = t(`${baseKey}.image`);
+        const techs = t(`${baseKey}.technologies`);
+        const link = t(`${baseKey}.link`);
         return {
-            key: key,
-            title: t(`experiences.job1.projects.${key}.title`),
-            description: t(`experiences.job1.projects.${key}.description`),
+            key: `${jobKey}-${projectKey}`,
+            title: t(`${baseKey}.title`),
+            description: t(`${baseKey}.description`),
             image: path && typeof path === 'string' && path.startsWith('/') ? path : '/images/placeholder.png',
-            technologies: typeof techs === 'string' ? techs.split(',').map(tech => tech.trim()) : [],
+            technologies: typeof techs === 'string' ? techs.split(',').map((tech: string) => tech.trim()) : [],
+            link: link && typeof link === 'string' && link.startsWith('http') ? link : undefined,
         };
     };
 
-    // Get all project data
-    const projects: Project[] = projectKeys.map(key => getProjectData(key));
+    const jobs = jobsConfig.map(jobConfig => ({
+        key: jobConfig.key,
+        title: t(`experiences.${jobConfig.key}.title`),
+        company: t(`experiences.${jobConfig.key}.company`),
+        date: t(`experiences.${jobConfig.key}.date`),
+        logo: t(`experiences.${jobConfig.key}.logo`), // Retrieve logo from translation
+        projects: jobConfig.projectKeys.map(pKey => getProjectData(jobConfig.key, pKey))
+    }));
 
 
     const openProjectModal = (project: Project) => {
@@ -83,16 +90,16 @@ const Experience = () => {
 
     const nextMeetup = () => {
         if (modalContent?.type === 'meetup' && Array.isArray(modalContent.data)) {
-             const newIndex = (currentMeetupIndex + 1) % modalContent.data.length;
-             setCurrentMeetupIndex(newIndex);
+            const newIndex = (currentMeetupIndex + 1) % modalContent.data.length;
+            setCurrentMeetupIndex(newIndex);
         }
     };
 
     const prevMeetup = () => {
-         if (modalContent?.type === 'meetup' && Array.isArray(modalContent.data)) {
-             const newIndex = (currentMeetupIndex - 1 + modalContent.data.length) % modalContent.data.length;
-             setCurrentMeetupIndex(newIndex);
-         }
+        if (modalContent?.type === 'meetup' && Array.isArray(modalContent.data)) {
+            const newIndex = (currentMeetupIndex - 1 + modalContent.data.length) % modalContent.data.length;
+            setCurrentMeetupIndex(newIndex);
+        }
     };
 
 
@@ -114,7 +121,7 @@ const Experience = () => {
         visible: { opacity: 1, x: 0 }
     };
 
-     const techVariants = {
+    const techVariants = {
         hidden: { opacity: 0, scale: 0.8 },
         visible: { opacity: 1, scale: 1 }
     };
@@ -124,176 +131,203 @@ const Experience = () => {
         <section id="experience" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
             {/* Existing background - DO NOT CHANGE */}
             <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+            
+            {/* Timeline Line */}
+            <div className="absolute start-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent hidden md:block"></div>
 
-            <div className="container mx-auto px-4 z-10 max-w-6xl"> {/* Increased max-width slightly */}
+            <div className="container mx-auto px-4 z-10 max-w-6xl">
                 {/* Title */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative animate-fadeIn">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 md:mb-20 text-white text-center relative animate-fadeIn">
                     <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                         {t('experiences.title')}
                     </span>
                 </h2>
 
-                {/* Main Experience Card */}
-                <motion.div
-                     initial="hidden"
-                     animate="visible"
-                     variants={containerVariants}
-                    className="bg-gray-800/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-2xl relative mx-auto w-full border border-gray-700/50"
-                >
-                    {/* Job Header */}
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
-                        <div>
-                            <h3 className="text-xl md:text-2xl font-semibold text-white mb-1">
-                                {t("experiences.job1.title")}
-                            </h3>
-                            <div className="text-lg md:text-xl text-gray-300 mb-2">{t("experiences.job1.company")}</div>
-                            <time className="block text-gray-400 text-sm">Nov 2022 – Jan 2025</time>
-                        </div>
-                        {/* Company Logo - Updated for mobile right alignment */}
-                        <motion.div 
-                            variants={itemVariants} 
-                            whileHover={{ scale: 1.05 }} 
-                            transition={{ duration: 0.2 }}
-                            className="ml-auto sm:ml-0"
+                <div className="space-y-16 relative">
+                    {jobs.map((job, jobIndex) => (
+                        <motion.div
+                            key={job.key}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={containerVariants}
+                            className="relative"
                         >
-                            <Image
-                                src="/images/assetdar.png"
-                                alt="Darblochain Logo"
-                                width={80}  // Smaller size for mobile
-                                height={60}
-                                className="object-contain rounded-md sm:w-[120px] sm:h-[80px]" // Original size for desktop
-                            />
-                        </motion.div>
-                    </motion.div>
+                            {/* Timeline Dot */}
+                            <div className="hidden md:block absolute left-1/2 top-8 transform -translate-x-1/2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-gray-900 z-20 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
 
-                    {/* Projects List */}
-                    <div className="space-y-8">
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={project.key}
-                                variants={itemVariants}
-                                transition={{ delay: index * 0.1 }} // Stagger project entry
-                                className="bg-gray-700/40 p-6 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-600/30 hover:border-indigo-500/50 shadow-lg"
-                            >
-                                <div className="flex flex-col md:flex-row gap-6 items-start md:items-center"> {/* Align items top */}
-                                    <div className="flex-1 order-2 md:order-1"> {/* Order text before image on smaller screens */}
-                                        <h4 className="text-lg md:text-xl font-semibold text-white mb-3">
-                                            {project.title}
-                                        </h4>
-                                        <ul className="space-y-2 text-gray-300 text-sm md:text-base">
-                                            {/* Descriptions - assuming one per project */}
-                                            <li>
-                                                <FaCheckCircle className="inline-block text-indigo-400 mr-2 align-top mt-1" /> {/* Use a slightly different color */}
-                                                <span>{project.description}</span>
-                                            </li>
-                                        </ul>
-
-                                        {/* Technologies */}
-                                        <div className="mt-4 flex flex-wrap gap-2">
-                                            {project.technologies.map((tech: string, techIndex: number) => (
-                                                <motion.span
-                                                    key={techIndex}
-                                                    variants={techVariants} // Stagger tech pills within project
-                                                    transition={{ delay: (index * 0.1) + (techIndex * 0.05) }}
-                                                    className="px-3 py-1 bg-teal-600/20 text-teal-300 rounded-full text-xs font-medium hover:bg-teal-600/30 transition-colors duration-300"
-                                                >
-                                                    {tech}
-                                                </motion.span>
-                                            ))}
+                            <div className="glass-strong p-6 md:p-8 rounded-2xl relative mx-auto w-full border border-white/10 hover:border-indigo-500/30 transition-colors duration-300">
+                                {/* Job Header */}
+                                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 border-b border-white/5 pb-6">
+                                    <div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+                                            {job.title}
+                                        </h3>
+                                        <div className="text-lg md:text-xl text-indigo-300 font-medium mb-2 flex items-center gap-2">
+                                            {job.company}
                                         </div>
+                                        <time className="inline-block px-3 py-1 rounded-full bg-white/5 text-gray-400 text-xs font-mono border border-white/5">
+                                            {job.date}
+                                        </time>
                                     </div>
-
-                                    {/* Project Image / View Details Trigger */}
-                                    <div className="flex-shrink-0 flex items-center justify-center md:justify-end order-1 md:order-2 w-full md:w-auto"> {/* Ensure image is centered on small screens */}
+                                    {job.logo && job.logo.startsWith('/') && (
                                         <motion.div
-                                            className="relative cursor-pointer group bg-gray-800/50 p-3 md:p-4 rounded-lg transition-transform duration-300 hover:scale-105 shadow-md border border-gray-700/30"
-                                            onClick={() => openProjectModal(project)}
+                                            variants={itemVariants}
                                             whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.98 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="ms-auto sm:ms-0 bg-white/5 p-2 rounded-lg backdrop-blur-sm border border-white/10"
                                         >
                                             <Image
-                                                src={project.image}
-                                                alt={`Preview of ${project.title}`}
-                                                width={160} // Adjusted size slightly
-                                                height={100} // Adjusted size slightly
-                                                style={{ objectFit: 'cover', aspectRatio: '16/10' }} // Maintain aspect ratio
-                                                className="rounded-md border border-gray-600/20"
+                                                src={job.logo}
+                                                alt={`${job.company} Logo`}
+                                                width={80}
+                                                height={60}
+                                                className="object-contain sm:w-[100px] sm:h-[60px]"
                                             />
-                                            {/* Hover Overlay and Icon */}
-                                            <div className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                {/* Changed icon to indicate "View" or "Details" */}
-                                                <FaRegEye className="text-white text-2xl drop-shadow-lg" />
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+
+                                {/* Projects List */}
+                                <div className="space-y-6">
+                                    {job.projects.map((project, index) => (
+                                        <motion.div
+                                            key={project.key}
+                                            variants={itemVariants}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="bg-black/20 p-6 rounded-xl hover:bg-black/30 transition-all duration-300 border border-white/5 hover:border-indigo-500/30 group"
+                                        >
+                                            <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+                                                <div className="flex-1 order-2 md:order-1">
+                                                    <h4 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
+                                                        {project.title}
+                                                    </h4>
+                                                    <ul className="space-y-2 text-gray-300 text-sm md:text-base leading-relaxed">
+                                                        <li>
+                                                            <FaCheckCircle className="inline-block text-indigo-500 mr-2 align-top mt-1 flex-shrink-0" />
+                                                            <span>{project.description}</span>
+                                                        </li>
+                                                    </ul>
+
+                                                    {/* Technologies */}
+                                                    <div className="mt-4 flex flex-wrap gap-2">
+                                                        {project.technologies.map((tech: string, techIndex: number) => (
+                                                            <motion.span
+                                                                key={techIndex}
+                                                                variants={techVariants}
+                                                                transition={{ delay: (index * 0.1) + (techIndex * 0.05) }}
+                                                                className="px-3 py-1 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 rounded-full text-xs font-medium"
+                                                            >
+                                                                {tech}
+                                                            </motion.span>
+                                                        ))}
+                                                    </div>
+
+                                                    {/* Link Button */}
+                                                    {project.link && (
+                                                        <div className="mt-5">
+                                                            <a
+                                                                href={project.link}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex items-center gap-2 text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-300 border-b border-indigo-500/30 hover:border-indigo-400 pb-0.5"
+                                                            >
+                                                                {t('myprojects.visitProject') || t('common.view')} <FaExternalLinkAlt className="text-xs" />
+                                                            </a>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Project Image */}
+                                                <div className="flex-shrink-0 flex items-center justify-center md:justify-end order-1 md:order-2 w-full md:w-auto">
+                                                    <motion.div
+                                                        className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg border border-white/10"
+                                                        onClick={() => openProjectModal(project)}
+                                                        whileHover={{ scale: 1.02 }}
+                                                        whileTap={{ scale: 0.98 }}
+                                                    >
+                                                        <Image
+                                                            src={project.image}
+                                                            alt={`Preview of ${project.title}`}
+                                                            width={180}
+                                                            height={110}
+                                                            style={{ objectFit: 'cover', aspectRatio: '16/10' }}
+                                                            className="transition-transform duration-500 group-hover:scale-110"
+                                                            priority={index < 2} // Prioritize loading for first few items
+                                                            loading={index < 2 ? "eager" : "lazy"}
+                                                            quality={85}
+                                                        />
+                                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[1px]">
+                                                            <FaRegEye className="text-white text-2xl drop-shadow-lg" />
+                                                        </div>
+                                                    </motion.div>
+                                                </div>
                                             </div>
                                         </motion.div>
-                                    </div>
+                                    ))}
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Meetups Section */}
-                    <div className="mt-16 mb-8">
-                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-10 text-center"> {/* Increased bottom margin */}
-                            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                                Meetups
-                            </span>
-                        </h3>
-                        {/* Meetup Image Stack/Carousel Trigger */}
-                        <motion.div
-                            className="relative h-48 md:h-64 flex justify-center items-center" // Increased height slightly for visual impact
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: projects.length * 0.1 + 0.3, duration: 0.5 }} // Stagger after projects
-                        >
-                            {meetupImages.map((image, index) => {
-                                const baseRotation = -10 + (index * 10); // Adjusted rotation spread
-                                const offset = (meetupImages.length - 1) * 60; // Adjusted offset for better spread
-                                return (
-                                    <motion.div
-                                        key={index}
-                                        className="absolute w-32 h-32 md:w-48 md:h-48 cursor-pointer rounded-lg shadow-xl border border-white/10 overflow-hidden"
-                                        initial={{
-                                            rotate: baseRotation,
-                                            x: -offset + (index * 120), // Adjusted horizontal spread
-                                            scale: 0.8,
-                                            opacity: 0
-                                        }}
-                                        animate={{
-                                            rotate: baseRotation,
-                                            x: -offset + (index * 120),
-                                            scale: 1, // Slightly larger default scale
-                                            opacity: 1
-                                        }}
-                                        whileHover={{
-                                            scale: 1.1,
-                                            rotate: 0,
-                                            zIndex: 10, // Bring to front on hover
-                                            transition: { duration: 0.3 }
-                                        }}
-                                         transition={{ delay: projects.length * 0.1 + 0.3 + (index * 0.1) }} // Stagger meetup images
-                                        onClick={() => openMeetupModal(index)}
-                                    >
-                                        <Image
-                                            src={image.src}
-                                            alt={image.alt}
-                                            fill
-                                            sizes="(max-width: 768px) 150px, 200px"
-                                            className="object-cover transition-transform duration-300 ease-in-out hover:scale-110"
-                                        />
-                                        {/* Overlay to hint at interactivity */}
-                                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <FaRegEye className="text-white text-xl" />
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
+                            </div>
                         </motion.div>
-                    </div>
+                    ))}
+                </div>
 
-                </motion.div>
+                {/* Meetups Section */}
+                <div className="mt-24 mb-12">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">
+                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+                            {t('experiences.meetups.title')}
+                        </span>
+                    </h3>
+                    <motion.div
+                        className="relative h-56 md:h-72 flex justify-center items-center perspective-1000"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                    >
+                        {meetupImages.map((image, index) => {
+                            const baseRotation = -6 + (index * 12);
+                            const offset = (meetupImages.length - 1) * 40;
+                            return (
+                                <motion.div
+                                    key={index}
+                                    className="absolute w-48 h-32 md:w-64 md:h-44 cursor-pointer rounded-xl shadow-2xl border-4 border-white/10 overflow-hidden transform-gpu"
+                                    initial={{
+                                        rotate: baseRotation,
+                                        x: -offset + (index * 80),
+                                        scale: 0.9,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        rotate: baseRotation,
+                                        x: -offset + (index * 80),
+                                        scale: 1,
+                                        opacity: 1
+                                    }}
+                                    whileHover={{
+                                        scale: 1.15,
+                                        rotate: 0,
+                                        zIndex: 20,
+                                        transition: { duration: 0.3 }
+                                    }}
+                                    transition={{ delay: 0.3 + (index * 0.1) }}
+                                    onClick={() => openMeetupModal(index)}
+                                >
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        fill
+                                        sizes="(max-width: 768px) 200px, 300px"
+                                        className="object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
+                                </motion.div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
             </div>
 
-            {/* Enhanced Image/Detail Modal */}
             <AnimatePresence>
                 {modalContent && (
                     <motion.div
@@ -301,122 +335,100 @@ const Experience = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 overflow-y-auto" // Added overflow-y-auto
+                        className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 overflow-y-auto"
                         onClick={closeModal}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, y: 20 }}
+                            initial={{ scale: 0.95, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }} // Adjusted spring physics
-                            className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 p-4 sm:p-6 rounded-2xl w-full max-w-5xl border border-gray-700/50 shadow-2xl flex flex-col" // Adjusted padding, width, border
-                            onClick={e => e.stopPropagation()} // Prevent clicks inside modal from closing
+                            exit={{ scale: 0.95, y: 20 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative glass-strong p-0 rounded-2xl w-full max-w-5xl border border-white/10 shadow-2xl flex flex-col overflow-hidden"
+                            onClick={e => e.stopPropagation()}
                         >
-                            {/* Close Button */}
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={closeModal}
-                                className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/10 text-white p-2 rounded-full hover:bg-white/20 transition-colors duration-300 backdrop-blur-sm z-20"
-                                aria-label="Close modal"
-                            >
-                                <FaTimes className="w-4 h-4 sm:w-5 h-5" />
-                            </motion.button>
+                            <button
+                                    onClick={closeModal}
+                                    className="absolute top-4 end-4 bg-black/50 text-white p-2 rounded-full hover:bg-red-500/80 transition-all duration-300 backdrop-blur-sm z-30"
+                                    aria-label="Close modal"
+                                >
+                                    <FaTimes className="w-4 h-4" />
+                                </button>
 
-
-                            {modalContent.type === 'project' && modalContent.data && (
-                                <div className="w-full h-full flex items-center justify-center">
-                                    <motion.div
-                                        className="relative w-full h-full max-w-4xl max-h-[90vh]"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.2, duration: 0.5 }}
-                                    >
-                                        <Image
-                                             src={(modalContent.data as Project).image}
-                                          alt={`Preview of ${(modalContent.data as Project).title}`}
-                                          width={1200}  // Added width property
-                                          height={800}  // Added height property
-                                          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1200px"
-                                          className="object-contain rounded-lg"
-                                          priority
-                                        />
-                                    </motion.div>
-                                </div>
-                            )}
-
-                            {modalContent.type === 'meetup' && Array.isArray(modalContent.data) && (
-                                // Meetup Carousel View
-                                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl group flex items-center justify-center">
-                                    <AnimatePresence mode="wait"> {/* Use mode="wait" for sequential animation */}
-                                        <motion.div
-                                            key={currentMeetupIndex} // Key change triggers animation
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.9 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="absolute inset-0 flex items-center justify-center" // Center the image within the container
-                                        >
-                                             <Image
-                                                src={modalContent.data[currentMeetupIndex].src}
-                                                alt={modalContent.data[currentMeetupIndex].alt}
+                            <div className="p-6 md:p-8">
+                                {modalContent.type === 'project' && modalContent.data && !Array.isArray(modalContent.data) && (
+                                    <div className="flex flex-col gap-6">
+                                        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/50 border border-white/10">
+                                            <Image
+                                                src={(modalContent.data as Project).image}
+                                                alt={`Preview of ${(modalContent.data as Project).title}`}
                                                 fill
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
-                                                quality={100}
-                                                className="object-contain rounded-xl" // object-contain is better for varying image sizes
-                                                priority // Load the first image fast
+                                                className="object-contain"
+                                                priority
                                             />
-                                            <div className="absolute inset-0 rounded-xl ring-1 ring-white/10 shadow-md" /> {/* Subtle border */}
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        </div>
 
-                                     {/* Meetup Nav Buttons */}
-                                    {modalContent.data.length > 1 && (
-                                        <>
-                                            <motion.button
-                                                whileHover={{ scale: 1.1, x: -5 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                onClick={(e) => { e.stopPropagation(); prevMeetup(); }}
-                                                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm z-10 focus:outline-none focus:ring-2 focus:ring-white/50"
-                                                aria-label="Previous meetup image"
-                                            >
-                                                <FaArrowLeft className="w-5 h-5" />
-                                            </motion.button>
-                                            <motion.button
-                                                whileHover={{ scale: 1.1, x: 5 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                onClick={(e) => { e.stopPropagation(); nextMeetup(); }}
-                                                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition-all duration-300 backdrop-blur-sm z-10 focus:outline-none focus:ring-2 focus:ring-white/50"
-                                                aria-label="Next meetup image"
-                                            >
-                                                <FaArrowRight className="w-5 h-5" />
-                                            </motion.button>
-                                        </>
-                                    )}
-
-                                    {/* Meetup Info */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white rounded-b-xl">
-                                        <motion.div
-                                            key={currentMeetupIndex + '_info'} // Key change triggers animation for text
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 10 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="flex items-center justify-between"
-                                        >
-                                            <h3 className="text-base sm:text-lg font-medium">
-                                                {modalContent.data[currentMeetupIndex].alt}
-                                            </h3>
-                                            {modalContent.data.length > 1 && (
-                                                <div className="text-gray-400 text-xs sm:text-sm">
-                                                    {currentMeetupIndex + 1} / {modalContent.data.length}
-                                                </div>
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-2xl font-bold text-white">{(modalContent.data as Project).title}</h3>
+                                            {(modalContent.data as Project).link && (
+                                                <a
+                                                    href={(modalContent.data as Project).link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 shadow-lg shadow-indigo-500/30"
+                                                >
+                                                    {t('myprojects.visitProject') || t('common.view')} <FaExternalLinkAlt className="text-sm" />
+                                                </a>
                                             )}
-                                        </motion.div>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
+                                {modalContent.type === 'meetup' && Array.isArray(modalContent.data) && (
+                                    <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black">
+                                        <AnimatePresence mode="wait">
+                                            <motion.div
+                                                key={currentMeetupIndex}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="absolute inset-0"
+                                            >
+                                                <Image
+                                                    src={modalContent.data[currentMeetupIndex].src}
+                                                    alt={modalContent.data[currentMeetupIndex].alt}
+                                                    fill
+                                                    className="object-contain"
+                                                    priority
+                                                />
+                                            </motion.div>
+                                        </AnimatePresence>
+
+                                        {modalContent.data.length > 1 && (
+                                            <>
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); prevMeetup(); }}
+                                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                >
+                                                    <FaArrowLeft />
+                                                </button>
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); nextMeetup(); }}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                >
+                                                    <FaArrowRight />
+                                                </button>
+                                            </>
+                                        )}
+
+                                        <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                                            <p className="text-white text-lg font-medium text-center">
+                                                {modalContent.data[currentMeetupIndex].alt}
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}

@@ -4,32 +4,24 @@ import { motion } from 'framer-motion';
 import { useTranslationContext } from '../contexts/translationContext';
 import GproConsultingLogo from '@/public/images/gpro.jpeg';
 import SatoripopLogo from '@/public/images/satoripop.jpeg';
-import { FaCalendarAlt, FaCode, FaExternalLinkAlt, FaBuilding, FaLaptopCode } from 'react-icons/fa';
+import { FaCalendarAlt, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { INTERNSHIPS_DATA } from '@/constants/data';
 
 const Internships: React.FC = () => {
     const { t } = useTranslationContext();
     const [activeInternship, setActiveInternship] = useState<number>(0);
 
-    const internshipData = [
-        {
-            logo: GproConsultingLogo,
-            company: "Gpro Consulting",
-            project: "SkillsyncEduct",
-            period: "Feb 2022 - June 2022",
-            description: t("internship.gpro.description"),
-            tech: "React Js, Node JS, Express JS, Redux-Toolkit, Mongoose, Git, OAuth 2.0, Cloudinary",
-            color: "from-blue-600 to-blue-400"
-        },
-        {
-            logo: SatoripopLogo,
-            company: "Satoripop",
-            project: "Premier League App",
-            period: "July 2021 - Sept 2021",
-            description: t("internship.satoripop.description"),
-            tech: "React Native, Firebase, Express JS, Node JS",
-            color: "from-purple-600 to-purple-400"
-        }
-    ];
+    const logos: Record<string, any> = {
+        gpro: GproConsultingLogo,
+        satoripop: SatoripopLogo
+    };
+
+    const internshipData = INTERNSHIPS_DATA.map(data => ({
+        ...data,
+        logo: logos[data.key],
+        description: t(`internship.${data.key}.description`),
+        period: t(`internship.${data.key}.period`)
+    }));
 
     const container = {
         hidden: { opacity: 0 },
@@ -64,7 +56,7 @@ const Internships: React.FC = () => {
 
                 {/* Internship Tabs */}
                 <div className="flex justify-center mb-12">
-                    <div className="flex space-x-4 bg-gray-800/30 backdrop-blur-sm p-2 rounded-xl">
+                    <div className="flex space-x-4 bg-white/5 backdrop-blur-sm p-2 rounded-xl border border-white/10">
                         {internshipData.map((internship, index) => (
                             <motion.button
                                 key={index}
@@ -74,7 +66,7 @@ const Internships: React.FC = () => {
                                 className={`px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-300 ${
                                     activeInternship === index 
                                         ? `bg-gradient-to-r ${internship.color} text-white shadow-lg` 
-                                        : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                                        : 'bg-white/5 text-gray-300 hover:bg-white/10'
                                 }`}
                             >
                                 <div className="relative w-6 h-6 rounded-full overflow-hidden">
@@ -100,7 +92,7 @@ const Internships: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/30 shadow-xl">
+                    <div className="glass-strong rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                         <div className="md:flex">
                             {/* Left Column - Logo and Basic Info */}
                             <div className={`md:w-1/3 p-8 bg-gradient-to-br ${internshipData[activeInternship].color} bg-opacity-10`}>
