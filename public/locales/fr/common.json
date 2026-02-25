@@ -72,6 +72,20 @@
           "image": "/images/admindasbordgym.jpeg",
           "technologies": "React Native, NestJS, PostgreSQL, Redis, Next.js, Docker",
           "link": "https://vitrinefitness.vercel.app"
+        },
+        "project2": {
+          "title": "Site E-Commerce",
+          "description": "Construction d'une plateforme e-commerce complète avec authentification utilisateur, catalogue de produits, panier, gestion des commandes et intégration de paiement. Implémentation d'APIs REST avec NestJS et TypeScript, Prisma ORM avec PostgreSQL pour la persistance des données, Redis pour le caching et la gestion des sessions, et Next.js pour le frontend. Conteneurisation de l'application entière avec Docker pour un déploiement et une mise à l'échelle facilités.",
+          "image": "/images/ecom.png",
+          "technologies": "TypeScript, Prisma, NestJS, PostgreSQL, Redis, Next.js, Docker",
+          "link": ""
+        },
+        "project3": {
+          "title": "Préparation aux Entretiens Techniques",
+          "description": "Développement d'une plateforme complète de préparation aux entretiens techniques avec une vaste collection de questions et réponses techniques dans plusieurs domaines. Implémentation d'une version Pro avec intégration de paiement Stripe permettant aux utilisateurs d'accéder à un assistant IA pour une préparation personnalisée aux entretiens et une expérience sans publicité. Construit avec un backend NestJS et TypeScript, Prisma ORM avec PostgreSQL pour le stockage des données, Redis pour le caching, Next.js pour le frontend, et Docker pour la conteneurisation.",
+          "image": "/images/in.png",
+          "technologies": "TypeScript, Prisma, NestJS, PostgreSQL, Redis, Next.js, Docker, Stripe",
+          "link": ""
         }
       }
     }

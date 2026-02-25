@@ -41,7 +41,7 @@ const Experience = () => {
     const jobsConfig = [
         {
             key: 'job2',
-            projectKeys: ['project1']
+            projectKeys: ['project1', 'project2', 'project3']
         },
         {
             key: 'job1',
