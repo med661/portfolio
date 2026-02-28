@@ -409,12 +409,14 @@ const Experience = () => {
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); prevMeetup(); }}
                                                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                    aria-label="Previous meetup"
                                                 >
                                                     <FaArrowLeft />
                                                 </button>
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); nextMeetup(); }}
                                                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                    aria-label="Next meetup"
                                                 >
                                                     <FaArrowRight />
                                                 </button>

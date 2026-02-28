@@ -1,14 +1,38 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaTimes, FaQuestionCircle, FaHistory, FaKeyboard, FaTerminal, FaLightbulb, FaRegLightbulb } from 'react-icons/fa';
 import { commands } from '@/interface/commands';
 
+// Type definitions
 interface TerminalProps {
     onClose: () => void;
-    t: (key: string) => string;  // Add this line
+    t: (key: string) => string;
 }
 
+interface CommandAliases {
+    [key: string]: string;
+}
+
+// Constants
+const COMMAND_ALIASES: CommandAliases = {
+    'ls': 'help',
+    'h': 'help',
+    'cls': 'clear',
+    'c': 'clear',
+    'sk': 'skills',
+    'bio': 'cat bio',
+    'projects': 'projectex -a',
+    'me': 'whoami',
+    'g': 'grep',
+    'find': 'grepskills'
+};
+
+const DOUBLE_TAB_THRESHOLD = 500;
+const SCROLL_ANIMATION_DURATION = 300;
+const SUGGESTION_BLUR_DELAY = 100;
+
 export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
+    // State
     const [output, setOutput] = useState<string[]>([]);
     const [input, setInput] = useState('');
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -17,29 +41,25 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [suggestionsEnabled, setSuggestionsEnabled] = useState(true);
     const [selectedSuggestion, setSelectedSuggestion] = useState(0);
-
     const [lastTabTime, setLastTabTime] = useState(0);
     const [showHistoryBrowser, setShowHistoryBrowser] = useState(false);
     const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [scrollHeight, setScrollHeight] = useState(0);
     const [clientHeight, setClientHeight] = useState(0);
+
+    // Refs
     const terminalRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    // Command aliases for convenience
-    const commandAliases: Record<string, string> = {
-        'ls': 'help',
-        'h': 'help',
-        'cls': 'clear',
-        'c': 'clear',
-        'sk': 'skills',
-        'bio': 'cat bio',
-        'projects': 'projectex -a',
-        'me': 'whoami',
-        'g': 'grep',
-        'find': 'grepskills'
-    };
+    // Memoized available commands for suggestions
+    const availableCommands = useMemo(() => [
+        ...commands.map(cmd => cmd.command),
+        ...Object.keys(COMMAND_ALIASES)
+    ], []);
+
+    // Memoized files for cat command
+    const catFiles = useMemo(() => ['bio', 'skills', 'contact'], []);
 
     // Update suggestions based on current input (but don't show them yet)
     useEffect(() => {
@@ -50,12 +70,6 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
 
             // If we're typing a command (not arguments)
             if (inputParts.length === 1) {
-                // Get all available commands including aliases
-                const availableCommands = [
-                    ...commands.map(cmd => cmd.command),
-                    ...Object.keys(commandAliases)
-                ];
-
                 // Filter commands that start with what user typed
                 const matchedSuggestions = availableCommands.filter(cmd =>
                     cmd.startsWith(commandPart)
@@ -63,28 +77,20 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
 
                 setSuggestions(matchedSuggestions);
                 setSelectedSuggestion(0);
-                // Don't show suggestions automatically - only on double Tab
-                // setShowSuggestions(matchedSuggestions.length > 0);
             } else {
                 // Handle argument suggestions for specific commands
                 const command = inputParts[0].toLowerCase();
                 if (command === 'cat') {
-                    const files = ['bio', 'skills', 'contact'];
                     const argPart = inputParts[1] || '';
-                    const matchedFiles = files.filter(file => file.startsWith(argPart.toLowerCase()));
+                    const matchedFiles = catFiles.filter(file => file.startsWith(argPart.toLowerCase()));
                     setSuggestions(matchedFiles.map(file => `cat ${file}`));
                     setSelectedSuggestion(0);
-                    // Don't show suggestions automatically - only on double Tab
-                    // setShowSuggestions(matchedFiles.length > 0);
-                } else {
-                    // setShowSuggestions(false);
                 }
             }
         } else {
             setSuggestions([]);
-            // setShowSuggestions(false);
         }
-    }, [input, suggestionsEnabled]);
+    }, [input, suggestionsEnabled, availableCommands, catFiles]);
 
     // Update scroll information when terminal content changes
     useEffect(() => {
@@ -127,13 +133,13 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
     };
 
     // Expand command aliases
-    const expandAlias = (cmdString: string) => {
+    const expandAlias = useCallback((cmdString: string): string => {
         const parts = cmdString.trim().split(' ');
         const command = parts[0].toLowerCase();
         const args = parts.slice(1).join(' ');
 
-        if (command in commandAliases) {
-            const aliasExpansion = commandAliases[command];
+        if (command in COMMAND_ALIASES) {
+            const aliasExpansion = COMMAND_ALIASES[command];
             const aliasParts = aliasExpansion.split(' ');
 
             // If alias expands to command with args, combine with user args
@@ -146,7 +152,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
         }
 
         return cmdString;
-    };
+    }, []);
 
     // Handle piped commands (cmd1 | cmd2)
     const handlePipedCommand = (cmdString: string) => {
@@ -283,7 +289,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
 
             // Check if this is a double-tab (two tabs in quick succession)
             const now = Date.now();
-            const isDoubleTap = (now - lastTabTime) < 500; // 500ms threshold for double-tab
+            const isDoubleTap = (now - lastTabTime) < DOUBLE_TAB_THRESHOLD;
             setLastTabTime(now);
 
             if (isDoubleTap && suggestionsEnabled) {
@@ -387,7 +393,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                 <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
                     <div className="flex items-center space-x-4">
                         <div className="flex space-x-2">
-                            <button onClick={onClose} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" />
+                            <button onClick={onClose} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" aria-label="Close terminal" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
                             <div className="w-3 h-3 rounded-full bg-green-500" />
                         </div>
@@ -400,6 +406,8 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                             onClick={() => setSuggestionsEnabled(prev => !prev)}
                             className={`${suggestionsEnabled ? 'text-yellow-400' : 'text-gray-400'} hover:text-yellow-300 transition-colors text-sm flex items-center`}
                             title={`${suggestionsEnabled ? 'Disable' : 'Enable'} Suggestions`}
+                            aria-label={`${suggestionsEnabled ? 'Disable' : 'Enable'} Suggestions`}
+                            aria-pressed={suggestionsEnabled}
                         >
                             {suggestionsEnabled ?
                                 <FaLightbulb className="mr-1" /> :
@@ -411,6 +419,8 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                             onClick={() => setShowShortcutsHelp(prev => !prev)}
                             className="text-gray-400 hover:text-white transition-colors text-sm flex items-center"
                             title="Keyboard Shortcuts (Ctrl+K)"
+                            aria-label="Keyboard Shortcuts"
+                            aria-pressed={showShortcutsHelp}
                         >
                             <FaKeyboard className="mr-1" />
                             <span className="hidden sm:inline">Shortcuts</span>
@@ -419,6 +429,8 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                             onClick={() => setShowHistoryBrowser(prev => !prev)}
                             className="text-gray-400 hover:text-white transition-colors text-sm flex items-center"
                             title="Command History (Ctrl+H)"
+                            aria-label="Command History"
+                            aria-pressed={showHistoryBrowser}
                         >
                             <FaHistory className="mr-1" />
                             <span className="hidden sm:inline">History</span>
@@ -427,6 +439,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                             onClick={onClose}
                             className="text-gray-400 hover:text-white transition-colors"
                             title="Close Terminal"
+                            aria-label="Close Terminal"
                         >
                             <FaTimes />
                         </button>
@@ -475,7 +488,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                                 setShowSuggestions(false);
 
                             }}
-                            onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
+                            onBlur={() => setTimeout(() => setShowSuggestions(false), SUGGESTION_BLUR_DELAY)}
                             className="bg-transparent outline-none text-white flex-1"
                             autoFocus
                             aria-label="Terminal command input"
@@ -493,7 +506,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                                 {suggestions.map((suggestion, index) => {
                                     // Find if it's a command or an alias
                                     const isAlias = !commands.find(c => c.command === suggestion.split(' ')[0]);
-                                    const aliasTarget = isAlias ? commandAliases[suggestion.split(' ')[0]] : null;
+                                    const aliasTarget = isAlias ? COMMAND_ALIASES[suggestion.split(' ')[0]] : null;
                                     const cmd = commands.find(c => c.command === (isAlias ? aliasTarget?.split(' ')[0] : suggestion.split(' ')[0]));
 
                                     return (
@@ -524,7 +537,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                         >
                             <div className="p-2 text-sm font-bold text-white border-b border-gray-700 bg-gray-900 flex justify-between">
                                 <span>Keyboard Shortcuts</span>
-                                <button onClick={() => setShowShortcutsHelp(false)} className="text-gray-400 hover:text-white">
+                                <button onClick={() => setShowShortcutsHelp(false)} className="text-gray-400 hover:text-white" aria-label="Close keyboard shortcuts">
                                     <FaTimes size={14} />
                                 </button>
                             </div>
@@ -562,7 +575,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                         >
                             <div className="p-2 text-sm font-bold text-white border-b border-gray-700 bg-gray-900 flex justify-between">
                                 <span>Command History</span>
-                                <button onClick={() => setShowHistoryBrowser(false)} className="text-gray-400 hover:text-white">
+                                <button onClick={() => setShowHistoryBrowser(false)} className="text-gray-400 hover:text-white" aria-label="Close command history">
                                     <FaTimes size={14} />
                                 </button>
                             </div>

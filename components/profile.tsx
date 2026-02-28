@@ -30,9 +30,8 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ t, onOpenTermina
                         <Image
                             src="/images/a.jpg"
                             alt={t('aboutme.profile.alt')}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-full"
+                            fill
+                            className="object-cover rounded-full"
                             priority
                         />
                     </div>

@@ -1,9 +1,36 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslationContext } from '../contexts/translationContext';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Constants
+const SCROLL_THRESHOLD = 20;
+const MOBILE_MENU_DELAY = 0.05;
+
+// Language configuration
+const LANGUAGES = ['en', 'fr', 'ar'] as const;
+type Language = typeof LANGUAGES[number];
+
+const LANGUAGE_LABELS: Record<Language, string> = {
+    en: 'English',
+    fr: 'Français',
+    ar: 'العربية'
+};
+
+// Menu items configuration
+const MENU_ITEMS = [
+    'about', 
+    'experience', 
+    'education', 
+    'projects', 
+    'internship', 
+    'proof-of-achievement', 
+    'skills', 
+    'achievements', 
+    'interests'
+] as const;
 
 const Header: React.FC = () => {
     const router = useRouter();
@@ -12,15 +39,24 @@ const Header: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const { t, i18n, changeLanguage } = useTranslationContext();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+    // Memoized menu items
+    const menuItems = useMemo(() => [...MENU_ITEMS], []);
+
+    // Memoized languages
+    const languages = useMemo(() => [...LANGUAGES], []);
+
+    // Scroll handler with useCallback
+    const handleScroll = useCallback(() => {
+        setScrolled(window.scrollY > SCROLL_THRESHOLD);
     }, []);
 
-    const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    // Navigation handler with useCallback
+    const handleNavigation = useCallback((e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
         e.preventDefault();
         const element = document.getElementById(section);
         if (element) {
@@ -28,13 +64,18 @@ const Header: React.FC = () => {
             element.scrollIntoView({ behavior: 'smooth' });
             setIsMobileMenuOpen(false);
         }
-    };
+    }, [router]);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
+    // Mobile menu toggle with useCallback
+    const toggleMobileMenu = useCallback(() => {
+        setIsMobileMenuOpen(prev => !prev);
+    }, []);
 
-    const menuItems = ['about', 'experience', 'education', 'projects', 'internship', 'proof-of-achievement', 'skills', 'achievements', 'interests'];
+    // Language change handler
+    const handleLanguageChange = useCallback((lang: Language) => {
+        changeLanguage(lang);
+        setIsLangMenuOpen(false);
+    }, [changeLanguage]);
 
     return (
         <header className={`fixed top-0 start-0 w-full z-50 transition-all duration-300 ease-in-out
@@ -81,6 +122,8 @@ const Header: React.FC = () => {
                                 className={`px-3 py-1.5 rounded-full text-xs font-medium border border-white/10 ${
                                     scrolled ? 'bg-white/5 hover:bg-white/10 text-white' : 'bg-black/20 hover:bg-black/40 text-white backdrop-blur-sm'
                                 } transition-all duration-200 flex items-center gap-2`}
+                                aria-label="Select language"
+                                aria-expanded={isLangMenuOpen}
                             >
                                 <span>{i18n.language.toUpperCase()}</span>
                                 <svg className={`w-3 h-3 transition-transform duration-200 ${isLangMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,14 +141,12 @@ const Header: React.FC = () => {
                                         transition={{ duration: 0.2 }}
                                         className="absolute end-0 mt-2 w-40 rounded-xl shadow-2xl py-1 glass-strong overflow-hidden z-50"
                                     >
-                                        {['en', 'fr', 'ar'].map((lang) => (
+                                        {languages.map((lang) => (
                                             <button
                                                 key={lang}
-                                                onClick={() => {
-                                                    changeLanguage(lang);
-                                                    setIsLangMenuOpen(false);
-                                                }}
+                                                onClick={() => handleLanguageChange(lang)}
                                                 className="w-full text-start px-4 py-2.5 text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3 transition-colors"
+                                                aria-label={`Switch to ${LANGUAGE_LABELS[lang]}`}
                                             >
                                                 <div className="relative w-5 h-5 rounded-full overflow-hidden shadow-sm">
                                                     <Image
@@ -115,7 +156,7 @@ const Header: React.FC = () => {
                                                         className="object-cover"
                                                     />
                                                 </div>
-                                                <span>{lang === 'en' ? 'English' : lang === 'fr' ? 'Français' : 'العربية'}</span>
+                                                <span>{LANGUAGE_LABELS[lang]}</span>
                                             </button>
                                         ))}
                                     </motion.div>
@@ -128,6 +169,7 @@ const Header: React.FC = () => {
                             onClick={toggleMobileMenu}
                             className="md:hidden rounded-full p-2 inline-flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-200 focus:outline-none"
                             aria-expanded={isMobileMenuOpen}
+                            aria-label="Toggle mobile menu"
                         >
                             <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
                                 <span className={`block w-full h-0.5 bg-white transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -155,7 +197,7 @@ const Header: React.FC = () => {
                                     key={item}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.05 }}
+                                    transition={{ delay: index * MOBILE_MENU_DELAY }}
                                 >
                                     <Link
                                         href={`#${item}`}

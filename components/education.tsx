@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { 
     FaGraduationCap, 
     FaSchool, 
@@ -35,8 +35,8 @@ const Education: React.FC = () => {
     // Translation Hook
     const { t } = useTranslationContext();
 
-    // Degree Configuration
-    const degreesConfig: DegreeData[] = [
+    // Degree Configuration - Memoized to prevent useCallback dependency issues
+    const degreesConfig = useMemo<DegreeData[]>(() => [
         {
             key: 'degree1',
             icon: <FaUniversity className="text-white text-2xl" />,
@@ -48,17 +48,17 @@ const Education: React.FC = () => {
             key: 'degree2',
             icon: <FaSchool className="text-white text-2xl" />,
             colorGradient: "from-purple-600 to-pink-600",
-            logo: "/images/polytech.png",
-            images: ["/edu/eps.jpg"]
+            logo: "/images/eps.jpg",
+            images: ["/edu/bac.jpg"]
         },
         {
             key: 'degree3',
             icon: <FaGraduationCap className="text-white text-2xl" />,
-            colorGradient: "from-amber-500 to-orange-500",
+            colorGradient: "from-green-600 to-teal-600",
             logo: "/images/lts.jpeg",
-            images: ["/edu/bac.jpg"]
+            images: []
         }
-    ];
+    ], []);
 
     // Image Navigation Handlers
     const handleNextImage = useCallback(() => {
@@ -335,18 +335,21 @@ const Education: React.FC = () => {
                             <button
                                 onClick={handlePrevImage}
                                 className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm transition-colors"
+                                aria-label="Previous image"
                             >
                                 <FaArrowLeft size={20} />
                             </button>
                             <button
                                 onClick={handleNextImage}
                                 className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm transition-colors"
+                                aria-label="Next image"
                             >
                                 <FaArrowRight size={20} />
                             </button>
                             <button
                                 onClick={() => setSelectedImage(null)}
                                 className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-red-500/80 transition-colors"
+                                aria-label="Close image viewer"
                             >
                                 <FaTimes size={20} />
                             </button>

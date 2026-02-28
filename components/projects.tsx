@@ -224,6 +224,7 @@ const Projects: React.FC = () => {
                                 <button
                                     onClick={closeProjectDetails}
                                     className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-red-500/80 transition-colors backdrop-blur-sm z-20"
+                                    aria-label="Close project details"
                                 >
                                     <FaTimes />
                                 </button>

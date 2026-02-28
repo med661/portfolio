@@ -12,7 +12,9 @@ class MyDocument extends Document {
 
     return (
       <Html lang={locale} dir={dir}>
-        <Head />
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <body className="antialiased">
           <Main />
           <NextScript />

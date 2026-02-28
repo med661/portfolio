@@ -69,6 +69,7 @@ const Footer: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
+          aria-label="Back to top"
         >
           <FaArrowUp className="text-white" />
         </motion.button>
