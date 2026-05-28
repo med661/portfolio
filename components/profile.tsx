@@ -28,7 +28,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ t, onOpenTermina
                 >
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-transparent transition-colors duration-300">
                         <Image
-                            src="/images/a.jpg"
+                            src="/images/a.png"
                             alt={t('aboutme.profile.alt')}
                             fill
                             className="object-cover rounded-full"
