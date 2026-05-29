@@ -50,8 +50,8 @@ const Projects: React.FC = () => {
     };
 
     return (
-        <section id="projects" className="relative py-16 md:py-24 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+        <section id="projects" className="relative py-16 md:py-24 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             <div className="container mx-auto px-4 z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center"
                 >
-                    <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                         {t('myprojects.title')}
                     </span>
                 </motion.h2>
@@ -78,7 +78,7 @@ const Projects: React.FC = () => {
                             variants={item}
                             whileHover={{ y: -10 }}
                             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                            className="glass-strong rounded-xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/10 hover:border-indigo-500/30 h-full flex flex-col group transition-colors duration-300"
+                            className="glass-strong rounded-xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/10 hover:border-cyan-500/30 h-full flex flex-col group transition-colors duration-300"
                             onMouseEnter={() => setHoveredProject(index)}
                             onMouseLeave={() => setHoveredProject(null)}
                         >
@@ -99,7 +99,7 @@ const Projects: React.FC = () => {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => openProjectDetails(index)}
-                                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium flex items-center gap-2 w-full justify-center hover:bg-indigo-700 transition-colors z-10 shadow-lg"
+                                        className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2 w-full justify-center hover:bg-blue-700 transition-colors z-10 shadow-lg"
                                     >
                                         <FaLaptopCode />
                                         {t('myprojects.viewDetails')}
@@ -114,10 +114,10 @@ const Projects: React.FC = () => {
 
                             <div className="p-6 flex flex-col flex-grow relative">
                                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
                                     {project.title}
                                 </h3>
-                                <div className="w-12 h-1 bg-indigo-600 mb-4 rounded-full group-hover:w-20 transition-all duration-300"></div>
+                                <div className="w-12 h-1 bg-blue-600 mb-4 rounded-full group-hover:w-20 transition-all duration-300"></div>
                                 <p className="text-gray-300 mb-6 text-sm leading-relaxed line-clamp-3 font-light">
                                     {project.description}
                                 </p>
@@ -147,7 +147,7 @@ const Projects: React.FC = () => {
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-gray-400 hover:text-indigo-400 transition-colors flex items-center gap-1 text-sm font-medium group/link"
+                                            className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-medium group/link"
                                         >
                                             <FaExternalLinkAlt className="text-xs transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
                                             {t('myprojects.visitProject')}
@@ -157,7 +157,7 @@ const Projects: React.FC = () => {
                                             whileHover={{ scale: 1.1, rotate: 5 }}
                                             whileTap={{ scale: 0.9 }}
                                             onClick={() => openProjectDetails(index)}
-                                            className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-colors"
+                                            className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-colors"
                                         >
                                             <FaCode />
                                         </motion.button>
@@ -171,12 +171,12 @@ const Projects: React.FC = () => {
                         variants={item}
                         whileHover={{ y: -10 }}
                         transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className="glass-strong rounded-xl overflow-hidden shadow-xl border border-white/10 hover:border-indigo-500/30 p-6 flex flex-col items-center justify-center min-h-[380px] group"
+                        className="glass-strong rounded-xl overflow-hidden shadow-xl border border-white/10 hover:border-cyan-500/30 p-6 flex flex-col items-center justify-center min-h-[380px] group"
                     >
                         <div className="relative w-16 h-16 mb-6">
-                            <div className="absolute inset-0 bg-indigo-600/30 rounded-full animate-ping opacity-75"></div>
-                            <div className="relative w-16 h-16 bg-indigo-600/20 rounded-full flex items-center justify-center group-hover:bg-indigo-600/30 transition-colors">
-                                <svg className="w-8 h-8 text-indigo-400 group-hover:text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="absolute inset-0 bg-blue-600/30 rounded-full animate-ping opacity-75"></div>
+                            <div className="relative w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
+                                <svg className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                             </div>
@@ -184,7 +184,7 @@ const Projects: React.FC = () => {
                         <h3 className="text-2xl font-bold text-white mb-3">{t('myprojects.comingSoon.title')}</h3>
                         <p className="text-gray-400 text-center max-w-xs">{t('myprojects.comingSoon.description')}</p>
                         <motion.button
-                            className="mt-8 px-6 py-2 bg-white/5 text-indigo-400 rounded-full hover:bg-white/10 transition-all duration-300 border border-white/5"
+                            className="mt-8 px-6 py-2 bg-white/5 text-cyan-400 rounded-full hover:bg-white/10 transition-all duration-300 border border-white/5"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -242,7 +242,7 @@ const Projects: React.FC = () => {
                                         href={projects[activeProject].link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-6 py-2.5 bg-indigo-600 text-white rounded-lg flex items-center gap-2 hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/20"
+                                        className="px-6 py-2.5 bg-blue-600 text-white rounded-lg flex items-center gap-2 hover:bg-blue-700 transition-colors shadow-lg shadow-cyan-500/20"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
@@ -257,7 +257,7 @@ const Projects: React.FC = () => {
 
                                 <div className="mb-8">
                                     <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                        <FaCode className="text-indigo-400" />
+                                        <FaCode className="text-cyan-400" />
                                         {t('myprojects.technologies')}
                                     </h4>
                                     <div className="flex flex-wrap gap-2">

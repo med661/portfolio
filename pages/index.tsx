@@ -11,14 +11,17 @@ import TechSection from "@/components/skills";
 import Internships from "@/components/internship";
 import Accomplishments from "@/components/accomplishment";
 import Interests from "@/components/interests";
-
-// Add this import at the top
 import Footer from '../components/footer';
+import { ScrollProgress } from '@/components/scrollProgress';
+import { CursorSpotlight } from '@/components/cursorSpotlight';
+import { Testimonials } from '@/components/testimonials';
 
 export default function Home() {
   
   return (
     <>
+      <ScrollProgress />
+      <CursorSpotlight />
       <Head>
         {/* Primary Meta Tags */}
         <title>Salah Sfar - Full Stack Developer & Software Engineer</title>
@@ -90,10 +93,10 @@ export default function Home() {
       <Internships />
       <ProofOfAchievement />
       <TechSection />
+      <Testimonials />
       <Accomplishments />
       <Interests />
-     
-<Footer />
+      <Footer />
     </>
   );
 }

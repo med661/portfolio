@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a; /* Darker black */
-    --foreground: #ededed;
+    --background: #050d1a;
+    --foreground: #e2e8f0;
   }
 }
 
@@ -26,7 +26,8 @@ html, body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(135deg, #050d1a 0%, #0a1628 50%, #050d1a 100%);
+  background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
   will-change: scroll-position;
   backface-visibility: hidden;
@@ -36,7 +37,7 @@ body {
 
 /* Selection */
 ::selection {
-  @apply bg-indigo-500/30 text-indigo-200;
+  @apply bg-cyan-500/30 text-cyan-200;
 }
 
 /* Scrollbar */
@@ -45,15 +46,16 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  background: #050d1a;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-700 rounded-full border-2 border-gray-900;
+  @apply bg-blue-800 rounded-full;
+  border: 2px solid #050d1a;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
+  @apply bg-cyan-700;
 }
 
 /* Utility Classes */
@@ -61,26 +63,26 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Glassmorphism */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+    @apply bg-blue-950/40 backdrop-blur-md border border-cyan-500/10 shadow-xl;
   }
-  
+
   .glass-strong {
-    @apply bg-gray-900/80 backdrop-blur-lg border border-white/5 shadow-2xl;
+    @apply bg-blue-950/70 backdrop-blur-lg border border-cyan-500/10 shadow-2xl;
   }
 
   /* Text Gradient */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-sky-300;
   }
-  
+
   /* Animation Utilities */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .delay-100 { animation-delay: 0.1s; }
   .delay-200 { animation-delay: 0.2s; }
   .delay-300 { animation-delay: 0.3s; }

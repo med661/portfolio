@@ -512,10 +512,10 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose, t }) => {
                                     return (
                                         <li
                                             key={suggestion}
-                                            className={`px-3 py-2 cursor-pointer hover:bg-gray-700 flex justify-between ${index === selectedSuggestion ? 'bg-indigo-900' : ''}`}
+                                            className={`px-3 py-2 cursor-pointer hover:bg-gray-700 flex justify-between ${index === selectedSuggestion ? 'bg-blue-900' : ''}`}
                                             onClick={() => applySuggestion(suggestion)}
                                         >
-                                            <span className="text-indigo-400 font-bold">{suggestion}</span>
+                                            <span className="text-cyan-400 font-bold">{suggestion}</span>
                                             {isAlias ? (
                                                 <span className="text-gray-400 text-xs">alias for: {aliasTarget}</span>
                                             ) : cmd ? (

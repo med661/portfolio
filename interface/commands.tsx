@@ -172,6 +172,8 @@ export const commands: Command[] = [
   ✊  rps        Play Rock Paper Scissors (ex: rps rock)
   🔤  hangman    Play Word Guessing game (ex: hangman start)
   🎨  figlet     Display text as ASCII art (ex: figlet Hello)
+  ☕  coffee     Brew a virtual coffee
+  🚀  hire       Why you should hire me
 
 ⌨️ Keyboard Shortcuts:
   Tab (2x)    Show command suggestions
@@ -543,6 +545,56 @@ hangman hint    - Get a hint`;
 
         return gameManager.makeGuess(command);
     }
+},
+{
+    command: 'hire',
+    description: 'Why you should hire me',
+    action: () =>
+`🚀 Why hire Salah Sfar?
+
+✅ 3+ years building production systems at scale
+✅ 8+ shipped products across fintech, EdTech & e-commerce
+✅ Full-stack: NestJS · Next.js · PostgreSQL · Docker · Redis
+✅ Strong system design — not just feature delivery
+✅ Clean code, PR reviews, documentation included
+✅ Available immediately
+
+📧 salahsfar.pro@gmail.com
+🔗 linkedin.com/in/salah-sfar
+💻 github.com/med661
+
+Type 'contact' to get in touch!`
+},
+{
+    command: 'coffee',
+    description: 'Brew a virtual coffee',
+    action: () =>
+`☕ Brewing your coffee...
+
+    ( (
+     ) )
+  .______.
+  |      |]
+  \\      /
+   \`----'
+
+Done! Enjoy your virtual espresso ☕
+(Real coffee available if we meet IRL)`
+},
+{
+    command: 'secret',
+    description: 'You found the easter egg!',
+    action: () =>
+`🥚 Easter egg unlocked!
+
+You're clearly curious and thorough —
+exactly the kind of person who reads docs.
+
+"Any fool can write code that a computer can understand.
+ Good programmers write code that humans can understand."
+                              — Martin Fowler
+
+Type 'hire' if you liked what you saw 😉`
 },
 // Add the figlet command
 {

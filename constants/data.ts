@@ -50,7 +50,7 @@ export const PROJECTS_DATA = [
         image: "/images/portfolio.png",
         technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18next", "React"],
         link: "/",
-        color: "from-indigo-600 to-indigo-400"
+        color: "from-cyan-600 to-cyan-400"
     },
     {
         key: 'ecommerceBackend',

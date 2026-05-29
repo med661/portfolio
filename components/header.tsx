@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0 cursor-pointer">
                         <Link href="/">
-                            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-indigo-500/50 hover:border-indigo-400 transition-colors duration-300 shadow-lg shadow-indigo-500/20">
+                            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-cyan-500/50 hover:border-cyan-400 transition-colors duration-300 shadow-lg shadow-cyan-500/20">
                                 <Image
                                     src="/images/logo.png"
                                     alt="Salah Sfar Logo"
@@ -109,7 +109,7 @@ const Header: React.FC = () => {
                                 className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 relative group py-2"
                             >
                                 {t(item)}
-                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
                             </Link>
                         ))}
                     </nav>

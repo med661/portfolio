@@ -40,7 +40,7 @@ const Education: React.FC = () => {
         {
             key: 'degree1',
             icon: <FaUniversity className="text-white text-2xl" />,
-            colorGradient: "from-indigo-600 to-blue-600",
+            colorGradient: "from-cyan-600 to-blue-600",
             logo: "/images/polytech.png",
             images: ["/edu/me.jpg"]
         },
@@ -130,13 +130,13 @@ const Education: React.FC = () => {
     return (
         <section 
             id="education" 
-            className="relative py-16 md:py-24 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center overflow-hidden"
+            className="relative py-16 md:py-24 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center overflow-hidden"
         >
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             
             {/* Timeline Line */}
-            <div className="absolute start-8 md:start-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/30 to-transparent hidden md:block"></div>
-            <div className="absolute start-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/30 to-transparent md:hidden"></div>
+            <div className="absolute start-8 md:start-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent hidden md:block"></div>
+            <div className="absolute start-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent md:hidden"></div>
 
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -153,11 +153,11 @@ const Education: React.FC = () => {
                     className="text-center mb-16 md:mb-20"
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-                        <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                        <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                             {t('educations.title')}
                         </span>
                     </h2>
-                    <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full opacity-50"></div>
+                    <div className="w-24 h-1 bg-cyan-500 mx-auto rounded-full opacity-50"></div>
                 </motion.div>
 
                 {/* Degrees List */}
@@ -177,8 +177,8 @@ const Education: React.FC = () => {
                             className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute start-8 md:start-1/2 top-0 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gray-900 border-2 border-indigo-500 z-20 shadow-[0_0_10px_rgba(99,102,241,0.5)] mt-8 md:mt-8">
-                                <div className="absolute inset-0 bg-indigo-500 rounded-full animate-ping opacity-20"></div>
+                            <div className="absolute start-8 md:start-1/2 top-0 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gray-900 border-2 border-cyan-500 z-20 shadow-[0_0_10px_rgba(99,102,241,0.5)] mt-8 md:mt-8">
+                                <div className="absolute inset-0 bg-cyan-500 rounded-full animate-ping opacity-20"></div>
                             </div>
 
                             {/* Card Container */}
@@ -195,7 +195,7 @@ const Education: React.FC = () => {
                                         className={`
                                             glass-strong rounded-2xl overflow-hidden
                                             transition-all duration-500 ease-out border border-white/10
-                                            hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]
+                                            hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]
                                             group
                                         `}
                                     >
@@ -236,16 +236,16 @@ const Education: React.FC = () => {
 
                                                     {/* Title & Info */}
                                                     <div className="flex-grow text-start">
-                                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
                                                             {t(`educations.${degree.key}.title`)}
                                                         </h3>
                                                         <div className="flex flex-col gap-1 text-gray-400 text-sm md:text-base">
                                                             <span className="flex items-center gap-2">
-                                                                <FaSchool className="text-indigo-500" />
+                                                                <FaSchool className="text-cyan-500" />
                                                                 {t(`educations.${degree.key}.school`)}
                                                             </span>
                                                             <span className="flex items-center gap-2">
-                                                                <FaCalendarAlt className="text-indigo-500" />
+                                                                <FaCalendarAlt className="text-cyan-500" />
                                                                 {t(`educations.${degree.key}.date`)}
                                                             </span>
                                                         </div>
@@ -257,7 +257,7 @@ const Education: React.FC = () => {
 
                                                 {/* Description */}
                                                 <div className="flex items-start gap-3">
-                                                    <FaCertificate className="text-indigo-400 mt-1 flex-shrink-0" />
+                                                    <FaCertificate className="text-cyan-400 mt-1 flex-shrink-0" />
                                                     <p className="text-gray-300 leading-relaxed text-start">
                                                         {t(`educations.${degree.key}.description`)}
                                                     </p>

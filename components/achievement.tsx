@@ -83,8 +83,8 @@ const ProofOfAchievement: React.FC = () => {
     };
     
     return (
-        <section id="proof-of-achievement" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+        <section id="proof-of-achievement" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             <div className="container mx-auto px-4 md:px-8 z-10">
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -99,7 +99,7 @@ const ProofOfAchievement: React.FC = () => {
                         transition={{ duration: 0.6 }}
                         className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative"
                     >
-                        <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                        <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                             {t('proofofcompletion.title')}
                         </span>
                     </motion.h2>
@@ -143,7 +143,7 @@ const ProofOfAchievement: React.FC = () => {
                                                     </div>
                                                 </div>
                                                 <div className="ml-4 flex-grow">
-                                                    <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 
+                                                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 
                                                                 transition-colors duration-300 line-clamp-2">
                                                         {achievement.title}
                                                     </h3>

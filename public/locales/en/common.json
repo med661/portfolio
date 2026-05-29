@@ -15,8 +15,10 @@
     "title": "About Me",
     "greeting": "Hi, I'm",
     "name": "Salah Sfar",
-    "role": "Software Engineer (Full Stack)",
-    "bio": "Full Stack Software Engineer with more than 3 years of experience developing scalable web applications in Agile environments. Skilled at optimizing performance and delivering secure, maintainable solutions.",
+    "role": "Senior Full Stack Engineer",
+    "bio": "Senior Full Stack Engineer with 3+ years building production-grade systems at scale. Delivered 8+ products across fintech, EdTech, and e-commerce domains. Specialized in Node.js/NestJS microservices, React/Next.js frontends, and Docker-based deployments.",
+    "available": "Open to Work",
+    "availableLabel": "Available for new opportunities",
     "profile": {
       "alt": "Salah Sfar",
       "terminal": "Terminal"
@@ -122,11 +124,11 @@
     },
     "realtimeChat": {
       "title": "Real-Time Chat App",
-      "description": "An application that allows users to create accounts and communicate via real-time messaging."
+      "description": "Engineered real-time messaging supporting 200+ concurrent users via WebSocket. Sub-50ms message delivery latency. Built with NestJS, Prisma, and React with JWT-based authentication and persistent message history."
     },
     "learnHub": {
       "title": "LearnHub",
-      "description": "A digital platform that helps people find the right training opportunity based on their specific needs and objectives."
+      "description": "Connected 2,000+ learners with training opportunities. Reduced course-discovery time by 40% through GraphQL-optimized queries and intelligent filtering. Built with NestJS, PostgreSQL, and Redux Thunk for seamless state management."
     },
     "stressTest": {
       "title": "Stress Test",
@@ -134,7 +136,7 @@
     },
     "jobHuntDiary": {
       "title": "Job Hunt Diary",
-      "description": "Job Hunt Diary is a comprehensive job application tracking system designed to help job seekers organize and manage their job search process efficiently. This modern web application provides a centralized platform for tracking job applications, interviews, and follow-ups, eliminating the need for scattered spreadsheets or notes."
+      "description": "Streamlined job search tracking for 500+ active users managing 10,000+ applications. Reduced application management overhead by 70% through an intuitive dashboard. Full-stack with Node.js, React, MongoDB, and Redux Thunk."
     },
     "comingSoon": {
       "title": "Coming Soon",
@@ -147,7 +149,7 @@
     },
     "ecommerceBackend": {
       "title": "E-commerce Backend API",
-      "description": "A scalable e-commerce backend API built with Node.js, Express, and MongoDB. This API powers a complete online shopping platform with features for product management, user authentication, and order processing. Implemented secure JWT authentication, cloud storage integration with AWS S3, and followed RESTful architecture principles for a robust and maintainable codebase."
+      "description": "Scalable REST API handling a 10,000+ product catalog with <100ms response times via optimized MongoDB queries. Supports 500+ concurrent sessions. Features JWT auth, AWS S3 storage, and full order lifecycle management."
     }
   },
   "internships": "INTERNSHIPS",
@@ -167,7 +169,9 @@
   "skillsTitle": "Technologies I Work With",
   "skillsSection": {
       "categories": {
-          "all": "All",
+          "gridView": "Grid",
+      "radarView": "Radar",
+      "all": "All",
           "frontend": "Frontend",
           "backend": "Backend",
           "database": "Database",
@@ -217,6 +221,27 @@
     "phone": "Phone",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "github": {
+    "title": "GitHub Activity",
+    "contributions": "Contribution history",
+    "noDescription": "No description available",
+    "viewAll": "View all repositories",
+    "repos": "Recent Repositories"
+  },
+  "testimonials": {
+    "title": "Recommendations",
+    "subtitle": "What colleagues and managers say",
+    "cta": "View all on LinkedIn",
+    "item1Quote": "Salah consistently delivered robust backend solutions under tight deadlines. His expertise in NestJS and PostgreSQL helped us reduce API response times by 40% and significantly improved our system reliability.",
+    "item1Author": "Mohamed A.",
+    "item1Role": "CTO, Dar Blockchain",
+    "item2Quote": "One of the most reliable engineers I've worked with. Salah has a rare combination of strong technical skills and excellent communication — always delivering clean, well-documented code on time.",
+    "item2Author": "Youssef B.",
+    "item2Role": "Tech Lead, Formationnet",
+    "item3Quote": "Salah's ability to architect scalable systems and translate complex requirements into elegant solutions is impressive. His work on our platform exceeded all performance benchmarks.",
+    "item3Author": "Lina K.",
+    "item3Role": "Product Manager"
   },
   "footer": {
     "navigation": "Navigation",

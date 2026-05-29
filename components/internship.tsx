@@ -39,8 +39,8 @@ const Internships: React.FC = () => {
     };
 
     return (
-        <section id="internship" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+        <section id="internship" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             <div className="container mx-auto px-4 z-10">
                 <motion.h2 
                     initial={{ opacity: 0, y: -20 }}
@@ -49,7 +49,7 @@ const Internships: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center"
                 >
-                    <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                         {t('internships')}
                     </span>
                 </motion.h2>
@@ -119,7 +119,7 @@ const Internships: React.FC = () => {
                                     </div>
                                     
                                     <div className="flex items-center text-gray-300 mb-4">
-                                        <FaCalendarAlt className="mr-2 text-indigo-400" />
+                                        <FaCalendarAlt className="mr-2 text-cyan-400" />
                                         <span>{internshipData[activeInternship].period}</span>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ const Internships: React.FC = () => {
                             {/* Right Column - Description and Technologies */}
                             <div className="md:w-2/3 p-8">
                                 <div className="mb-8">
-                                    <h4 className="flex items-center text-xl font-semibold text-indigo-400 mb-4">
+                                    <h4 className="flex items-center text-xl font-semibold text-cyan-400 mb-4">
                                         <FaLaptopCode className="mr-2" />
                                         {t('internship.projectDetails')}
                                     </h4>
@@ -138,7 +138,7 @@ const Internships: React.FC = () => {
                                 </div>
                                 
                                 <div>
-                                    <h4 className="flex items-center text-xl font-semibold text-indigo-400 mb-4">
+                                    <h4 className="flex items-center text-xl font-semibold text-cyan-400 mb-4">
                                         <FaCode className="mr-2" />
                                         {t('internship.technologies')}
                                     </h4>

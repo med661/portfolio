@@ -21,7 +21,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ t, onOpenTermina
         >
             {/* Profile Image */}
             <div className="relative group mb-10 md:mb-0">
-                <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-400 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="w-56 h-56 md:w-72 md:h-72 relative rounded-full p-1 bg-black"
@@ -40,18 +40,22 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ t, onOpenTermina
 
             {/* Profile Info */}
             <div className="text-center md:text-start max-w-2xl relative">
-                <div className="absolute -top-20 -start-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none"></div>
-                <div className="absolute -bottom-20 -end-20 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none"></div>
+                <div className="absolute -top-20 -start-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none"></div>
+                <div className="absolute -bottom-20 -end-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none"></div>
 
-                <motion.div variants={itemVariants} className="relative inline-block mb-4">
-                     <span className="py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-300 text-sm font-medium border border-indigo-500/20">
+                <motion.div variants={itemVariants} className="relative inline-flex flex-wrap gap-2 mb-4 items-center">
+                     <span className="py-1 px-3 rounded-full bg-cyan-500/10 text-cyan-300 text-sm font-medium border border-cyan-500/20">
                         {t('aboutme.role')}
+                     </span>
+                     <span className="flex items-center gap-1.5 py-1 px-3 rounded-full bg-green-500/10 text-green-400 text-sm font-medium border border-green-500/20">
+                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                       {t('aboutme.available')}
                      </span>
                 </motion.div>
 
                 <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
                     <span className="block text-white mb-2">{t('aboutme.greeting').replace('Salah Sfar!', '')}</span>
-                    <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-sky-300 bg-clip-text text-transparent">
                         Salah Sfar
                     </span>
                 </motion.h1>
@@ -59,7 +63,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ t, onOpenTermina
                 <motion.div variants={itemVariants} className="flex items-center justify-center md:justify-start gap-4 mb-8">
                     <button
                         onClick={onOpenTerminal}
-                        className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-mono text-sm font-medium text-white bg-gray-900 border border-gray-700 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 hover:border-indigo-500/50"
+                        className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-mono text-sm font-medium text-white bg-gray-900 border border-gray-700 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50"
                     >
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         <FaTerminal className="text-gray-400 group-hover:text-white transition-colors" />

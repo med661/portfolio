@@ -10,8 +10,8 @@ const Accomplishments: React.FC = () => {
     const [hovered, setHovered] = useState<number | null>(null);
     
     return (
-        <section id="achievements" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+        <section id="achievements" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             <div className="container mx-auto px-4 z-10">
                 <motion.h2 
                     initial={{ opacity: 0, y: -20 }}
@@ -19,7 +19,7 @@ const Accomplishments: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative"
                 >
-                    <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                         {t('accomplissementSection.title')}
                     </span>
                 </motion.h2>
@@ -34,18 +34,18 @@ const Accomplishments: React.FC = () => {
                         whileHover={{ y: -5 }}
                     >
                         <div className="p-8 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                            <div className="flex-shrink-0 bg-indigo-500/20 p-5 rounded-full">
-                                <FaTrophy className="text-5xl md:text-6xl text-indigo-400" />
+                            <div className="flex-shrink-0 bg-cyan-500/20 p-5 rounded-full">
+                                <FaTrophy className="text-5xl md:text-6xl text-cyan-400" />
                             </div>
                             <div className="flex-grow">
-                                <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                                     {t('accomplissementSection.actionAidTitle')}
                                 </h3>
                                 <p className="text-white text-lg">
                                     {t('accomplissementSection.actionAid')}
                                 </p>
                                 <div className="mt-4 inline-block">
-                                    <span className="px-4 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm">
+                                    <span className="px-4 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm">
                                         {t('accomplissementSection.socialEntrepreneurship')}
                                     </span>
                                 </div>

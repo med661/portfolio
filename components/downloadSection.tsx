@@ -23,7 +23,7 @@ export const CVDownloadSection: React.FC<CVDownloadSectionProps> = ({ t }) => {
                 <motion.a
                     href="/cv/en.pdf"
                     download
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label="Download CV in English"
@@ -33,7 +33,7 @@ export const CVDownloadSection: React.FC<CVDownloadSectionProps> = ({ t }) => {
                 <motion.a
                     href="/cv/fr.pdf"
                     download
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label="Download CV in French"

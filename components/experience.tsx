@@ -128,17 +128,17 @@ const Experience = () => {
 
 
     return (
-        <section id="experience" className="relative py-16 md:py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen flex items-center">
+        <section id="experience" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
             {/* Existing background - DO NOT CHANGE */}
-            <div className="absolute inset-0 bg-gray-900 opacity-90 z-0" />
+            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
             
             {/* Timeline Line */}
-            <div className="absolute start-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent hidden md:block"></div>
+            <div className="absolute start-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent hidden md:block"></div>
 
             <div className="container mx-auto px-4 z-10 max-w-6xl">
                 {/* Title */}
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 md:mb-20 text-white text-center relative animate-fadeIn">
-                    <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                    <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 text-transparent bg-clip-text">
                         {t('experiences.title')}
                     </span>
                 </h2>
@@ -154,16 +154,16 @@ const Experience = () => {
                             className="relative"
                         >
                             {/* Timeline Dot */}
-                            <div className="hidden md:block absolute left-1/2 top-8 transform -translate-x-1/2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-gray-900 z-20 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+                            <div className="hidden md:block absolute left-1/2 top-8 transform -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-gray-900 z-20 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
 
-                            <div className="glass-strong p-6 md:p-8 rounded-2xl relative mx-auto w-full border border-white/10 hover:border-indigo-500/30 transition-colors duration-300">
+                            <div className="glass-strong p-6 md:p-8 rounded-2xl relative mx-auto w-full border border-white/10 hover:border-cyan-500/30 transition-colors duration-300">
                                 {/* Job Header */}
                                 <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 border-b border-white/5 pb-6">
                                     <div>
                                         <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                                             {job.title}
                                         </h3>
-                                        <div className="text-lg md:text-xl text-indigo-300 font-medium mb-2 flex items-center gap-2">
+                                        <div className="text-lg md:text-xl text-cyan-300 font-medium mb-2 flex items-center gap-2">
                                             {job.company}
                                         </div>
                                         <time className="inline-block px-3 py-1 rounded-full bg-white/5 text-gray-400 text-xs font-mono border border-white/5">
@@ -195,16 +195,16 @@ const Experience = () => {
                                             key={project.key}
                                             variants={itemVariants}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-black/20 p-6 rounded-xl hover:bg-black/30 transition-all duration-300 border border-white/5 hover:border-indigo-500/30 group"
+                                            className="bg-black/20 p-6 rounded-xl hover:bg-black/30 transition-all duration-300 border border-white/5 hover:border-cyan-500/30 group"
                                         >
                                             <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
                                                 <div className="flex-1 order-2 md:order-1">
-                                                    <h4 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
+                                                    <h4 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                                                         {project.title}
                                                     </h4>
                                                     <ul className="space-y-2 text-gray-300 text-sm md:text-base leading-relaxed">
                                                         <li>
-                                                            <FaCheckCircle className="inline-block text-indigo-500 mr-2 align-top mt-1 flex-shrink-0" />
+                                                            <FaCheckCircle className="inline-block text-cyan-500 mr-2 align-top mt-1 flex-shrink-0" />
                                                             <span>{project.description}</span>
                                                         </li>
                                                     </ul>
@@ -216,7 +216,7 @@ const Experience = () => {
                                                                 key={techIndex}
                                                                 variants={techVariants}
                                                                 transition={{ delay: (index * 0.1) + (techIndex * 0.05) }}
-                                                                className="px-3 py-1 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 rounded-full text-xs font-medium"
+                                                                className="px-3 py-1 bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 rounded-full text-xs font-medium"
                                                             >
                                                                 {tech}
                                                             </motion.span>
@@ -230,7 +230,7 @@ const Experience = () => {
                                                                 href={project.link}
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
-                                                                className="inline-flex items-center gap-2 text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-300 border-b border-indigo-500/30 hover:border-indigo-400 pb-0.5"
+                                                                className="inline-flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 border-b border-cyan-500/30 hover:border-cyan-400 pb-0.5"
                                                             >
                                                                 {t('myprojects.visitProject') || t('common.view')} <FaExternalLinkAlt className="text-xs" />
                                                             </a>
@@ -274,7 +274,7 @@ const Experience = () => {
                 {/* Meetups Section */}
                 <div className="mt-24 mb-12">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">
-                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+                        <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-sky-300 text-transparent bg-clip-text">
                             {t('experiences.meetups.title')}
                         </span>
                     </h3>
@@ -374,7 +374,7 @@ const Experience = () => {
                                                     href={(modalContent.data as Project).link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 shadow-lg shadow-indigo-500/30"
+                                                    className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 shadow-lg shadow-cyan-500/30"
                                                 >
                                                     {t('myprojects.visitProject') || t('common.view')} <FaExternalLinkAlt className="text-sm" />
                                                 </a>
@@ -408,14 +408,14 @@ const Experience = () => {
                                             <>
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); prevMeetup(); }}
-                                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-blue-600 transition-all duration-300 backdrop-blur-sm z-20"
                                                     aria-label="Previous meetup"
                                                 >
                                                     <FaArrowLeft />
                                                 </button>
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); nextMeetup(); }}
-                                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 backdrop-blur-sm z-20"
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-blue-600 transition-all duration-300 backdrop-blur-sm z-20"
                                                     aria-label="Next meetup"
                                                 >
                                                     <FaArrowRight />
