@@ -168,6 +168,8 @@
   },
   "skillsTitle": "Technologies avec lesquelles je travaille",
   "skillsSection": {
+      "gridView": "Grille",
+      "radarView": "Radar",
       "categories": {
           "gridView": "Grille",
       "radarView": "Radar",
@@ -233,15 +235,12 @@
     "title": "Recommandations",
     "subtitle": "Ce que disent collègues et managers",
     "cta": "Voir tout sur LinkedIn",
-    "item1Quote": "Salah a livré des solutions backend robustes sous des délais serrés. Son expertise en NestJS et PostgreSQL nous a aidés à réduire les temps de réponse API de 40% et à améliorer significativement la fiabilité du système.",
-    "item1Author": "Mohamed A.",
-    "item1Role": "CTO, Dar Blockchain",
-    "item2Quote": "L'un des ingénieurs les plus fiables avec qui j'ai travaillé. Salah possède une rare combinaison de compétences techniques solides et d'excellente communication — livrant toujours un code propre et bien documenté dans les délais.",
-    "item2Author": "Youssef B.",
-    "item2Role": "Tech Lead, Formationnet",
-    "item3Quote": "La capacité de Salah à architecturer des systèmes évolutifs et à traduire des exigences complexes en solutions élégantes est impressionnante. Son travail sur notre plateforme a dépassé tous les benchmarks de performance.",
-    "item3Author": "Lina K.",
-    "item3Role": "Chef de Produit"
+    "item1Quote": "Salah s'est distingué par sa maîtrise des technologies backend telles que Node.js, Express.js, Nest.js, ainsi que des bases de données MongoDB et PostgreSQL. Sa faculté à résoudre des problèmes complexes, combinée à son esprit d'équipe et à sa volonté de partager ses connaissances, a grandement enrichi notre département technique. Je le recommande sans réserve pour toute opportunité en développement backend.",
+    "item1Author": "Hatem Azaiez",
+    "item1Role": "CTO, Darblockchain",
+    "item2Quote": "Monsieur Sfar a démontré un haut niveau de professionnalisme et un sérieux constant dans l'accomplissement de ses missions. Sa rigueur, son sens des responsabilités et sa capacité à collaborer efficacement avec ses collègues ont fortement contribué à maintenir un environnement de travail positif et productif. Je recommande sans hésitation Monsieur Salah Sfar à toute structure qui recherche un collaborateur sérieux, impliqué et orienté vers le travail en équipe.",
+    "item2Author": "Ranya Guermessi",
+    "item2Role": "Responsable RH, Dar Blockchain"
   },
   "footer": {
     "navigation": "Navigation",

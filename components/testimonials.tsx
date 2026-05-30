@@ -16,22 +16,15 @@ const TESTIMONIALS: Testimonial[] = [
     quoteKey: 'testimonials.item1Quote',
     authorKey: 'testimonials.item1Author',
     roleKey: 'testimonials.item1Role',
-    initials: 'MA',
+    initials: 'HA',
     color: 'from-cyan-500 to-blue-500',
   },
   {
     quoteKey: 'testimonials.item2Quote',
     authorKey: 'testimonials.item2Author',
     roleKey: 'testimonials.item2Role',
-    initials: 'YB',
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    quoteKey: 'testimonials.item3Quote',
-    authorKey: 'testimonials.item3Author',
-    roleKey: 'testimonials.item3Role',
-    initials: 'LK',
-    color: 'from-pink-500 to-rose-500',
+    initials: 'RG',
+    color: 'from-blue-500 to-cyan-400',
   },
 ];
 

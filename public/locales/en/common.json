@@ -168,6 +168,8 @@
   },
   "skillsTitle": "Technologies I Work With",
   "skillsSection": {
+      "gridView": "Grid",
+      "radarView": "Radar",
       "categories": {
           "gridView": "Grid",
       "radarView": "Radar",
@@ -233,15 +235,12 @@
     "title": "Recommendations",
     "subtitle": "What colleagues and managers say",
     "cta": "View all on LinkedIn",
-    "item1Quote": "Salah consistently delivered robust backend solutions under tight deadlines. His expertise in NestJS and PostgreSQL helped us reduce API response times by 40% and significantly improved our system reliability.",
-    "item1Author": "Mohamed A.",
-    "item1Role": "CTO, Dar Blockchain",
-    "item2Quote": "One of the most reliable engineers I've worked with. Salah has a rare combination of strong technical skills and excellent communication — always delivering clean, well-documented code on time.",
-    "item2Author": "Youssef B.",
-    "item2Role": "Tech Lead, Formationnet",
-    "item3Quote": "Salah's ability to architect scalable systems and translate complex requirements into elegant solutions is impressive. His work on our platform exceeded all performance benchmarks.",
-    "item3Author": "Lina K.",
-    "item3Role": "Product Manager"
+    "item1Quote": "Salah distinguished himself through his mastery of backend technologies such as Node.js, Express.js, NestJS, MongoDB and PostgreSQL. His ability to solve complex problems, combined with his team spirit and willingness to share knowledge, greatly enriched our technical department. I unreservedly recommend him for any backend development opportunity.",
+    "item1Author": "Hatem Azaiez",
+    "item1Role": "CTO, Darblockchain",
+    "item2Quote": "Mr. Sfar demonstrated a high level of professionalism and consistent dedication in carrying out his responsibilities. His rigor, sense of responsibility, and ability to collaborate effectively with colleagues greatly contributed to maintaining a positive and productive work environment. I recommend Salah Sfar without hesitation to any organization seeking a serious, committed, and team-oriented professional.",
+    "item2Author": "Ranya Guermessi",
+    "item2Role": "HR Manager, Dar Blockchain"
   },
   "footer": {
     "navigation": "Navigation",
