@@ -23,7 +23,7 @@ export const CONTACT_INFO = {
     }
 };
 
-export const PROJECTS_DATA = [
+export const PROJECTS_DATA: { key: string; image: string; technologies: string[]; link: string; color: string }[] = [
     // {
     //     key: 'learnHub',
     //     image: "/images/elhub.png",
