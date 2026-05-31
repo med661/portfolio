@@ -49,14 +49,14 @@ const Education: React.FC = () => {
             icon: <FaSchool className="text-white text-2xl" />,
             colorGradient: "from-purple-600 to-pink-600",
             logo: "/images/polytech.png",
-            images: ["/edu/bac.jpg"]
+            images: ["/edu/eps.jpg"]
         },
         {
             key: 'degree3',
             icon: <FaGraduationCap className="text-white text-2xl" />,
             colorGradient: "from-green-600 to-teal-600",
             logo: "/images/lts.jpeg",
-            images: []
+            images: ["/edu/bac.jpg"]
         }
     ], []);
 
