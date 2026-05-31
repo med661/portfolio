@@ -142,8 +142,8 @@
       "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design. Deployed and optimized on Linux servers for maximum performance and reliability."
     },
     "comingSoon": {
-      "title": "Coming Soon",
-      "description": "More exciting projects in development",
+      "title": "Building What's Next",
+      "description": "I'm currently working on new ideas, products, and experiments. Check back soon for new case studies and project launches.",
       "stayTuned": "Stay Tuned"
     }
   },
