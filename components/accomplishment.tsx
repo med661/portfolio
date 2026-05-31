@@ -11,11 +11,12 @@ const Accomplishments: React.FC = () => {
     
     return (
         <section id="achievements" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
-            <div className="container mx-auto px-4 z-10">
-                <motion.h2 
+            <div className="absolute inset-0 bg-blue-950 z-0" />
+            <div className="container mx-auto px-4 z-10 relative">
+                <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                     className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-white text-center relative"
                 >
@@ -25,11 +26,12 @@ const Accomplishments: React.FC = () => {
                 </motion.h2>
 
                 <div className="max-w-5xl mx-auto space-y-12">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
-                        className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm 
+                        className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm
                                  shadow-lg hover:shadow-xl rounded-xl overflow-hidden border border-gray-700/30"
                         whileHover={{ y: -5 }}
                     >
@@ -53,9 +55,10 @@ const Accomplishments: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.2 }}
                         className="glass-strong rounded-xl overflow-hidden border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300"
                         whileHover={{ y: -5 }}

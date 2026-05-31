@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="relative bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 pt-16 pb-6">
-      <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+      <div className="absolute inset-0 bg-blue-950 z-0" />
       {/* Top cyan separator line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent z-10" />
 

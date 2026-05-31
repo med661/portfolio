@@ -41,7 +41,7 @@ const Experience = () => {
     const jobsConfig = [
         {
             key: 'job2',
-            projectKeys: ['project1', 'project2', 'project3']
+            projectKeys: [/* 'project1', */ 'project2', 'project3', 'project4']
         },
         {
             key: 'job1',
@@ -130,7 +130,7 @@ const Experience = () => {
     return (
         <section id="experience" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
             {/* Existing background - DO NOT CHANGE */}
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+            <div className="absolute inset-0 bg-blue-950 z-0" />
             
             {/* Timeline Line */}
             <div className="absolute start-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent hidden md:block"></div>

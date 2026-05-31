@@ -84,7 +84,7 @@ const ProofOfAchievement: React.FC = () => {
     
     return (
         <section id="proof-of-achievement" className="relative py-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+            <div className="absolute inset-0 bg-blue-950 z-0" />
             <div className="container mx-auto px-4 md:px-8 z-10">
                 <motion.div
                     initial={{ opacity: 0 }}

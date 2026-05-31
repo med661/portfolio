@@ -16,7 +16,7 @@
     "greeting": "Hi, I'm",
     "name": "Salah Sfar",
     "role": "Senior Full Stack Engineer",
-    "bio": "Senior Full Stack Engineer with 3+ years building production-grade systems at scale. Delivered 8+ products across fintech, EdTech, and e-commerce domains. Specialized in Node.js/NestJS microservices, React/Next.js frontends, and Docker-based deployments.",
+    "bio": "Senior Backend Engineer with 5+ years building production-grade systems at scale. Delivered 8+ products across fintech, EdTech, and e-commerce domains. Specialized in Node.js/NestJS microservices, React/Next.js frontends, and Docker-based deployments.",
     "available": "Open to Work",
     "availableLabel": "Available for new opportunities",
     "profile": {
@@ -63,10 +63,10 @@
       }
     },
     "job2": {
-      "title": "Full Stack Developer",
+      "title": "Senior Backend Engineer",
       "company": "Formationnet",
       "logo": "/images/logosfar.png",
-      "date": "Feb 2025 - Present",
+      "date": "Dec 2020 - Present",
       "projects": {
         "project1": {
           "title": "FitStack",
@@ -88,6 +88,13 @@
           "image": "/images/in.png",
           "technologies": "TypeScript, Prisma, NestJS, PostgreSQL, Redis, Next.js, Docker, Stripe",
           "link": ""
+        },
+        "project4": {
+          "title": "LearnHub",
+          "description": "Built an e-learning marketplace connecting 2,000+ learners with training opportunities. Reduced course-discovery time by 40% through GraphQL-optimized queries and intelligent filtering. Architected the backend with NestJS and PostgreSQL, designed the GraphQL API with TypeORM, and integrated Redux Thunk on the Next.js frontend for seamless state management.",
+          "image": "/images/elhub.png",
+          "technologies": "NestJS, GraphQL, PostgreSQL, TypeORM, Redux Thunk",
+          "link": "https://knowledgehubster.vercel.app/"
         }
       }
     }
@@ -134,22 +141,10 @@
       "title": "Stress Test",
       "description": "Developed a full-stack web application using Next.js and TypeScript that enables developers to stress test APIs with configurable concurrent requests, providing real-time performance metrics, latency analysis, and visual health scoring. Features include concurrent request handling up to 10k calls, detailed analytics dashboard, and responsive design. Deployed and optimized on Linux servers for maximum performance and reliability."
     },
-    "jobHuntDiary": {
-      "title": "Job Hunt Diary",
-      "description": "Streamlined job search tracking for 500+ active users managing 10,000+ applications. Reduced application management overhead by 70% through an intuitive dashboard. Full-stack with Node.js, React, MongoDB, and Redux Thunk."
-    },
     "comingSoon": {
       "title": "Coming Soon",
       "description": "More exciting projects in development",
       "stayTuned": "Stay Tuned"
-    },
-    "portfolio": {
-      "title": "Personal Portfolio",
-      "description": "A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features include internationalization support (English and French), interactive UI components with Framer Motion animations, and a terminal-inspired interface. The portfolio showcases my projects, skills, and professional experience in an elegant, user-friendly design."
-    },
-    "ecommerceBackend": {
-      "title": "E-commerce Backend API",
-      "description": "Scalable REST API handling a 10,000+ product catalog with <100ms response times via optimized MongoDB queries. Supports 500+ concurrent sessions. Features JWT auth, AWS S3 storage, and full order lifecycle management."
     }
   },
   "internships": "INTERNSHIPS",

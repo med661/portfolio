@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaQuoteLeft, FaLinkedin, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useTranslationContext } from '@/contexts/translationContext';
 
 interface Testimonial {
@@ -42,7 +42,7 @@ export const Testimonials = () => {
       id="testimonials"
       className="relative py-16 md:py-24 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950"
     >
-      <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+      <div className="absolute inset-0 bg-blue-950 z-0" />
       <div className="container mx-auto px-6 z-10 relative max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
@@ -128,22 +128,6 @@ export const Testimonials = () => {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-10"
-        >
-          <a
-            href="https://www.linkedin.com/in/salah-sfar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 hover:text-blue-300 rounded-full border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300"
-          >
-            <FaLinkedin />
-            {t('testimonials.cta')}
-          </a>
-        </motion.div>
       </div>
     </section>
   );

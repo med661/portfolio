@@ -16,7 +16,7 @@
     "greeting": "Bonjour, je suis",
     "name": "Salah Sfar",
     "role": "Ingénieur Full Stack Senior",
-    "bio": "Ingénieur Full Stack Senior avec 3+ ans de développement de systèmes en production à grande échelle. 8+ produits livrés en fintech, EdTech et e-commerce. Spécialisé en microservices Node.js/NestJS, frontends React/Next.js et déploiements Docker.",
+    "bio": "Ingénieur Backend Senior avec 5+ ans de développement de systèmes en production à grande échelle. 8+ produits livrés en fintech, EdTech et e-commerce. Spécialisé en microservices Node.js/NestJS, frontends React/Next.js et déploiements Docker.",
     "available": "Disponible",
     "availableLabel": "Ouvert aux nouvelles opportunités",
     "profile": {
@@ -63,10 +63,10 @@
       }
     },
     "job2": {
-      "title": "Développeur Full Stack",
+      "title": "Ingénieur Backend Senior",
       "company": "Formationnet",
       "logo": "/images/logosfar.png",
-      "date": "Févr 2025 - Présent",
+      "date": "Déc 2020 - Présent",
       "projects": {
         "project1": {
           "title": "FitStack",
@@ -88,6 +88,13 @@
           "image": "/images/in.png",
           "technologies": "TypeScript, Prisma, NestJS, PostgreSQL, Redis, Next.js, Docker, Stripe",
           "link": ""
+        },
+        "project4": {
+          "title": "LearnHub",
+          "description": "Développement d'une marketplace e-learning connectant 2 000+ apprenants avec des opportunités de formation. Réduction du temps de découverte des cours de 40 % grâce à des requêtes GraphQL optimisées et un filtrage intelligent. Architecture backend avec NestJS et PostgreSQL, conception de l'API GraphQL avec TypeORM, et intégration de Redux Thunk sur le frontend Next.js pour une gestion d'état fluide.",
+          "image": "/images/elhub.png",
+          "technologies": "NestJS, GraphQL, PostgreSQL, TypeORM, Redux Thunk",
+          "link": "https://knowledgehubster.vercel.app/"
         }
       }
     }
@@ -138,18 +145,6 @@
       "title": "Bientôt Disponible",
       "description": "D'autres projets passionnants en développement.",
       "stayTuned": "Restez à l'écoute"
-    },
-    "jobHuntDiary": {
-      "title": "Journal de Recherche d'Emploi",
-      "description": "Journal de Recherche d'Emploi est un système complet de suivi des candidatures conçu pour aider les chercheurs d'emploi à organiser et gérer efficacement leur processus de recherche. Cette application web moderne offre une plateforme centralisée pour suivre les candidatures, les entretiens et les suivis, éliminant ainsi le besoin de feuilles de calcul ou de notes éparpillées."
-    },
-    "portfolio": {
-      "title": "Portfolio Personnel",
-      "description": "Un site web de portfolio moderne et réactif construit avec Next.js, TypeScript et Tailwind CSS. Les fonctionnalités incluent le support de l'internationalisation (anglais et français), des composants d'interface utilisateur interactifs avec des animations Framer Motion, et une interface inspirée d'un terminal. Le portfolio présente mes projets, compétences et expérience professionnelle dans une conception élégante et conviviale."
-    },
-    "ecommerceBackend": {
-      "title": "API Backend E-commerce",
-      "description": "Une API backend e-commerce évolutive construite avec Node.js, Express et MongoDB. Cette API alimente une plateforme complète de commerce en ligne avec des fonctionnalités de gestion de produits, d'authentification des utilisateurs et de traitement des commandes. Implémentation d'une authentification sécurisée par JWT, intégration du stockage cloud avec AWS S3, et respect des principes d'architecture RESTful pour un code robuste et maintenable."
     }
   },
   "internships": "STAGES",

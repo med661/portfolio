@@ -211,7 +211,7 @@ const TechSection: React.FC = () => {
 
     return (
         <section id='skills' className="relative py-16 md:py-24 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+            <div className="absolute inset-0 bg-blue-950 z-0" />
             <div className="container mx-auto px-6 z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}

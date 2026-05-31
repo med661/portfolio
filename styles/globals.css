@@ -17,8 +17,7 @@ html, body {
   min-height: 100dvh;
   width: 100%;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
 }
 
 body {
@@ -62,10 +61,14 @@ body {
   /* Glassmorphism */
   .glass {
     @apply bg-blue-950/40 backdrop-blur-md border border-cyan-500/10 shadow-xl;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .glass-strong {
     @apply bg-blue-950/70 backdrop-blur-lg border border-cyan-500/10 shadow-2xl;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   /* Text Gradient */

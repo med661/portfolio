@@ -20,7 +20,7 @@ const About = () => {
 
     return (
         <section id="about" className="relative pt-28 md:pt-24 pb-16 md:py-20 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center">
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+            <div className="absolute inset-0 bg-blue-950 z-0" />
             <motion.div 
                 variants={containerVariants}
                 initial="hidden"

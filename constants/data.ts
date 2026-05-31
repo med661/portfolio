@@ -24,41 +24,20 @@ export const CONTACT_INFO = {
 };
 
 export const PROJECTS_DATA = [
-    {
-        key: 'learnHub',
-        image: "/images/elhub.png",
-        technologies: ["NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redux Thunk"],
-        link: "https://knowledgehubster.vercel.app/",
-        color: "from-blue-600 to-blue-400"
-    },
-    {
-        key: 'jobHuntDiary',
-        image: "/images/hunt.png",
-        technologies: ["Node.js","React.js","ExpressJS","Mongodb", "Redux Thunk"],
-        link: "https://job-hunt-diary.vercel.app/",
-        color: "from-emerald-500 to-teal-500" ,
-    },
-    {
-        key: 'realtimeChat',
-        image: "/images/chat.png",
-        technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
-        link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/",
-        color: "from-pink-600 to-pink-400"
-    },
-    {
-        key: 'portfolio',
-        image: "/images/portfolio.png",
-        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18next", "React"],
-        link: "/",
-        color: "from-cyan-600 to-cyan-400"
-    },
-    {
-        key: 'ecommerceBackend',
-        image: "/images/ec.jpeg",
-        technologies: ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "AWS S3", "REST API"],
-        link: "https://github.com/med661/ecommerce-backend",
-        color: "from-amber-600 to-amber-400"
-    },
+    // {
+    //     key: 'learnHub',
+    //     image: "/images/elhub.png",
+    //     technologies: ["NestJS", "GraphQL", "PostgreSQL", "TypeORM", "Redux Thunk"],
+    //     link: "https://knowledgehubster.vercel.app/",
+    //     color: "from-blue-600 to-blue-400"
+    // },
+    // {
+    //     key: 'realtimeChat',
+    //     image: "/images/chat.png",
+    //     technologies: ["NestJS", "TypeScript", "Prisma", "React.js", "Redux Thunk"],
+    //     link: "https://www.linkedin.com/feed/update/urn:li:activity:7163459271488180224/",
+    //     color: "from-pink-600 to-pink-400"
+    // },
 ];
 
 export const MEETUP_IMAGES = [

@@ -132,7 +132,7 @@ const Education: React.FC = () => {
             id="education" 
             className="relative py-16 md:py-24 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 min-h-screen flex items-center overflow-hidden"
         >
-            <div className="absolute inset-0 bg-blue-950 opacity-95 z-0" />
+            <div className="absolute inset-0 bg-blue-950 z-0" />
             
             {/* Timeline Line */}
             <div className="absolute start-8 md:start-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent hidden md:block"></div>
