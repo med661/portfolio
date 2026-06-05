@@ -10,6 +10,11 @@
 /* Global Styles */
 html {
   background-color: #050d1a;
+  /* Keep overscroll containment on the real scroll container only.
+     Applying it to <body> traps wheel scrolling, because overflow-x:hidden
+     turns <body> into a (non-scrollable) vertical scroll container and
+     overscroll-behavior:none then stops the scroll from chaining to <html>. */
+  overscroll-behavior: none;
 }
 
 html, body {
@@ -17,7 +22,6 @@ html, body {
   min-height: 100dvh;
   width: 100%;
   scroll-behavior: smooth;
-  overscroll-behavior: none;
 }
 
 body {
